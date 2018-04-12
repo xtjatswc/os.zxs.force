@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dip" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutOptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:src="@drawable/add" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:weightSum="4" >
+
+            <ListView
+                android:id="@+id/lvQuestionnaire"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="30dip"
+                android:layout_weight="3" />
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/btnChart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dip"
+                    android:src="@drawable/chart_line" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupQType"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip" >
+
+                    <RadioButton
+                        android:id="@+id/radioButtonAllType"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:checked="true"
+                        android:tag="0"
+                        android:text="显示全部" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonNRS2002"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="1"
+                        android:text="NRS2002" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonPGSGA"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="2"
+                        android:text="PG-SGA" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMUST"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="3"
+                        android:text="MUST" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMST"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="4"
+                        android:text="MST" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMNASF"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="5"
+                        android:text="MNA-SF" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonNRI"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="6"
+                        android:text="NRI" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonSGA"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:tag="7"
+                        android:text="SGA" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

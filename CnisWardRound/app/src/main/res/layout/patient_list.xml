@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/spinnerDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/LinearLayout_buttons"
+            android:layout_toRightOf="@id/spinnerDepartment"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/chkMyPatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <ImageView
+                android:id="@+id/imageViewFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/heart_love2" />
+
+            <os.zxs.force.core.view.ClearEditText
+                android:id="@+id/editTextCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/btnSearch"
+                android:layout_width="60dip"
+                android:layout_height="50dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/search" />
+
+            <ImageButton
+                android:id="@+id/ImageButton_Add"
+                android:layout_width="60dip"
+                android:layout_height="50dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/add" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lvPatients"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dip"
+        android:layout_marginRight="24dip" />
+
+</LinearLayout>

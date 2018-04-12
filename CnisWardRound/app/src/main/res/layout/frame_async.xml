@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="20dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="入院日期："
+            android:textSize="18dip" />
+
+        <os.zxs.force.core.view.DatePickerView
+            android:id="@+id/textBeginDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="130dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textSize="20dip" />
+
+        <os.zxs.force.core.view.DatePickerView
+            android:id="@+id/textEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="130dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutClear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <CheckBox
+            android:id="@+id/chkClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="同步前清空相关表数据" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewAsyncTip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progressBarAsync"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" >
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTips"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingTop="20dip" >
+
+            <Switch
+                android:id="@+id/switchPatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="患者信息"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchQuestionnaireResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="调查问卷"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchCourserecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="查房记录"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchNutrientAdvice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="肠内医嘱"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchMealRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="膳食调查"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchBodyAnalysisReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="人体成分报告"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchLaboratoryIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="实验室检查"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="5dip"
+                android:background="?android:attr/listDivider" />
+
+            <Switch
+                android:id="@+id/switchUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户信息"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="科室"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchBednumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="床位"
+                android:textOff="off"
+                android:textOn="on"
+                android:visibility="gone" />
+
+            <Switch
+                android:id="@+id/switchQuestionnaire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="问卷题库"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchChinaFoodComposition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="食材、肠内制剂"
+                android:textOff="off"
+                android:textOn="on" />
+
+            <Switch
+                android:id="@+id/switchSysCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="基础字典"
+                android:textOff="off"
+                android:textOn="on" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonBeginAsync"
+        style="@style/buttonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="点击开始同步	>>>" />
+
+</LinearLayout>

@@ -1,0 +1,538 @@
+[
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_fragment_time.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_fragment_time.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_courserecord.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\courserecord.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_courserecord2.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\courserecord2.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa007.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa007.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_seekbar.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\seekbar.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_delete.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\delete.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tab_bg2.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\tab_bg2.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_attachment.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\attachment.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_spacer_medium.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\spacer_medium.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_patient_list_selected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\patient_list_selected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_top_corner_no_bottom_line.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\shape_top_corner_no_bottom_line.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_fragment_food.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_fragment_food.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_laboratoryindex_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\laboratoryindex_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa008.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa008.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_seekbar_thumb.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\seekbar_thumb.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_no_corner_without_bottom.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\shape_no_corner_without_bottom.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_add.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\add.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_back.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\force\\build\\intermediates\\packaged_res\\debug\\layout\\back.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_course_record_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\course_record_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_cnislog_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\cnislog_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_patient_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\patient_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_laboratory.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\laboratory.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_cnislog_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\cnislog_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_top.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_top.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_fragment_food_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_fragment_food_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_laboratoryindex_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\laboratoryindex_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_body_analysis_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\body_analysis_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_world.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\world.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa005.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa005.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_minus.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\minus.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_dict_choose.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\dict_choose.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa001.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa001.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tools_selected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\tools_selected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\button.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_back.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\back.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa012.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa012.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_bottom_corner_no_top_line.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\shape_bottom_corner_no_top_line.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa004.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa004.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tab_bg.9.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\tab_bg.9.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_seekbar_thumb_normal.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\seekbar_thumb_normal.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_warning.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\warning.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_wifi_disconnected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\wifi_disconnected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_questionnaire.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\questionnaire.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_product_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_product_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_chart_line.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\chart_line.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_settings.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\settings.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tools_unselected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\tools_unselected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_patient_list_unselected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\patient_list_unselected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_seekbar_thumb_pressed.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\seekbar_thumb_pressed.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_patient_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\patient_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_medicalinstrument.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\medicalinstrument.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_fragment_total.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_fragment_total.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_camera.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\camera.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa003.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa003.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cnis_ward_round_init.db.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\cnis_ward_round_init.db"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_right_arrows.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\right_arrows.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_course_record_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\course_record_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_setting.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_setting.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_clear_normal_list.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\force\\build\\intermediates\\packaged_res\\debug\\drawable\\clear_normal_list.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_fooddome.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\fooddome.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire_result.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire_result.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_heart_love2.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\heart_love2.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_male.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\male.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_laboratoryindex_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\laboratoryindex_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_sync_unselected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\sync_unselected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_clock.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\clock.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_left_arrows.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\left_arrows.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_edit.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\edit.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_setting_selected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\setting_selected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_female.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\female.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_gray.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\gray.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa002.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa002.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_async.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_async.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_kancare_logo.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\kancare_logo.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_body_analysis_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\body_analysis_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_calendar.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\calendar.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_youtube.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\youtube.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_fragment_tmeal.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_fragment_tmeal.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_mealrecord_info.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\mealrecord_info.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_course_record_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\course_record_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_questionnaire2.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\questionnaire2.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_heart_love.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\heart_love.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_wifi_connected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\wifi_connected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa011.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa011.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_setting_unselected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\setting_unselected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_search.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\search.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_weather.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\weather.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ringtone.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\ringtone.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_blue.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\blue.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_messenger.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\messenger.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_patient_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\patient_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_version.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_version.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_funnel.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\funnel.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_sync_selected.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\sync_selected.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_body_analysis_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\body_analysis_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_games_control.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\games_control.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_patient_view.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\patient_view.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_main.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_main.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa009.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa009.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_questionnaire3.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\questionnaire3.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_delete2.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\delete2.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_circle.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\circle.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_plus.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\plus.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_dict_choose_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\dict_choose_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_product_list_item.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_product_list_item.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_patient_list.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_patient_list.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cnis_ward_round_test.db.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\cnis_ward_round_test.db"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa010.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa010.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_speech_balloon.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\speech_balloon.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_disabled.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable\\button_disabled.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire_chart.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire_chart.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa006.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa006.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_tools.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\frame_tools.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_login.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_doctor.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\doctor.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_questionnaire_nri.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\questionnaire_nri.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_aaaaa013.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\aaaaa013.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_logout.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-ldpi\\logout.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_top.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_top.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\layout_advice_input.xml.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\layout\\advice_input.xml"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_address_book.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\address_book.png"
+    },
+    {
+        "merged": "F:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_doctorsuitecase.png.flat",
+        "source": "F:\\work\\android project\\CnisWardRound\\app\\src\\main\\res\\drawable-hdpi\\doctorsuitecase.png"
+    }
+]

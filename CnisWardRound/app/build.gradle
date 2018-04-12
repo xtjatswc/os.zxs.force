@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 15
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        applicationId "cn.kancare.mobile"
+        minSdkVersion 8
+        targetSdkVersion 16
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_5
+            targetCompatibility JavaVersion.VERSION_1_5
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'com/j256/ormlite/android'
+    }
+}
+
+dependencies {
+    compile 'com.google.guava:guava:18.0'
+    compile files('libs/achartengine-1.2.0.jar')
+    compile files('libs/android-async-http-1.4.8.jar')
+    compile files('libs/fastjson-1.2.6.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile files('libs/ormlite-android-4.49-SNAPSHOT.jar')
+    compile files('libs/ormlite-core-4.49-SNAPSHOT.jar')
+    compile files('libs/ormlite-jdbc-4.49-SNAPSHOT.jar')
+    compile files('libs/velocity-1.7-dep.jar')
+    implementation project(':force')
+}

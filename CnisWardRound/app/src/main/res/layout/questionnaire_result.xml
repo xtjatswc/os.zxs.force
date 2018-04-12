@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dip" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dip"
+            android:gravity="center_horizontal"
+            android:text="营养风险筛查评估结果"
+            android:textSize="30dip" />
+
+        <TextView
+            android:id="@+id/TextViewScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评估结果：分"
+            android:textSize="20dip" />
+
+        <TextView
+            android:id="@+id/TextViewResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/red"
+            android:textSize="20dip" />
+
+        <TextView
+            android:id="@+id/TextViewResult2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/red"
+            android:textSize="20dip" />
+
+        <RadioGroup
+            android:id="@+id/RadioGroupIsAgree"           
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/RadioButtonAgree"
+                android:checked="true"
+                android:text="接受营养治疗" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonNotAgree"
+                android:text="不接受营养治疗" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/EditTextRemark"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/edit_text"
+            android:enabled="true"
+            android:gravity="top"
+            android:hint="备注"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="8"
+            android:scrollbars="vertical"
+            android:textSize="20dip" >
+        </EditText>
+
+        <Button
+            android:id="@+id/btnSave"
+            style="@style/buttonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存" />
+    </LinearLayout>
+
+</LinearLayout>

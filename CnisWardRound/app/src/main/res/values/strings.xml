@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CnisWardRoundActivity!</string>
+    <string name="app_name">CNIS移动查房</string>
+    <string name="questionnaire_nri">       \r\n NRI=1.519 *  血清白蛋白浓度(g/L) + 4.17 * (目前体重/日常体重) \r\n \r\n
+        注：血清白蛋白浓度可由血液检查获得(g/L) \r\n
+        日常体重指：患者2个月前-6个月前体重的最高值（kg）\r\n</string>
+
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/ButtonALL"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:background="@drawable/blue"
+                android:text="全天"
+                android:textColor="@color/white"
+                android:textSize="20dip" />
+
+            <Button
+                android:id="@+id/ButtonT"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:background="@drawable/gray"
+                android:text="早餐"
+                android:textColor="@color/gray"
+                android:textSize="20dip" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

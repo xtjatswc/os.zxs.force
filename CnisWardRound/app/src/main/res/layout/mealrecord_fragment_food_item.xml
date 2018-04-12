@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#dedede"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/ImageViewFoodPic"
+            android:layout_width="90dip"
+            android:layout_height="60dip"
+            android:layout_marginRight="10dip" />
+
+        <ImageView
+            android:id="@+id/ImageViewMinus"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:src="@drawable/minus" />
+
+        <TextView
+            android:id="@+id/EditTextValue"
+            android:layout_width="wrap_content"
+            android:layout_height="45dip"
+            android:background="@color/whitesmoke"
+            android:gravity="center_horizontal|center_vertical"
+            android:selectAllOnFocus="true"
+            android:textSize="20dip"
+            android:width="60dip" />
+
+        <ImageView
+            android:id="@+id/ImageViewPlus"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:src="@drawable/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/TextViewFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/TextViewTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="	(拆分，单位：g)"
+            android:textColor="@color/red"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

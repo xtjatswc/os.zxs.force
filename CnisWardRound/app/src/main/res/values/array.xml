@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="SimpleListMenuArray">
+        <item>编辑</item>
+        <item>删除</item>
+    </array>
+    <array name="QuestionnaireListMenuArray">
+        <item>编辑</item>
+        <item>查看结果</item>
+        <item>删除</item>
+    </array>
+    <array name="PatientListMenuArray">
+        <item>查看患者信息</item>
+        <item>筛查</item>
+        <item>查房记录</item>
+        <item>膳食记录</item>
+        <item>制定医嘱</item>
+        <item>人体成分分析报告</item>
+        <item>检验数据</item>
+    </array>
+
+</resources>

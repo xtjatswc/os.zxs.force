@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/fragment_advice_top"
+        android:name="cn.kancare.mobile.activity.advice.fragment.AdviceTopFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <fragment
+            android:id="@+id/fragment_product"
+            android:name="cn.kancare.mobile.activity.advice.fragment.NutrientProductFragment"
+            android:layout_width="175dip"
+            android:layout_height="match_parent" />
+
+        <fragment
+            android:id="@+id/fragment_advice_input"
+            android:name="cn.kancare.mobile.activity.advice.fragment.AdviceInputFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

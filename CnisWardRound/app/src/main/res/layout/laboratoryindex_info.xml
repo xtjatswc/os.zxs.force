@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical"
+        android:paddingBottom="24dip"
+        android:paddingTop="24dip" >
+
+        <Button
+            android:id="@+id/btnSave"
+            style="@style/buttonStyle"
+            android:text="保存" >
+        </Button>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="24dip"
+            android:layout_marginRight="24dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:shrinkColumns="1" >
+
+            <TableRow
+                style="@style/tableRowStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_top_corner_no_bottom_line"
+                android:weightSum="1" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="报告名称：" />
+
+                <EditText
+                    android:id="@+id/editTestType"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:hint="" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                style="@style/tableRowStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_bottom_corner_no_top_line"
+                android:weightSum="1" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="检验日期：" />
+
+                <os.zxs.force.core.view.DatePickerView
+                    android:id="@+id/DatePickerViewRecordDate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:focusable="false"
+                    android:hint="" />
+            </TableRow>
+        </TableLayout>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+        </WebView>
+
+        <Button
+            android:id="@+id/btnSave2"
+            style="@style/buttonStyle"
+            android:text="保存" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

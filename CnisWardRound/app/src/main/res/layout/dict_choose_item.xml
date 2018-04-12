@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="35dip"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:weightSum="4" >
+
+    <!-- ID -->
+
+    <TextView
+        android:id="@+id/dictitemid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <!-- 编码 -->
+
+    <TextView
+        android:id="@+id/dictitemcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <!-- 名称 -->
+
+    <TextView
+        android:id="@+id/dictitemname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <!-- 拼音首字母 -->
+
+    <TextView
+        android:id="@+id/dictitemfirstletter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+</LinearLayout>
