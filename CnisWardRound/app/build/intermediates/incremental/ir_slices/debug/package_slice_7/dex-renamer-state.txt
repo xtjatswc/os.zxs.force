@@ -1,4 +1,0 @@
-#Thu Apr 12 11:31:04 CST 2018
-base.0=F\:\\work\\android project\\CnisWardRound\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52
-path.0=classes.dex
-renamed.0=classes.dex
