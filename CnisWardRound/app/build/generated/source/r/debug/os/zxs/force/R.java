@@ -161,8 +161,8 @@ public final class R {
         public static final int clear_normal_list = 0x7f030018;
     }
     public static final class id {
-        public static final int textViewBack = 0x7f04010b;
-        public static final int textViewTitle = 0x7f04011f;
+        public static final int textViewBack = 0x7f04010c;
+        public static final int textViewTitle = 0x7f040120;
     }
     public static final class layout {
         public static final int back = 0x7f050007;

@@ -58,6 +58,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	public EditText EditTextEnName;
 	public EditText EditTextSpec;
 	public EditText EditTextNum;
+	public EditText EditTextNetContent;
 	public EditText EditTextRemark;
 	public Button btnSave;
 	public Button btnSave2;
@@ -211,6 +212,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		super.setValidation();
 		mAwesomeValidation.addValidation(EditTextSpec, "^.{1,12}$", "规格为必填项！");
 		mAwesomeValidation.addValidation(EditTextNum, "^.{1,12}$", "数量为必填项！");
+		mAwesomeValidation.addValidation(EditTextNetContent, "^.{1,12}$", "净含量为必填项！");
 	}
 
 	class ClickListener implements OnClickListener {
@@ -332,6 +334,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		setENTime(nutrientAdviceDetail.getAdviceDoTimeSegmental());
 		EditTextSpec.setText(nutrientAdviceDetail.getSpecification());
 		EditTextNum.setText(nutrientAdviceDetail.getAdviceAmount() + "");
+		EditTextNetContent.setText(nutrientAdviceDetail.getNetContent());
 
 		// 设置时间段
 		setDoTime(nutrientAdviceDetail.getTakeOrder());
@@ -442,6 +445,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		EditTextEnName = (EditText) layout.findViewById(R.id.EditTextEnName);
 		EditTextSpec = (EditText) layout.findViewById(R.id.EditTextSpec);
 		EditTextNum = (EditText) layout.findViewById(R.id.EditTextNum);
+		EditTextNetContent = (EditText) layout.findViewById(R.id.EditTextNetContent);
 		EditTextRemark = (EditText) layout.findViewById(R.id.EditTextRemark);
 		btnSave = (Button) layout.findViewById(R.id.btnSave);
 		btnSave2 = (Button) layout.findViewById(R.id.btnSave2);

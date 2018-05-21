@@ -16,7 +16,7 @@ import os.zxs.force.core.log.CnisLog;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public static final String DATABASE_NAME = "SysForceDB.sqlite";
-    private static final int DATABASE_VERSION = 60;
+    private static final int DATABASE_VERSION = 61;
 
     private Map<String, Dao> daos = new HashMap<String, Dao>();
 

@@ -179,6 +179,22 @@ public class NutrientAdviceDetail extends BaseBean {
 	@DatabaseField(columnName = "Directions")
 	private String Directions;
 
+	// UnitKey
+	@DatabaseField(columnName = "UnitKey")
+	private String UnitKey;
+
+	// TotalMoney
+	@DatabaseField(columnName = "TotalMoney")
+	private Double TotalMoney;
+
+	// NetContent
+	@DatabaseField(columnName = "NetContent")
+	private String NetContent;
+
+	// NetContentUnit
+	@DatabaseField(columnName = "NetContentUnit")
+	private String NetContentUnit;
+
 	public String getNutrientAdviceDetail_DBKEY() {
 		return NutrientAdviceDetail_DBKEY;
 	}
@@ -547,5 +563,37 @@ public class NutrientAdviceDetail extends BaseBean {
 				+ LiquidAmount + ",CheckerName=" + CheckerName
 				+ ",IsQualified=" + IsQualified + ",SingleMetering="
 				+ SingleMetering + ",Directions=" + Directions + ",]";
+	}
+
+	public String getUnitKey() {
+		return UnitKey;
+	}
+
+	public void setUnitKey(String unitKey) {
+		UnitKey = unitKey;
+	}
+
+	public Double getTotalMoney() {
+		return TotalMoney;
+	}
+
+	public void setTotalMoney(Double totalMoney) {
+		TotalMoney = totalMoney;
+	}
+
+	public String getNetContent() {
+		return NetContent;
+	}
+
+	public void setNetContent(String netContent) {
+		NetContent = netContent;
+	}
+
+	public String getNetContentUnit() {
+		return NetContentUnit;
+	}
+
+	public void setNetContentUnit(String netContentUnit) {
+		NetContentUnit = netContentUnit;
 	}
 }

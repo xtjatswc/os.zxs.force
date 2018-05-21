@@ -142,10 +142,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
-                        android:text="袋/次：" />
+                        android:text="数量：" />
 
                     <EditText
                         android:id="@+id/EditTextNum"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true" >
+                    </EditText>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="净含量：" />
+
+                    <EditText
+                        android:id="@+id/EditTextNetContent"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"

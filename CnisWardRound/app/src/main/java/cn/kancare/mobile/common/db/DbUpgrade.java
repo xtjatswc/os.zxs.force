@@ -139,5 +139,14 @@ public class DbUpgrade {
 			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'RecipeAndProductPrice' DOUBLE");
 			oldVersion++;
 		}
+
+		if (oldVersion == 60 && oldVersion < newVersion) {
+			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'UnitKey' VARCHAR");
+			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'TotalMoney' DOUBLE");
+			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContent' VARCHAR");
+			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContentUnit' VARCHAR");
+			oldVersion++;
+		}
+
 	}
 }

@@ -109,6 +109,7 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 		nutrientAdviceDetail.setNutrientAdviceType("2");
 		nutrientAdviceDetail.setAdviceAmount(Convert
 				.cash2Double(context.EditTextNum.getText().toString()));
+		nutrientAdviceDetail.setNetContent(context.EditTextNetContent.getText().toString());
 		nutrientAdviceDetail.setSpecification(context.EditTextSpec.getText()
 				.toString());
 		nutrientAdviceDetail.setUnit(context.chinaFoodComposition

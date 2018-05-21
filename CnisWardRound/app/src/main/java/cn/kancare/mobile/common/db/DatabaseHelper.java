@@ -36,7 +36,7 @@ import cn.kancare.mobile.bean.questionnaire.QuestionDetailType;
 
 public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
     public static final String DATABASE_NAME = "cnis-ward-round.db";
-    private static final int DATABASE_VERSION = 60;
+    private static final int DATABASE_VERSION = 61;
 
     private static DatabaseHelper instance;
 
