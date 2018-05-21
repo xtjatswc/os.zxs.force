@@ -338,6 +338,10 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		// 设置制剂方式
 		setPreparationMode(nutrientAdviceDetail.getPreparationMode());
+
+		// 设置途径
+		setDirections(nutrientAdviceDetail.getDirections());
+
 		EditTextRemark.setText(nutrientAdviceDetail
 				.getNutrientAdviceDetailRemark());
 	}
@@ -398,7 +402,7 @@ public class AdviceInputFragment extends BaseFragment implements
 			radioButton.setText(sysCode.getSysCodeName());
 			FlowRadioGroupDirections.addView(radioButton);
 			radioButton.setTag(sysCode);
-			if (sysCode.getSysCodeName().equals("粉剂")) {
+			if (sysCode.getSysCodeName().equals("口服")) {
 				radioButton.setChecked(true);
 			}
 		}
@@ -433,6 +437,8 @@ public class AdviceInputFragment extends BaseFragment implements
 				.findViewById(R.id.LinearLayoutAdviceInput);
 		FlowRadioGroupPreparationMode = (FlowRadioGroup) layout
 				.findViewById(R.id.FlowRadioGroupPreparationMode);
+		FlowRadioGroupDirections = (FlowRadioGroup) layout
+				.findViewById(R.id.FlowRadioGroupDirections);
 		EditTextEnName = (EditText) layout.findViewById(R.id.EditTextEnName);
 		EditTextSpec = (EditText) layout.findViewById(R.id.EditTextSpec);
 		EditTextNum = (EditText) layout.findViewById(R.id.EditTextNum);

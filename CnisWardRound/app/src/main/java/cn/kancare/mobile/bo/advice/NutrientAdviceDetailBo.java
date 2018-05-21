@@ -117,6 +117,10 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 		nutrientAdviceDetail.setPreparationMode(context.getPreparationMode()
 				.getSysCode());
 
+		// 途径
+		nutrientAdviceDetail.setDirections(context.getDirections()
+				.getSysCode());
+
 		nutrientAdviceDetail
 				.setNutrientAdviceDetailRemark(context.EditTextRemark.getText()
 						.toString());
