@@ -25,4 +25,7 @@ public class SysCodeType {
 	public static final String DOTIME = "doTime";	
 	// 制剂方式
 	public static final String PREPARATIONMODE = "PreparationMode";
+	// 途径
+	public static final String DIRECTIONS = "Directions";
+
 }

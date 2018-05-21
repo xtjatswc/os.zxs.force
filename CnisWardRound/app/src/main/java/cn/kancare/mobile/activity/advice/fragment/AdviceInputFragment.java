@@ -54,6 +54,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	public LinearLayout LinearLayoutDoTime;
 	public LinearLayout LinearLayoutAdviceInput;
 	public FlowRadioGroup FlowRadioGroupPreparationMode;
+	public FlowRadioGroup FlowRadioGroupDirections;
 	public EditText EditTextEnName;
 	public EditText EditTextSpec;
 	public EditText EditTextNum;
@@ -135,6 +136,38 @@ public class AdviceInputFragment extends BaseFragment implements
 		for (int i = 0; i < FlowRadioGroupPreparationMode.getChildCount(); i++) {
 			if (FlowRadioGroupPreparationMode.getChildAt(i) instanceof RadioButton) {
 				RadioButton radioButton = (RadioButton) FlowRadioGroupPreparationMode
+						.getChildAt(i);
+				sysCode = (SysCode) radioButton.getTag();
+				if (sysCode.getSysCode().equals(sysCodeString)) {
+					radioButton.setChecked(true);
+					break;
+				}
+			}
+		}
+	}
+
+	// 获取途径
+	public SysCode getDirections() {
+		SysCode sysCode = null;
+		for (int i = 0; i < FlowRadioGroupDirections.getChildCount(); i++) {
+			if (FlowRadioGroupDirections.getChildAt(i) instanceof RadioButton) {
+				RadioButton radioButton = (RadioButton) FlowRadioGroupDirections
+						.getChildAt(i);
+				if (radioButton.isChecked()) {
+					sysCode = (SysCode) radioButton.getTag();
+					break;
+				}
+			}
+		}
+		return sysCode;
+	}
+
+	// 设置途径
+	public void setDirections(String sysCodeString) {
+		SysCode sysCode = null;
+		for (int i = 0; i < FlowRadioGroupDirections.getChildCount(); i++) {
+			if (FlowRadioGroupDirections.getChildAt(i) instanceof RadioButton) {
+				RadioButton radioButton = (RadioButton) FlowRadioGroupDirections
 						.getChildAt(i);
 				sysCode = (SysCode) radioButton.getTag();
 				if (sysCode.getSysCode().equals(sysCodeString)) {
@@ -349,6 +382,21 @@ public class AdviceInputFragment extends BaseFragment implements
 			radioButton.setLayoutParams(layoutParams);
 			radioButton.setText(sysCode.getSysCodeName());
 			FlowRadioGroupPreparationMode.addView(radioButton);
+			radioButton.setTag(sysCode);
+			if (sysCode.getSysCodeName().equals("粉剂")) {
+				radioButton.setChecked(true);
+			}
+		}
+
+		// 途径
+		listSysCodes = sysCodeBo.getDao().query(SysCodeType.DIRECTIONS);
+		for (SysCode sysCode : listSysCodes) {
+			RadioButton radioButton = new RadioButton(getActivity());
+			LayoutParams layoutParams = new LayoutParams(
+					LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+			radioButton.setLayoutParams(layoutParams);
+			radioButton.setText(sysCode.getSysCodeName());
+			FlowRadioGroupDirections.addView(radioButton);
 			radioButton.setTag(sysCode);
 			if (sysCode.getSysCodeName().equals("粉剂")) {
 				radioButton.setChecked(true);

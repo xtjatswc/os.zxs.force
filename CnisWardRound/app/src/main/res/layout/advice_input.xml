@@ -180,6 +180,28 @@
                     style="@style/tableRowStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="途径：" />
+
+                    <os.zxs.force.core.view.FlowRadioGroup
+                        android:id="@+id/FlowRadioGroupDirections"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="horizontal" >
+                    </os.zxs.force.core.view.FlowRadioGroup>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
