@@ -1,9 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias '移动查房'
+            keyPassword 'zzz123'
+            storeFile file('F:/work/android project/os.zxs.force/signed/keystore.jks')
+            storePassword 'zzz123'
+            v1SigningEnabled false
+            v2SigningEnabled false
+        }
+    }
     compileSdkVersion 15
     buildToolsVersion "27.0.3"
-
     defaultConfig {
         applicationId "cn.kancare.mobile"
         minSdkVersion 8
@@ -13,19 +22,17 @@ android {
             targetCompatibility JavaVersion.VERSION_1_5
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
         }
     }
-
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-
     packagingOptions {
         exclude 'com/j256/ormlite/android'
     }
