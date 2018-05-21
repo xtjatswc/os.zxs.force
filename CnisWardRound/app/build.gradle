@@ -7,7 +7,7 @@ android {
             keyPassword 'zzz123'
             storeFile file('F:/work/android project/os.zxs.force/signed/keystore.jks')
             storePassword 'zzz123'
-            v1SigningEnabled false
+            v1SigningEnabled true
             v2SigningEnabled false
         }
     }
@@ -26,6 +26,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
+        }
+        debug {
             signingConfig signingConfigs.config
         }
     }

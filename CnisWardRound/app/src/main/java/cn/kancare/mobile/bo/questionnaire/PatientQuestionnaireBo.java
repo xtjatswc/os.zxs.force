@@ -61,36 +61,36 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 
 			// PG-SGA-1
 			if (w1 <= -10 || w6 <= -20) {
-				activity.questionnaire.getQuestionOption(10).setIsChecked(true);
-			} else if ((w1 <= -5 && w1 >= -9.9) || (w6 <= -10 && w6 >= -19.9)) {
 				activity.questionnaire.getQuestionOption(11).setIsChecked(true);
-			} else if ((w1 <= -3 && w1 >= -4.9) || (w6 <= -6 && w6 >= -9.9)) {
+			} else if ((w1 <= -5 && w1 >= -9.9) || (w6 <= -10 && w6 >= -19.9)) {
 				activity.questionnaire.getQuestionOption(12).setIsChecked(true);
-			} else if ((w1 <= -2 && w1 >= -2.9) || (w6 <= -2 && w6 >= -5.9)) {
+			} else if ((w1 <= -3 && w1 >= -4.9) || (w6 <= -6 && w6 >= -9.9)) {
 				activity.questionnaire.getQuestionOption(13).setIsChecked(true);
-			} else if ((w1 <= 0 && w1 >= -1.9) || (w6 <= 0 && w6 >= -1.9)) {
+			} else if ((w1 <= -2 && w1 >= -2.9) || (w6 <= -2 && w6 >= -5.9)) {
 				activity.questionnaire.getQuestionOption(14).setIsChecked(true);
+			} else if ((w1 <= 0 && w1 >= -1.9) || (w6 <= 0 && w6 >= -1.9)) {
+				activity.questionnaire.getQuestionOption(15).setIsChecked(true);
 			}
 
 			// PG-SGA-2
 			if (w1 < 0) {
-				activity.questionnaire.getQuestionOption(15).setIsChecked(true);
-			} else if (w1 == 0) {
 				activity.questionnaire.getQuestionOption(16).setIsChecked(true);
-			} else if (w1 > 0) {
+			} else if (w1 == 0) {
 				activity.questionnaire.getQuestionOption(17).setIsChecked(true);
+			} else if (w1 > 0) {
+				activity.questionnaire.getQuestionOption(18).setIsChecked(true);
 			}
 		} else if (activity.QuestionProperty == 3) {
 			// MUST
 			// MUST-2
 			if (w3 > -5) {
-				activity.questionnaire.getQuestionOption(125)
-						.setIsChecked(true);
-			} else if (w3 <= -5 && w3 >= -10) {
 				activity.questionnaire.getQuestionOption(126)
 						.setIsChecked(true);
-			} else if (w3 < -10) {
+			} else if (w3 <= -5 && w3 >= -10) {
 				activity.questionnaire.getQuestionOption(127)
+						.setIsChecked(true);
+			} else if (w3 < -10) {
+				activity.questionnaire.getQuestionOption(128)
 						.setIsChecked(true);
 			}
 
@@ -99,27 +99,27 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 
 			if (w1 < 0) {
 				// 不确定
-				activity.questionnaire.getQuestionOption(131)
+				activity.questionnaire.getQuestionOption(132)
 						.setIsChecked(true);
 
 				double s = weight1 - weight;
 				if (s >= 1 && s <= 5) {
-					activity.questionnaire.getQuestionOption(132).setIsChecked(
-							true);
-				} else if (s >= 6 && s <= 10) {
 					activity.questionnaire.getQuestionOption(133).setIsChecked(
 							true);
-				} else if (s >= 11 && s <= 15) {
+				} else if (s >= 6 && s <= 10) {
 					activity.questionnaire.getQuestionOption(134).setIsChecked(
 							true);
-				} else if (s >= 15) {
+				} else if (s >= 11 && s <= 15) {
 					activity.questionnaire.getQuestionOption(135).setIsChecked(
+							true);
+				} else if (s >= 15) {
+					activity.questionnaire.getQuestionOption(136).setIsChecked(
 							true);
 				}
 
 			} else {
 				// 无
-				activity.questionnaire.getQuestionOption(130)
+				activity.questionnaire.getQuestionOption(131)
 						.setIsChecked(true);
 			}
 		} else if (activity.QuestionProperty == 5) {
@@ -128,22 +128,22 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 			// B、过去三个月，体重下降情况
 			double s = weight3 - weight;
 			if (s > 3) {
-				activity.questionnaire.getQuestionOption(141)
+				activity.questionnaire.getQuestionOption(142)
 						.setIsChecked(true);
 			} else if (s >= 1 && s <= 3) {
-				activity.questionnaire.getQuestionOption(143)
+				activity.questionnaire.getQuestionOption(144)
 						.setIsChecked(true);
 			} else if (s == 0) {
-				activity.questionnaire.getQuestionOption(144)
+				activity.questionnaire.getQuestionOption(145)
 						.setIsChecked(true);
 			}
 		} else if (activity.QuestionProperty == 7) {
 			// SGA
 			if (w6 >= -10 && w6 <= 10) {
-				activity.questionnaire.getQuestionOption(159)
+				activity.questionnaire.getQuestionOption(160)
 						.setIsChecked(true);
 			} else if (w6 < -10) {
-				activity.questionnaire.getQuestionOption(161)
+				activity.questionnaire.getQuestionOption(162)
 						.setIsChecked(true);
 			}
 		}
