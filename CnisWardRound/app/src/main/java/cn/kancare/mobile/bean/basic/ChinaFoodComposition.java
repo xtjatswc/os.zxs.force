@@ -507,6 +507,18 @@ public class ChinaFoodComposition implements Serializable {
 	@DatabaseField(columnName = "MinUnitName")
 	private String MinUnitName;
 
+	// MeasureUnit_DBKey
+	@DatabaseField(columnName = "MeasureUnit_DBKey")
+	private String MeasureUnit_DBKey;
+
+	// BaseUnit_DBKey
+	@DatabaseField(columnName = "BaseUnit_DBKey")
+	private String BaseUnit_DBKey;
+
+	// MinUnit_DBKey
+	@DatabaseField(columnName = "MinUnit_DBKey")
+	private String MinUnit_DBKey;
+
 	// RecipeAndProductPrice
 	@DatabaseField(columnName = "RecipeAndProductPrice")
 	private Double RecipeAndProductPrice;
@@ -1609,5 +1621,29 @@ public class ChinaFoodComposition implements Serializable {
 
 	public void setMinUnitName(String minUnitName) {
 		MinUnitName = minUnitName;
+	}
+
+	public String getMeasureUnit_DBKey() {
+		return MeasureUnit_DBKey;
+	}
+
+	public void setMeasureUnit_DBKey(String measureUnit_DBKey) {
+		MeasureUnit_DBKey = measureUnit_DBKey;
+	}
+
+	public String getBaseUnit_DBKey() {
+		return BaseUnit_DBKey;
+	}
+
+	public void setBaseUnit_DBKey(String baseUnit_DBKey) {
+		BaseUnit_DBKey = baseUnit_DBKey;
+	}
+
+	public String getMinUnit_DBKey() {
+		return MinUnit_DBKey;
+	}
+
+	public void setMinUnit_DBKey(String minUnit_DBKey) {
+		MinUnit_DBKey = minUnit_DBKey;
 	}
 }
