@@ -165,17 +165,23 @@ public class AdviceInputFragment extends BaseFragment implements
 	}
 
 	// 设置单位
-	public void setUnit(String sysCodeString) {
-		SysCode sysCode = null;
+	public void setUnit(NutrientAdviceDetail nutrientAdviceDetail) {
+		String tag = null;
 		for (int i = 0; i < FlowRadioGroupUnit.getChildCount(); i++) {
 			if (FlowRadioGroupUnit.getChildAt(i) instanceof RadioButton) {
 				RadioButton radioButton = (RadioButton) FlowRadioGroupUnit
 						.getChildAt(i);
-				sysCode = (SysCode) radioButton.getTag();
-				if (sysCode.getSysCode().equals(sysCodeString)) {
+				tag = (String) radioButton.getTag();
+
+				if(i == 0) radioButton.setText(chinaFoodComposition.getBaseUnitName());
+				if(i == 1) radioButton.setText(chinaFoodComposition.getMinUnitName());
+				if(i == 2) radioButton.setText(chinaFoodComposition.getMeasureUnitName());
+
+				if (nutrientAdviceDetail != null && nutrientAdviceDetail.getUnitKey().contains(tag)) {
 					radioButton.setChecked(true);
 					break;
 				}
+
 			}
 		}
 	}
@@ -349,6 +355,9 @@ public class AdviceInputFragment extends BaseFragment implements
 		EditTextRemark.setText("无");
 		ButtonDelete.setVisibility(View.GONE);
 
+		// 设置单位
+		setUnit(null);
+
 		if (nutrientAdvice == null) {
 			return;
 		}
@@ -377,6 +386,9 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		// 设置途径
 		setDirections(nutrientAdviceDetail.getDirections());
+
+		// 设置单位
+		setUnit(nutrientAdviceDetail);
 
 		EditTextRemark.setText(nutrientAdviceDetail
 				.getNutrientAdviceDetailRemark());
@@ -428,19 +440,20 @@ public class AdviceInputFragment extends BaseFragment implements
 			}
 		}
 
-		// 时间段
-		listSysCodes = sysCodeBo.getDao().query(SysCodeType.PREPARATIONMODE);
-		for (SysCode sysCode : listSysCodes) {
+		// 单位
+		String[] units = new String[]{"基本单位", "最小单位", "含量单位", "ml(液)"};
+		String[] tags = new String[]{"A", "B", "C", "E"};
+		for (int i = 0; i < units.length; i++){
 			RadioButton radioButton = new RadioButton(getActivity());
 			LayoutParams layoutParams = new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			radioButton.setLayoutParams(layoutParams);
-			radioButton.setText(sysCode.getSysCodeName());
+			radioButton.setText(units[i]);
 			FlowRadioGroupUnit.addView(radioButton);
-			radioButton.setTag(sysCode);
-			if (sysCode.getSysCodeName().equals("ml(液)")) {
-				radioButton.setChecked(true);
-			}
+			radioButton.setTag(tags[i]);
+//			if (unit.equals("ml(液))) {
+//				radioButton.setChecked(true);
+//			}
 		}
 
 		// 途径
