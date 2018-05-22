@@ -173,9 +173,19 @@ public class AdviceInputFragment extends BaseFragment implements
 						.getChildAt(i);
 				tag = (String) radioButton.getTag();
 
-				if(i == 0) radioButton.setText(chinaFoodComposition.getBaseUnitName());
-				if(i == 1) radioButton.setText(chinaFoodComposition.getMinUnitName());
-				if(i == 2) radioButton.setText(chinaFoodComposition.getMeasureUnitName());
+				if(i == 0)
+					radioButton.setText(chinaFoodComposition.getBaseUnitName());
+				else if(i == 1)
+					radioButton.setText(chinaFoodComposition.getMinUnitName());
+				else if(i == 2) {
+					radioButton.setText(chinaFoodComposition.getMeasureUnitName());
+					if(chinaFoodComposition.getWrapperType() == 1){
+						//整包装，如:倍康素
+						radioButton.setVisibility(View.INVISIBLE);
+					}else{
+						radioButton.setVisibility(View.VISIBLE);
+					}
+				}
 
 				if (nutrientAdviceDetail != null && nutrientAdviceDetail.getUnitKey().contains(tag)) {
 					radioButton.setChecked(true);
