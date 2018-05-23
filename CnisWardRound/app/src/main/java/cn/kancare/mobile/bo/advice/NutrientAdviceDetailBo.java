@@ -112,10 +112,9 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 		nutrientAdviceDetail.setAdviceAmount(Convert
 				.cash2Double(context.EditTextNum.getText().toString()));
 		nutrientAdviceDetail.setNetContent(context.EditTextNetContent.getText().toString());
-		nutrientAdviceDetail.setSpecification(context.EditTextSpec.getText()
-				.toString());
-		nutrientAdviceDetail.setUnit(context.chinaFoodComposition
-				.getMeasureUnitName());
+//		nutrientAdviceDetail.setSpecification(context.EditTextSpec.getText()
+//				.toString());
+
 		// 制剂方式
 		nutrientAdviceDetail.setPreparationMode(context.getPreparationMode()
 				.getSysCode());
@@ -127,6 +126,12 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 		//UnitKey
 		RadioButton radioButton = context.getUnit();
 		nutrientAdviceDetail.setUnitKey(radioButton.getTag().toString());
+		nutrientAdviceDetail.setUnit(radioButton.getText().toString());
+
+		nutrientAdviceDetail.setNetContentUnit(context.TextViewNetContentUnit.getText().toString());
+
+		//金额
+        nutrientAdviceDetail.setTotalMoney(Convert.cash2Double(context.EditTextMoney.getText().toString()));
 
 		nutrientAdviceDetail
 				.setNutrientAdviceDetailRemark(context.EditTextRemark.getText()

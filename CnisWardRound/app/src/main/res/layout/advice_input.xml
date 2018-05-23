@@ -70,6 +70,46 @@
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
+                    <EditText
+                        android:id="@+id/EditTextMoney"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:textColor="@color/blue"
+                        android:hint="" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="元" />
+
+                    <EditText
+                        android:id="@+id/EditTextEnergy"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:textColor="@color/blue"
+                        android:hint="" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="kcal" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

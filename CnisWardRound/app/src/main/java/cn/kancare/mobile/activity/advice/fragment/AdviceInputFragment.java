@@ -66,6 +66,8 @@ public class AdviceInputFragment extends BaseFragment implements
 	public EditText EditTextNum;
 	public EditText EditTextNetContent;
 	public EditText EditTextRemark;
+	public EditText EditTextMoney;
+	public EditText EditTextEnergy;
 	public TextView TextViewNetContentUnit;
 	public Button btnSave;
 	public Button btnSave2;
@@ -274,6 +276,8 @@ public class AdviceInputFragment extends BaseFragment implements
 	}
 
 	private void calcNetContent(){
+		TextViewNetContentUnit.setText(chinaFoodComposition.getMeasureUnitName());
+
 		RadioButton radioButton = getUnit();
 		if(radioButton == null) return;
 
@@ -283,21 +287,28 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		EditTextNetContent.setEnabled(false);
 
-		if(flag.indexOf("A") >= 0){
-			double netContent = num * chinaFoodComposition.getNutrientProductSpecification()
+		double netContent = 0;
+		if(flag.contains("A")){
+			netContent = num * chinaFoodComposition.getNutrientProductSpecification()
 					* chinaFoodComposition.getMinNum();
 			EditTextNetContent.setText(netContent + "");
-		}else if(flag.indexOf("B") >= 0){
-			double netContent = num * chinaFoodComposition.getNutrientProductSpecification();
+		}else if(flag.contains("B")){
+			netContent = num * chinaFoodComposition.getNutrientProductSpecification();
 			EditTextNetContent.setText(netContent + "");
-		}else if(flag.indexOf("C") >= 0){
+		}else if(flag.contains("C")){
+			netContent = num;
 			EditTextNetContent.setText(num + "");
-		}else if(flag.indexOf("E") >= 0){
+		}else if(flag.contains("E")){
 			//ml(液)
+			netContent = Convert.cash2Double(EditTextNetContent.getText().toString());
 			EditTextNetContent.setEnabled(true);
 		}
 
-		TextViewNetContentUnit.setText(chinaFoodComposition.getMeasureUnitName());
+		//计算能量、金额
+		double energy = netContent * chinaFoodComposition.getEnergy() / 100;
+		EditTextEnergy.setText(energy + "");
+		double money = (netContent / chinaFoodComposition.getNutrientProductSpecification()) * chinaFoodComposition.getRecipeAndProductPrice();
+		EditTextMoney.setText(money + "");
 	}
 
     class UnitClickListener implements OnClickListener {
@@ -436,7 +447,7 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		// 设置服用方式
 		setENTime(nutrientAdviceDetail.getAdviceDoTimeSegmental());
-		EditTextSpec.setText(nutrientAdviceDetail.getSpecification());
+		//EditTextSpec.setText(nutrientAdviceDetail.getSpecification());
 		EditTextNum.setText(nutrientAdviceDetail.getAdviceAmount() + "");
 		EditTextNetContent.setText(nutrientAdviceDetail.getNetContent());
 
@@ -594,6 +605,8 @@ public class AdviceInputFragment extends BaseFragment implements
 		EditTextNum = (EditText) layout.findViewById(R.id.EditTextNum);
 		EditTextNetContent = (EditText) layout.findViewById(R.id.EditTextNetContent);
 		EditTextRemark = (EditText) layout.findViewById(R.id.EditTextRemark);
+		EditTextMoney = (EditText) layout.findViewById(R.id.EditTextMoney);
+		EditTextEnergy = (EditText) layout.findViewById(R.id.EditTextEnergy);
 		TextViewNetContentUnit = (TextView) layout.findViewById(R.id.TextViewNetContentUnit);
 		btnSave = (Button) layout.findViewById(R.id.btnSave);
 		btnSave2 = (Button) layout.findViewById(R.id.btnSave2);
@@ -608,11 +621,11 @@ public class AdviceInputFragment extends BaseFragment implements
 			EditTextEnName.setText(chinaFoodComposition.getFoodName());
 			if (chinaFoodComposition.getWrapperType() == 1) {
 				EditTextSpec.setEnabled(false);
-				EditTextSpec.setText(chinaFoodComposition
-						.getNutrientProductSpecification() + "");
+//				EditTextSpec.setText(chinaFoodComposition
+//						.getNutrientProductSpecification() + "");
 			} else {
 				EditTextSpec.setEnabled(true);
-				EditTextSpec.setText("");
+//				EditTextSpec.setText("");
 			}
 
 			reloadAdviceInputFormValue();
