@@ -18,6 +18,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
+
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
@@ -64,6 +66,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	public EditText EditTextNum;
 	public EditText EditTextNetContent;
 	public EditText EditTextRemark;
+	public TextView TextViewNetContentUnit;
 	public Button btnSave;
 	public Button btnSave2;
 	public Button ButtonDelete;
@@ -174,18 +177,23 @@ public class AdviceInputFragment extends BaseFragment implements
 						.getChildAt(i);
 				tag = (String) radioButton.getTag();
 
-				if(i == 0)
+				if(i == 0) {
 					radioButton.setText(chinaFoodComposition.getBaseUnitName());
-				else if(i == 1)
+					radioButton.setTag(chinaFoodComposition.getBaseUnit_DBKey() + "_A");
+				}else if(i == 1) {
 					radioButton.setText(chinaFoodComposition.getMinUnitName());
-				else if(i == 2) {
+					radioButton.setTag(chinaFoodComposition.getMinUnit_DBKey() + "_B");
+				}else if(i == 2) {
 					radioButton.setText(chinaFoodComposition.getMeasureUnitName());
+					radioButton.setTag(chinaFoodComposition.getMeasureUnit_DBKey() + "_C");
 					if(chinaFoodComposition.getWrapperType() == 1){
 						//整包装，如:倍康素
 						radioButton.setVisibility(View.INVISIBLE);
 					}else{
 						radioButton.setVisibility(View.VISIBLE);
 					}
+				}else if(i == 3) {
+					radioButton.setTag("-1_E");
 				}
 
 				if (nutrientAdviceDetail != null && nutrientAdviceDetail.getUnitKey().contains(tag)) {
@@ -260,7 +268,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	@Override
 	protected void setValidation() {
 		super.setValidation();
-		mAwesomeValidation.addValidation(EditTextSpec, "^.{1,12}$", "规格为必填项！");
+		//mAwesomeValidation.addValidation(EditTextSpec, "^.{1,12}$", "规格为必填项！");
 		mAwesomeValidation.addValidation(EditTextNum, "^.{1,12}$", "数量为必填项！");
 		mAwesomeValidation.addValidation(EditTextNetContent, "^.{1,12}$", "净含量为必填项！");
 	}
@@ -275,20 +283,21 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		EditTextNetContent.setEnabled(false);
 
-		if(flag.equals("A")){
+		if(flag.indexOf("A") >= 0){
 			double netContent = num * chinaFoodComposition.getNutrientProductSpecification()
 					* chinaFoodComposition.getMinNum();
 			EditTextNetContent.setText(netContent + "");
-		}else if(flag.equals("B")){
+		}else if(flag.indexOf("B") >= 0){
 			double netContent = num * chinaFoodComposition.getNutrientProductSpecification();
 			EditTextNetContent.setText(netContent + "");
-		}else if(flag.equals("C")){
+		}else if(flag.indexOf("C") >= 0){
 			EditTextNetContent.setText(num + "");
-		}else if(flag.equals("E")){
+		}else if(flag.indexOf("E") >= 0){
 			//ml(液)
 			EditTextNetContent.setEnabled(true);
 		}
 
+		TextViewNetContentUnit.setText(chinaFoodComposition.getMeasureUnitName());
 	}
 
     class UnitClickListener implements OnClickListener {
@@ -585,6 +594,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		EditTextNum = (EditText) layout.findViewById(R.id.EditTextNum);
 		EditTextNetContent = (EditText) layout.findViewById(R.id.EditTextNetContent);
 		EditTextRemark = (EditText) layout.findViewById(R.id.EditTextRemark);
+		TextViewNetContentUnit = (TextView) layout.findViewById(R.id.TextViewNetContentUnit);
 		btnSave = (Button) layout.findViewById(R.id.btnSave);
 		btnSave2 = (Button) layout.findViewById(R.id.btnSave2);
 		ButtonDelete = (Button) layout.findViewById(R.id.ButtonDelete);

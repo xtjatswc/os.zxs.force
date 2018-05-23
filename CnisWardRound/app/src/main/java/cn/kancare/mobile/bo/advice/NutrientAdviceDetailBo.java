@@ -3,6 +3,8 @@ package cn.kancare.mobile.bo.advice;
 import java.util.List;
 
 import android.app.Activity;
+import android.widget.RadioButton;
+
 import cn.kancare.mobile.activity.advice.fragment.AdviceInputFragment;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.common.Global;
@@ -121,6 +123,10 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 		// 途径
 		nutrientAdviceDetail.setDirections(context.getDirections()
 				.getSysCode());
+
+		//UnitKey
+		RadioButton radioButton = context.getUnit();
+		nutrientAdviceDetail.setUnitKey(radioButton.getTag().toString());
 
 		nutrientAdviceDetail
 				.setNutrientAdviceDetailRemark(context.EditTextRemark.getText()
