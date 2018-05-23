@@ -523,6 +523,10 @@ public class ChinaFoodComposition implements Serializable {
 	@DatabaseField(columnName = "RecipeAndProductPrice")
 	private Double RecipeAndProductPrice;
 
+	// MinNum
+	@DatabaseField(columnName = "MinNum")
+	private Double MinNum;
+
 	public int getChinaFoodComposition_DBKey() {
 		return ChinaFoodComposition_DBKey;
 	}
@@ -1645,5 +1649,13 @@ public class ChinaFoodComposition implements Serializable {
 
 	public void setMinUnit_DBKey(String minUnit_DBKey) {
 		MinUnit_DBKey = minUnit_DBKey;
+	}
+
+	public Double getMinNum() {
+		return MinNum;
+	}
+
+	public void setMinNum(Double minNum) {
+		MinNum = minNum;
 	}
 }

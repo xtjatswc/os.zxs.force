@@ -160,5 +160,10 @@ public class DbUpgrade {
 			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinUnit_DBKey' VARCHAR");
 			oldVersion++;
 		}
+
+        if (oldVersion == 63 && oldVersion < newVersion) {
+            database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinNum' DOUBLE");
+            oldVersion++;
+        }
 	}
 }

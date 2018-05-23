@@ -7,6 +7,8 @@ import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,6 +28,7 @@ import cn.kancare.mobile.bo.advice.NutrientAdviceBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceDetailBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceSummaryBo;
 import cn.kancare.mobile.bo.basic.SysCodeBo;
+import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.advice.AdviceListener.AdviceInfoListener;
 import cn.kancare.mobile.common.advice.AdviceListener.AdviceInputListener;
 import cn.kancare.mobile.common.constant.LogTag;
@@ -149,19 +152,17 @@ public class AdviceInputFragment extends BaseFragment implements
 	}
 
 	// 获取单位
-	public SysCode getUnit() {
-		SysCode sysCode = null;
+	public RadioButton getUnit() {
 		for (int i = 0; i < FlowRadioGroupUnit.getChildCount(); i++) {
 			if (FlowRadioGroupUnit.getChildAt(i) instanceof RadioButton) {
 				RadioButton radioButton = (RadioButton) FlowRadioGroupUnit
 						.getChildAt(i);
 				if (radioButton.isChecked()) {
-					sysCode = (SysCode) radioButton.getTag();
-					break;
+					return radioButton;
 				}
 			}
 		}
-		return sysCode;
+		return null;
 	}
 
 	// 设置单位
@@ -264,7 +265,40 @@ public class AdviceInputFragment extends BaseFragment implements
 		mAwesomeValidation.addValidation(EditTextNetContent, "^.{1,12}$", "净含量为必填项！");
 	}
 
-	class ClickListener implements OnClickListener {
+	private void calcNetContent(){
+		RadioButton radioButton = getUnit();
+		if(radioButton == null) return;
+
+		double num = Convert.cash2Double(EditTextNum.getText().toString());
+		String unit = radioButton.getText().toString();
+		String flag = radioButton.getTag().toString();
+
+		EditTextNetContent.setEnabled(false);
+
+		if(flag.equals("A")){
+			double netContent = num * chinaFoodComposition.getNutrientProductSpecification()
+					* chinaFoodComposition.getMinNum();
+			EditTextNetContent.setText(netContent + "");
+		}else if(flag.equals("B")){
+			double netContent = num * chinaFoodComposition.getNutrientProductSpecification();
+			EditTextNetContent.setText(netContent + "");
+		}else if(flag.equals("C")){
+			EditTextNetContent.setText(num + "");
+		}else if(flag.equals("E")){
+			//ml(液)
+			EditTextNetContent.setEnabled(true);
+		}
+
+	}
+
+    class UnitClickListener implements OnClickListener {
+
+        public void onClick(View v) {
+			calcNetContent();
+        }
+    }
+
+    class ClickListener implements OnClickListener {
 
 		public void onClick(View v) {
 			try {
@@ -312,6 +346,13 @@ public class AdviceInputFragment extends BaseFragment implements
 							DateHelper.getInstance().date_Formater_2);
 					if (beginDate.getTime() > endDate.getTime()) {
 						PopUtil.show(getActivity(), "医嘱的开始日期必须小于或等于结束日期！");
+						return;
+					}
+
+					// 校验是否选择了单位
+					RadioButton radioButtonUnit = getUnit();
+					if(radioButtonUnit == null){
+						PopUtil.show(getActivity(), "请选择单位！");
 						return;
 					}
 
@@ -367,6 +408,8 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		// 设置单位
 		setUnit(null);
+		//计算净含量
+		calcNetContent();
 
 		if (nutrientAdvice == null) {
 			return;
@@ -408,6 +451,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		List<SysCode> listSysCodes = null;
 
 		EditTextNum.setText("1");
+		EditTextNum.addTextChangedListener(new OnTextChangeListener());
 
 		// 时间段
 		listSysCodes = sysCodeBo.getDao().query(SysCodeType.DOTIME);
@@ -461,6 +505,7 @@ public class AdviceInputFragment extends BaseFragment implements
 			radioButton.setText(units[i]);
 			FlowRadioGroupUnit.addView(radioButton);
 			radioButton.setTag(tags[i]);
+			radioButton.setOnClickListener(new UnitClickListener());
 //			if (unit.equals("ml(液))) {
 //				radioButton.setChecked(true);
 //			}
@@ -480,6 +525,26 @@ public class AdviceInputFragment extends BaseFragment implements
 				radioButton.setChecked(true);
 			}
 		}
+	}
+
+	public class OnTextChangeListener implements TextWatcher {
+
+		public void beforeTextChanged(CharSequence s, int start, int count,
+									  int after) {
+			// TODO Auto-generated method stub
+
+		}
+
+		public void onTextChanged(CharSequence s, int start, int before,
+								  int count) {
+			// TODO Auto-generated method stub
+
+		}
+
+		public void afterTextChanged(Editable s) {
+			calcNetContent();
+		}
+
 	}
 
 	@Override
