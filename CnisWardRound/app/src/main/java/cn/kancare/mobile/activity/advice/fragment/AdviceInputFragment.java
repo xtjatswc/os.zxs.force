@@ -276,6 +276,8 @@ public class AdviceInputFragment extends BaseFragment implements
 	}
 
 	private void calcNetContent(){
+		if(chinaFoodComposition == null) return;
+
 		TextViewNetContentUnit.setText(chinaFoodComposition.getMeasureUnitName());
 
 		RadioButton radioButton = getUnit();
@@ -304,14 +306,24 @@ public class AdviceInputFragment extends BaseFragment implements
 			EditTextNetContent.setEnabled(true);
 		}
 
-		//计算能量、金额
+		//计算能量、金额 自助冲剂要除以频次
+		SysCode sysCodePreparationMode =  getPreparationMode();
+		SysCode sysCodeEnTime = getENTime();
+		int times = Convert.cash2Int(sysCodeEnTime.getSysCodeShortName());
+
 		double energy = netContent * chinaFoodComposition.getEnergy() / 100;
-		EditTextEnergy.setText(energy + "");
 		double money = (netContent / chinaFoodComposition.getNutrientProductSpecification()) * chinaFoodComposition.getRecipeAndProductPrice();
-		EditTextMoney.setText(money + "");
+
+		if(!sysCodePreparationMode.getSysCodeName().equals("自助冲剂")){
+			energy = energy * times;
+			money = money * times;
+		}
+
+		EditTextEnergy.setText(Convert.Round(energy, 2) + "");
+		EditTextMoney.setText(Convert.Round(money, 2) + "");
 	}
 
-    class UnitClickListener implements OnClickListener {
+    class CalcClickListener implements OnClickListener {
 
         public void onClick(View v) {
 			calcNetContent();
@@ -389,6 +401,7 @@ public class AdviceInputFragment extends BaseFragment implements
 					break;
 				default:
 					if (v instanceof RadioButton) {
+						//服用方式
 						RadioButton radioButton = (RadioButton) v;
 						SysCode sysCode = (SysCode) radioButton.getTag();
 
@@ -409,6 +422,8 @@ public class AdviceInputFragment extends BaseFragment implements
 								}
 							}
 						}
+
+						calcNetContent();
 					}
 					break;
 				}
@@ -509,6 +524,7 @@ public class AdviceInputFragment extends BaseFragment implements
 			radioButton.setText(sysCode.getSysCodeName());
 			FlowRadioGroupPreparationMode.addView(radioButton);
 			radioButton.setTag(sysCode);
+			radioButton.setOnClickListener(new CalcClickListener());
 			if (sysCode.getSysCodeName().equals("粉剂")) {
 				radioButton.setChecked(true);
 			}
@@ -525,7 +541,7 @@ public class AdviceInputFragment extends BaseFragment implements
 			radioButton.setText(units[i]);
 			FlowRadioGroupUnit.addView(radioButton);
 			radioButton.setTag(tags[i]);
-			radioButton.setOnClickListener(new UnitClickListener());
+			radioButton.setOnClickListener(new CalcClickListener());
 //			if (unit.equals("ml(液))) {
 //				radioButton.setChecked(true);
 //			}
