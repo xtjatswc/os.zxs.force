@@ -205,7 +205,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 
 			// 计算总能量
 			ChinaFoodComposition totalChinaFoodComposition = chinaFoodCompositionBo
-					.computeTotal(listChinaFoodCompositions);
+					.computeNutritionTotal(listChinaFoodCompositions);
 			holder.TextViewEnergy.setText("	"
 					+ Convert.Round(totalChinaFoodComposition.getEnergy(), 2)
 					+ "Kcal");

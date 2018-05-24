@@ -48,7 +48,8 @@ public class ChinaFoodCompositionBo extends BaseBo<ChinaFoodCompositionDao> {
 
 	}
 
-	public ChinaFoodComposition computeTotal(
+	//肠内医嘱能量计算
+	public ChinaFoodComposition computeNutritionTotal(
 			List<ChinaFoodComposition> lstChinaFoodCompositions) {
 		ChinaFoodComposition total = new ChinaFoodComposition();
 
@@ -85,6 +86,97 @@ public class ChinaFoodCompositionBo extends BaseBo<ChinaFoodCompositionDao> {
 					total.setTotalDietaryFiber(total.getTotalDietaryFiber()
 							+ item.getTotalDietaryFiber()
 							* item.getCurrentMealAmount() / 100);
+				}
+
+			}
+		}
+		return total;
+	}
+
+	//中国食物成份能量计算
+	public ChinaFoodComposition computeTotal(
+			List<ChinaFoodComposition> lstChinaFoodCompositions) {
+		ChinaFoodComposition total = new ChinaFoodComposition();
+
+		for (ChinaFoodComposition item : lstChinaFoodCompositions) {
+			if (item.getCurrentMealAmount() != 0) {
+
+				if (item.getFoodTableInsideType() == FlagCode.FOOD_TABLE_INSIDE_TYPE
+						&& item.getWrapperType() == FlagCode.WRAPPER_TYPE) {
+					// 原包装肠内制剂
+					total.setEnergy(total.getEnergy() + item.getEnergy()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setProtein(total.getProtein() + item.getProtein()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setFat(total.getFat() + item.getFat()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					// 碳水化合物不用减去膳食纤维 - item.getTotalDietaryFiber()
+					total.setCarbohydrate(total.getCarbohydrate()
+							+ item.getCarbohydrate()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setCa(total.getCa() + item.getCa()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setP(total.getP() + item.getP()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setK(total.getK() + item.getK()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setNa(total.getNa() + item.getNa()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+
+					total.setMg(total.getMg() + item.getMg()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setFe(total.getFe() + item.getFe()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setVitaminC(total.getVitaminC() + item.getVitaminC()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+					total.setTotalDietaryFiber(total.getTotalDietaryFiber()
+							+ item.getTotalDietaryFiber()
+							* item.getCurrentMealAmount()
+							* item.getNutrientProductSpecification() / 100);
+				} else if (item.getFoodTableInsideType() == FlagCode.FOOD_TABLE_INSIDE_TYPE
+						&& item.getWrapperType() != FlagCode.WRAPPER_TYPE) {
+					// 拆包装肠内制剂
+
+					total.setEnergy(total.getEnergy() + item.getEnergy()
+							* item.getCurrentMealAmount() / 100);
+					total.setProtein(total.getProtein() + item.getProtein()
+							* item.getCurrentMealAmount() / 100);
+					total.setFat(total.getFat() + item.getFat()
+							* item.getCurrentMealAmount() / 100);
+					// 碳水化合物不用减去膳食纤维
+					total.setCarbohydrate(total.getCarbohydrate()
+							+ item.getCarbohydrate()
+							* item.getCurrentMealAmount() / 100);
+
+					total.setCa(total.getCa() + item.getCa()
+							* item.getCurrentMealAmount() / 100);
+					total.setP(total.getP() + item.getP()
+							* item.getCurrentMealAmount() / 100);
+					total.setK(total.getK() + item.getK()
+							* item.getCurrentMealAmount() / 100);
+					total.setNa(total.getNa() + item.getNa()
+							* item.getCurrentMealAmount() / 100);
+
+					total.setMg(total.getMg() + item.getMg()
+							* item.getCurrentMealAmount() / 100);
+					total.setFe(total.getFe() + item.getFe()
+							* item.getCurrentMealAmount() / 100);
+					total.setVitaminC(total.getVitaminC() + item.getVitaminC()
+							* item.getCurrentMealAmount() / 100);
+					total.setTotalDietaryFiber(total.getTotalDietaryFiber()
+							+ item.getTotalDietaryFiber()
+							* item.getCurrentMealAmount() / 100);
 				} else {
 					total.setEnergy(total.getEnergy() + item.getEnergy()
 							* item.getCurrentMealAmount());
@@ -95,7 +187,7 @@ public class ChinaFoodCompositionBo extends BaseBo<ChinaFoodCompositionDao> {
 					// 碳水化合物不用减去膳食纤维
 					total.setCarbohydrate(total.getCarbohydrate()
 							+ item.getCarbohydrate()
-									* item.getCurrentMealAmount());
+							* item.getCurrentMealAmount());
 					total.setCa(total.getCa() + item.getCa()
 							* item.getCurrentMealAmount());
 					total.setP(total.getP() + item.getP()

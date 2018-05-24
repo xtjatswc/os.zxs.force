@@ -55,7 +55,7 @@
             android:id="@+id/TextViewTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="	(拆分，单位：g)"
+            android:text="	拆分"
             android:textColor="@color/red"
             android:visibility="gone" />
     </LinearLayout>

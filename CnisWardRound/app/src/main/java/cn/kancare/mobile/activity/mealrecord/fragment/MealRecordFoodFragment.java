@@ -104,8 +104,23 @@ public class MealRecordFoodFragment extends
 			ChinaFoodComposition data, final ViewGroup parent) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) view.getTag();
-		holder.TextViewFoodName.setText(data.getFoodName());
 		holder.chinaFoodComposition = data;
+		holder.TextViewFoodName.setText(data.getFoodName());
+
+		// 整或拆
+		String unit = "";
+		if (data.getFoodTableInsideType() == FlagCode.FOOD_TABLE_INSIDE_TYPE
+				&& data.getWrapperType() != FlagCode.WRAPPER_TYPE) {
+			unit = data.getMeasureUnitName();
+			holder.TextViewTip.setVisibility(View.VISIBLE);
+		} else {
+			unit = data.getMinUnitName();
+			holder.TextViewTip.setVisibility(View.GONE);
+		}
+
+		if(unit != null){
+			holder.TextViewFoodName.setText(data.getFoodName() + " （"  + unit +"）");
+		}
 
 		try {
 			holder.ImageViewFoodPic.setBackgroundResource(ResUtil.getInstanse()
@@ -137,14 +152,6 @@ public class MealRecordFoodFragment extends
 						position, holder.ImageViewPlus.getId());
 			}
 		});
-
-		// 如果是肠内制剂拆包装，则启用填写
-		if (data.getFoodTableInsideType() == FlagCode.FOOD_TABLE_INSIDE_TYPE
-				&& data.getWrapperType() != FlagCode.WRAPPER_TYPE) {
-			holder.TextViewTip.setVisibility(View.VISIBLE);
-		} else {
-			holder.TextViewTip.setVisibility(View.GONE);
-		}
 	}
 
 	@Override
