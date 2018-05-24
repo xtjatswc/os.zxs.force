@@ -306,7 +306,7 @@ public class AdviceInputFragment extends BaseFragment implements
 			EditTextNetContent.setEnabled(true);
 		}
 
-		//计算能量、金额 自助冲剂要除以频次
+		//计算能量、金额 除自助冲剂外要乘以频次
 		SysCode sysCodePreparationMode =  getPreparationMode();
 		SysCode sysCodeEnTime = getENTime();
 		int times = Convert.cash2Int(sysCodeEnTime.getSysCodeShortName());
@@ -477,6 +477,8 @@ public class AdviceInputFragment extends BaseFragment implements
 
 		// 设置单位
 		setUnit(nutrientAdviceDetail);
+		//计算净含量
+		calcNetContent();
 
 		EditTextRemark.setText(nutrientAdviceDetail
 				.getNutrientAdviceDetailRemark());

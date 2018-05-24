@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.common.base.Strings;
+
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
@@ -176,17 +179,27 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 					remark += "\r\n";
 				}
 
-				remark += chinaFoodComposition.getFoodName() + "	（"
-						+ nutrientAdviceDetail.getTakeOrder() + "）	*	（"
-						+ nutrientAdviceDetail.getSpecification() + "	*	"
-						+ nutrientAdviceDetail.getAdviceAmount() + "）	"
-						+ "	备注："
+				remark += chinaFoodComposition.getFoodName() + "（"
+						+ nutrientAdviceDetail.getTakeOrder() + "）"
+						+ nutrientAdviceDetail.getAdviceAmount() + nutrientAdviceDetail.getUnit()
+						+ "（"
+						+ nutrientAdviceDetail.getNetContent()
+						+ nutrientAdviceDetail.getNetContentUnit() + "）	"
+						+ "备注："
 						+ nutrientAdviceDetail.getNutrientAdviceDetailRemark();
 
 				String[] arrStrings = nutrientAdviceDetail.getTakeOrder()
 						.split(",");
-				chinaFoodComposition.setCurrentMealAmount(nutrientAdviceDetail
-						.getAdviceAmount() * arrStrings.length);
+				double amount = 0;
+				if(nutrientAdviceDetail.getPreparationMode().equals("3")){
+					//自助冲剂
+					chinaFoodComposition.setCurrentMealAmount(Convert.cash2Double(nutrientAdviceDetail
+							.getNetContent()));
+				}else{
+					chinaFoodComposition.setCurrentMealAmount(Convert.cash2Double(nutrientAdviceDetail
+							.getNetContent()) * arrStrings.length);
+				}
+
 				listChinaFoodCompositions.add(chinaFoodComposition);
 			}
 
