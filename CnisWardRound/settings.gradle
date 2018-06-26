@@ -1,1 +1,1 @@
-include ':app', ':force', ':force', ':force'
+include ':app', ':force', ':FlycoTabLayout_Lib-release'
