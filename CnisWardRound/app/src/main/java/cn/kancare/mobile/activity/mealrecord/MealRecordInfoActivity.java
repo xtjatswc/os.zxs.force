@@ -104,13 +104,13 @@ public class MealRecordInfoActivity extends BaseActivity implements
 
 	@Override
 	protected void setView() throws Exception {
-		timeFragment = (MealRecordTimeListener) getFragmentManager()
+		timeFragment = (MealRecordTimeListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_time);
-		tmealFragment = (MealRecordTmealListener) getFragmentManager()
+		tmealFragment = (MealRecordTmealListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_tmeal);
-		foodFragment = (MealRecordFoodListener) getFragmentManager()
+		foodFragment = (MealRecordFoodListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_food);
-		totalFragment = (MealRecordTotalFragment) getFragmentManager()
+		totalFragment = (MealRecordTotalFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_total);
 		btnSave = (Button) findViewById(R.id.btnSave);
 	}

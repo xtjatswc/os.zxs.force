@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+
 import os.zxs.force.core.log.CnislogBo;
 import os.zxs.force.core.util.ExceptionUtil;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 
-public abstract class BaseActivity extends Activity{
+public abstract class BaseActivity extends FragmentActivity {
 	protected CnislogBo log;
 	//表单校验
 	protected AwesomeValidation mAwesomeValidation;

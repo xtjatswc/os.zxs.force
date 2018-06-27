@@ -1,6 +1,7 @@
 package os.zxs.force.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,10 +56,10 @@ public abstract class BackFragment extends BaseFragment {
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
+	public void onAttach(Context context) {
+		super.onAttach(context);
 		try {
-			onBackListener = (OnBackListener) activity;
+			onBackListener = (OnBackListener) context;
 		} catch (Exception e) {
 
 		}

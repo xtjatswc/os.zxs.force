@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import cn.kancare.mobile.R;
-import cn.kancare.mobile.activity.frame.MainActivity;
+import cn.kancare.mobile.activity.frame.MainTabActivity;
 import cn.kancare.mobile.bean.basic.User;
 import cn.kancare.mobile.bo.basic.SettingBo;
 import cn.kancare.mobile.bo.basic.UserBo;
@@ -148,7 +148,7 @@ public class LoginActivity extends BaseActivity {
 	private void Goto() {
 		loadSettings();
 
-		Intent i = new Intent(this, MainActivity.class);
+		Intent i = new Intent(this, MainTabActivity.class);
 		startActivity(i);
 		finish();
 	}

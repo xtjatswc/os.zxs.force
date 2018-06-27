@@ -66,11 +66,11 @@ public class AdviceInfoActivity extends BaseActivity implements
 
 	@Override
 	protected void setView() throws Exception {
-		nutrientProductListener = (NutrientProductListener) getFragmentManager()
+		nutrientProductListener = (NutrientProductListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_product);
-		adviceInputListener = (AdviceInputListener) getFragmentManager()
+		adviceInputListener = (AdviceInputListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_advice_input);
-		adviceTopListener = (AdviceTopListener) getFragmentManager()
+		adviceTopListener = (AdviceTopListener) getSupportFragmentManager()
 				.findFragmentById(R.id.fragment_advice_top);
 
 	}
