@@ -19,13 +19,13 @@ import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.constant.LogTag;
 import cn.kancare.mobile.common.constant.SettingCode;
 import cn.kancare.mobile.common.db.DatabaseHelper;
-import os.zxs.force.tablayoutsamples.ui.SimpleHomeActivity;
 import os.zxs.force.core.App;
 import os.zxs.force.core.constant.AppConstant;
 import os.zxs.force.core.util.EncryptUtil;
 import os.zxs.force.core.util.PopUtil;
 import os.zxs.force.core.util.RawDBUtil;
 import os.zxs.force.core.view.activity.BaseActivity;
+import tablayoutsamples.ui.SimpleHomeActivity;
 
 public class LoginActivity extends BaseActivity {
 

@@ -1,13 +1,14 @@
-package os.zxs.force.tablayoutsamples.ui;
+package tablayoutsamples.ui;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -22,7 +23,7 @@ import java.util.Random;
 
 import os.zxs.force.R;
 
-public class CommonTabActivity extends AppCompatActivity {
+public class CommonTabActivity extends FragmentActivity {
     private Context mContext = this;
     private ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
     private ArrayList<Fragment> mFragments2 = new ArrayList<Fragment>();

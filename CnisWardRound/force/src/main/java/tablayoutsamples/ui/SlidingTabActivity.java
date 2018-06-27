@@ -1,25 +1,26 @@
-package os.zxs.force.tablayoutsamples.ui;
+package tablayoutsamples.ui;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
-import os.zxs.force.R;
-import os.zxs.force.core.util.ViewFindUtils;
 
 import java.util.ArrayList;
 
-public class SlidingTabActivity extends AppCompatActivity implements OnTabSelectListener {
+import os.zxs.force.R;
+import os.zxs.force.core.util.ViewFindUtils;
+
+public class SlidingTabActivity extends FragmentActivity implements OnTabSelectListener {
     private Context mContext = this;
     private ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
     private final String[] mTitles = {
