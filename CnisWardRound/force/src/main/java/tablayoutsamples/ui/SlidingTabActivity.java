@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.ui;
+package os.zxs.force.tablayoutsamples.ui;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
-import cn.kancare.mobile.R;
-import com.flyco.tablayoutsamples.utils.ViewFindUtils;
+import os.zxs.force.R;
+import os.zxs.force.core.util.ViewFindUtils;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
         setContentView(R.layout.activity_sliding_tab);
 
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance(title));
+            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance(title));
         }
 
 

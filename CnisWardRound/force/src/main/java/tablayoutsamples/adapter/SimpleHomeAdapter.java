@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.adapter;
+package os.zxs.force.tablayoutsamples.adapter;
 
 import android.app.Activity;
 import android.content.Context;

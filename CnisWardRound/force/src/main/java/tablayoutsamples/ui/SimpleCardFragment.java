@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.ui;
+package os.zxs.force.tablayoutsamples.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.kancare.mobile.R;
+import os.zxs.force.R;
 
 
 @SuppressLint("ValidFragment")

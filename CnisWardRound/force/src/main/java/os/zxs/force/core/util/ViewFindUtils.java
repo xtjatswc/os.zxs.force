@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.utils;
+package os.zxs.force.core.util;
 
 import android.util.SparseArray;
 import android.view.View;
@@ -14,8 +14,8 @@ public class ViewFindUtils
 	 * {
 	 * 	convertView = View.inflate(context, R.layout.ad_demo, null);
 	 * }
-	 * TextView tv_demo = ViewHolderUtils.get(convertView, R.id.tv_demo);
-	 * ImageView iv_demo = ViewHolderUtils.get(convertView, R.id.iv_demo);
+	 * TextView tv_demo = ViewHolderUtils.hold(convertView, R.id.tv_demo);
+	 * ImageView iv_demo = ViewHolderUtils.hold(convertView, R.id.iv_demo);
 	 * </pre>
 	 */
 	public static <T extends View> T hold(View view, int id)

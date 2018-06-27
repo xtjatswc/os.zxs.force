@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.ui;
+package os.zxs.force.tablayoutsamples.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.View;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
-import cn.kancare.mobile.R;
-import com.flyco.tablayoutsamples.utils.ViewFindUtils;
+import os.zxs.force.R;
+import os.zxs.force.core.util.ViewFindUtils;
 
 import java.util.ArrayList;
 
@@ -33,11 +33,11 @@ public class SegmentTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_segment_tab);
 
         for (String title : mTitles_3) {
-            mFragments.add(SimpleCardFragment.getInstance("Switch ViewPager " + title));
+            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
         }
 
         for (String title : mTitles_2) {
-            mFragments2.add(SimpleCardFragment.getInstance("Switch Fragment " + title));
+            mFragments2.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
         }
 
         mDecorView = getWindow().getDecorView();

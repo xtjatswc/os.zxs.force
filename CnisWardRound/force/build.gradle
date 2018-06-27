@@ -32,6 +32,7 @@ android {
 
 dependencies {
     //    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    provided 'com.google.guava:guava:18.0'
     provided files('libs/achartengine-1.2.0.jar')
     provided files('libs/android-async-http-1.4.8.jar')
     provided files('libs/fastjson-1.2.6.jar')
@@ -40,7 +41,7 @@ dependencies {
     provided files('libs/ormlite-core-4.49-SNAPSHOT.jar')
     provided files('libs/ormlite-jdbc-4.49-SNAPSHOT.jar')
     provided files('libs/velocity-1.7-dep.jar')
-    provided 'com.google.guava:guava:18.0'
-    implementation files('libs/appcompat-v7-25.1.0-sources.jar')
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    implementation project(':FlycoTabLayout_Lib-release')
 }
 

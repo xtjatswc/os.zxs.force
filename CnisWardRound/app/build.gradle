@@ -56,5 +56,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     implementation project(':force')
     implementation project(':FlycoTabLayout_Lib-release')
-    //implementation files('libs/appcompat-v7-25.1.0-sources.jar')
+
 }

@@ -19,7 +19,7 @@ import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.constant.LogTag;
 import cn.kancare.mobile.common.constant.SettingCode;
 import cn.kancare.mobile.common.db.DatabaseHelper;
-import com.flyco.tablayoutsamples.ui.SimpleHomeActivity;
+import os.zxs.force.tablayoutsamples.ui.SimpleHomeActivity;
 import os.zxs.force.core.App;
 import os.zxs.force.core.constant.AppConstant;
 import os.zxs.force.core.util.EncryptUtil;
@@ -94,9 +94,6 @@ public class LoginActivity extends BaseActivity {
 	public void onClickHandler(View view) {
 		switch (view.getId()) {
 		case R.id.buttonLogin:
-
-			Intent i = new Intent(this, SimpleHomeActivity.class);
-			startActivity(i);
 
 			if (!mAwesomeValidation.validate()) {
 				return;

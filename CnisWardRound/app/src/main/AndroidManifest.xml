@@ -76,16 +76,16 @@
         </activity>
         <activity android:name=".activity.advice.AdviceInfoActivity" >
         </activity>
-        <activity android:name="com.flyco.tablayoutsamples.ui.SimpleHomeActivity"
+        <activity android:name="os.zxs.force.tablayoutsamples.ui.SimpleHomeActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
-        <activity android:name="com.flyco.tablayoutsamples.ui.CommonTabActivity"
+        <activity android:name="os.zxs.force.tablayoutsamples.ui.CommonTabActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
-        <activity android:name="com.flyco.tablayoutsamples.ui.SegmentTabActivity"
+        <activity android:name="os.zxs.force.tablayoutsamples.ui.SegmentTabActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
-        <activity android:name="com.flyco.tablayoutsamples.ui.SlidingTabActivity"
+        <activity android:name="os.zxs.force.tablayoutsamples.ui.SlidingTabActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
     </application>

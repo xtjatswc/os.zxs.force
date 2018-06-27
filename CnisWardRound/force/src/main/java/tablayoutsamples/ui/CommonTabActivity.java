@@ -1,4 +1,4 @@
-package com.flyco.tablayoutsamples.ui;
+package os.zxs.force.tablayoutsamples.ui;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,13 +14,13 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
-import com.flyco.tablayoutsamples.entity.TabEntity;
-import com.flyco.tablayoutsamples.utils.ViewFindUtils;
+import os.zxs.force.tablayoutsamples.entity.TabEntity;
+import os.zxs.force.core.util.ViewFindUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import cn.kancare.mobile.R;
+import os.zxs.force.R;
 
 public class CommonTabActivity extends AppCompatActivity {
     private Context mContext = this;
@@ -52,8 +52,8 @@ public class CommonTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_common_tab);
 
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance("Switch ViewPager " + title));
-            mFragments2.add(SimpleCardFragment.getInstance("Switch Fragment " + title));
+            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
+            mFragments2.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
         }
 
 
