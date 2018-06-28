@@ -26,7 +26,7 @@ public class Loading extends ProgressDialog {
 	private static Loading loading;
 	public static void turn(Context context){
 		turnoff();
-		loading = new Loading(context,"正在加载中",R.anim.frame);
+		loading = new Loading(context,"正在加载中",R.anim.frame3);
 		loading.show();
 	}
 
