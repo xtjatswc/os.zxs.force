@@ -11,17 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.apache.oro.text.regex.Util;
-
 import cn.kancare.mobile.R;
-import cn.kancare.mobile.activity.frame.PatientListFragment;
-import cn.kancare.mobile.activity.patient.PatientInfoActivity;
 import cn.kancare.mobile.common.constant.LogTag;
 import os.zxs.force.core.constant.LogLevel;
 import os.zxs.force.core.log.CnisLog;
 import os.zxs.force.core.log.CnislogBo;
 import os.zxs.force.core.util.ColorUtil;
 import os.zxs.force.core.util.ViewFindUtils;
+import os.zxs.force.core.view.Loading;
 import os.zxs.force.core.view.activity.BaseListActivity;
 import tablayoutsamples.ui.SimpleHomeActivity;
 
@@ -63,6 +60,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 					Intent i = new Intent(context,
 							SimpleHomeActivity.class);
 					startActivity(i);
+
 					break;
 				default:
 					break;

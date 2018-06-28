@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,10 +29,12 @@ import os.zxs.force.core.util.Convert;
 import os.zxs.force.core.util.DateHelper;
 import os.zxs.force.core.util.PopUtil;
 import os.zxs.force.core.view.DatePickerView;
+import os.zxs.force.core.view.Loading;
 import os.zxs.force.core.view.activity.BaseActivity;
 
 public class LaboratoryIndexInfoActivity extends BaseActivity {
 
+	private Context context = this;
 	public LaboratoryIndexBo laboratoryIndexBo;
 	public TestItemDetailBo testitemDetailBo;
 	public TestResultBo testResultBo;
@@ -161,6 +164,7 @@ public class LaboratoryIndexInfoActivity extends BaseActivity {
 				case R.id.btnSave:
 				case R.id.btnSave2:
 
+					Loading.turn(context);
 					if (!isFinish) {
 						// 这样判断是为防止多次提交
 						isFinish = true;

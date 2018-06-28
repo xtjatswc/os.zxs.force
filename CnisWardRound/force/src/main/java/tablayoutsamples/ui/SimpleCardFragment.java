@@ -1,4 +1,4 @@
-package os.zxs.force.tablayoutsamples.ui;
+package tablayoutsamples.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

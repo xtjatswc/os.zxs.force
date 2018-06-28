@@ -13,6 +13,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import os.zxs.force.core.view.Loading;
+
 public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		OnScrollListener {
 

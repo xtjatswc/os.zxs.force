@@ -14,6 +14,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import os.zxs.force.core.view.Loading;
+
 public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		OnScrollListener {
 
@@ -118,6 +120,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		int lastIndex = itemsLastIndex;
 		if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 				&& visibleLastIndex == lastIndex) {
+			Loading.turn(this.getActivity());
 			// 如果是自动加载,可以在这里放置异步加载数据的代码
 			int count = adapter.getCount();
 			List<Bean> list = null;
@@ -132,6 +135,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 				}
 				adapter.notifyDataSetChanged();
 			}
+			Loading.turnoff();
 		}
 	}
 

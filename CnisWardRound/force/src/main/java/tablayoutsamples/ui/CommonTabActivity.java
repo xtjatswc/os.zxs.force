@@ -53,8 +53,8 @@ public class CommonTabActivity extends FragmentActivity {
         setContentView(R.layout.activity_common_tab);
 
         for (String title : mTitles) {
-            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
-            mFragments2.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
+            mFragments.add(tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
+            mFragments2.add(tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
         }
 
 

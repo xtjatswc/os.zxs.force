@@ -35,7 +35,7 @@ public class SlidingTabActivity extends FragmentActivity implements OnTabSelectL
         setContentView(R.layout.activity_sliding_tab);
 
         for (String title : mTitles) {
-            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance(title));
+            mFragments.add(tablayoutsamples.ui.SimpleCardFragment.getInstance(title));
         }
 
 

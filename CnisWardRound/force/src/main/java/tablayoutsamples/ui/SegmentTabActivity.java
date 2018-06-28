@@ -33,11 +33,11 @@ public class SegmentTabActivity extends FragmentActivity {
         setContentView(R.layout.activity_segment_tab);
 
         for (String title : mTitles_3) {
-            mFragments.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
+            mFragments.add(tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch ViewPager " + title));
         }
 
         for (String title : mTitles_2) {
-            mFragments2.add(os.zxs.force.tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
+            mFragments2.add(tablayoutsamples.ui.SimpleCardFragment.getInstance("Switch Fragment " + title));
         }
 
         mDecorView = getWindow().getDecorView();
