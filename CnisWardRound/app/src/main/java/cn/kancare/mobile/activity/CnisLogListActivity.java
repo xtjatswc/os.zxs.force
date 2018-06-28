@@ -2,6 +2,7 @@ package cn.kancare.mobile.activity;
 
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -9,19 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.apache.oro.text.regex.Util;
+
 import cn.kancare.mobile.R;
+import cn.kancare.mobile.activity.frame.PatientListFragment;
+import cn.kancare.mobile.activity.patient.PatientInfoActivity;
 import cn.kancare.mobile.common.constant.LogTag;
 import os.zxs.force.core.constant.LogLevel;
 import os.zxs.force.core.log.CnisLog;
 import os.zxs.force.core.log.CnislogBo;
 import os.zxs.force.core.util.ColorUtil;
+import os.zxs.force.core.util.ViewFindUtils;
 import os.zxs.force.core.view.activity.BaseListActivity;
+import tablayoutsamples.ui.SimpleHomeActivity;
 
 public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
+	Context context = this;
 	CnislogBo cnislogBo;
 
 	Button btnClearLog;
+	Button ButtonTabLayout;
 
 	ColorStateList red;
 	ColorStateList green;
@@ -33,9 +43,8 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Button btnClearLog = (Button) findViewById(R.id.btnClearLog);
 		btnClearLog.setOnClickListener(new onClickHandler());
-
+		ButtonTabLayout.setOnClickListener(new onClickHandler());
 	}
 
 	class onClickHandler implements View.OnClickListener {
@@ -49,7 +58,12 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
 					refreshList();
 					break;
+				case R.id.ButtonTabLayout:
 
+					Intent i = new Intent(context,
+							SimpleHomeActivity.class);
+					startActivity(i);
+					break;
 				default:
 					break;
 				}
@@ -139,6 +153,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 	@Override
 	protected void setView() throws Exception {
 		btnClearLog = (Button) findViewById(R.id.btnClearLog);
+		ButtonTabLayout = ViewFindUtils.find(this.getWindow().getDecorView(), R.id.ButtonTabLayout);
 
 		red = ColorUtil.getColor(R.color.red);
 		green = ColorUtil.getColor(R.color.green);
