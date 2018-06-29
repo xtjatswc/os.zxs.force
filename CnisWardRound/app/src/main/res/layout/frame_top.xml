@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:background="@drawable/tab_bg" >
+    android:background="@drawable/tab_bg2" >
 
     <ImageView
         android:id="@+id/wifi_image"
