@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import cn.kancare.mobile.R;
+import cn.kancare.mobile.activity.BackFragment;
 import cn.kancare.mobile.bo.basic.DepartmentBo;
 import cn.kancare.mobile.bo.basic.SysCodeBo;
 import cn.kancare.mobile.bo.patient.PatientHospitalizeBasicInfoBo;
@@ -22,6 +23,7 @@ import cn.kancare.mobile.common.constant.SettingCode;
 import os.zxs.force.core.util.Convert;
 import os.zxs.force.core.util.DateHelper;
 import os.zxs.force.core.util.PopUtil;
+import os.zxs.force.core.util.ViewFindUtils;
 import os.zxs.force.core.util.spinner.SpinnerOption;
 import cn.kancare.mobile.core.util.spinner.SpinnerUtil;
 import os.zxs.force.core.view.DatePickerView;
@@ -37,7 +39,6 @@ public class PatientInfoActivity extends BaseActivity {
 
 	Button Button_Save;
 	Button Button_Save2;
-	public TextView TextView_Title;
 	public EditText EditText_PatientName;
 	public EditText EditText_PatientNo;
 	public EditText EditText_ZYH;
@@ -59,6 +60,7 @@ public class PatientInfoActivity extends BaseActivity {
 	public TextView TextView_Star_ZYH;
 	public Spinner Spinner_Staging;
 	public EditText EditText_ClinicalDiagnosis;
+	public BackFragment backFragment;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -80,7 +82,7 @@ public class PatientInfoActivity extends BaseActivity {
 		}
 
 		if (OperateType == RequestCode.EDIT_PATIENT_INFO) {
-			TextView_Title.setText("编辑患者信息");
+			backFragment.setTitle("编辑患者信息");
 			EditText_PatientName.setEnabled(false);
 			EditText_PatientName
 					.setText(Global.currentPatient.getPatientName());
@@ -122,7 +124,7 @@ public class PatientInfoActivity extends BaseActivity {
 					.getClinicalDiagnosis());
 
 		} else {
-			TextView_Title.setText("新建患者信息");
+			backFragment.setTitle("新建患者信息");
 			if (Global.AppMode.equals(SettingCode.APP_MODE_INNER)) {
 				EditText_PatientNo.setText(DateHelper.getInstance()
 						.getDataString(null, "MMddSSS"));
@@ -241,7 +243,6 @@ public class PatientInfoActivity extends BaseActivity {
 		DatePickerView_HospitalDate = (DatePickerView) findViewById(R.id.DatePickerView_HospitalDate);
 		Spinner_Department = (Spinner) findViewById(R.id.Spinner_Department);
 		EditText_BedCode = (EditText) findViewById(R.id.EditText_BedCode);
-		TextView_Title = (TextView) findViewById(R.id.TextView_Title);
 		EditText_PatientNo = (EditText) findViewById(R.id.EditText_PatientNo);
 		EditText_ZYH = (EditText) findViewById(R.id.EditText_ZYH);
 
@@ -252,7 +253,7 @@ public class PatientInfoActivity extends BaseActivity {
 		TextView_Star_ZYH = (TextView) findViewById(R.id.TextView_Star_ZYH);
 		Spinner_Staging = (Spinner) findViewById(R.id.Spinner_Staging);
 		EditText_ClinicalDiagnosis = (EditText) findViewById(R.id.EditText_ClinicalDiagnosis);
-
+		backFragment = (BackFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_back);
 	}
 
 	@Override

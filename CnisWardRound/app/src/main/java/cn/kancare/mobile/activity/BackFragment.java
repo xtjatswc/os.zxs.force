@@ -35,6 +35,10 @@ public class BackFragment extends os.zxs.force.activity.BackFragment {
 		return layout;
 	}
 
+	public void setTitle(String title){
+		textViewTitle.setText(title);
+	}
+
 	@Override
 	protected String getLogTag() {
 		return LogTag.BACK;

@@ -2,435 +2,439 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/tab_bg2"
-    android:gravity="right"
-    android:orientation="vertical"
-    android:padding="24dip" >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TextView_Title"
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dip"
-        android:background="@drawable/tab_bg2"
-        android:text="新建患者信息"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white" />
+        android:gravity="right"
+        android:orientation="vertical"
+        android:padding="24dip">
 
-    <Button
-        android:id="@+id/Button_Save"
-        style="@style/buttonStyle"
-        android:text="保存" >
-    </Button>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
-
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:shrinkColumns="1" >
+            android:gravity="right"
+            android:orientation="horizontal">
 
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/Button_Save"
+                style="@style/buttonStyle"
+                android:text="保存"></Button>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TableLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_top_corner_no_bottom_line"
-                android:weightSum="1" >
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:shrinkColumns="1">
 
-                <TextView
-                    android:layout_width="fill_parent"
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="患者姓名：" />
+                    android:background="@drawable/shape_top_corner_no_bottom_line"
+                    android:weightSum="1">
 
-                <EditText
-                    android:id="@+id/EditText_PatientName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:id="@+id/TextView_Star_PatientName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="科室：" />
-
-                <Spinner
-                    android:id="@+id/Spinner_Department"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7" />
-
-                <TextView
-                    android:id="@+id/TextView_Star_Department"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="床位：" />
-
-                <EditText
-                    android:id="@+id/EditText_BedCode"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:id="@+id/TextView_Star_BedCode"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="病案号：" />
-
-                <EditText
-                    android:id="@+id/EditText_PatientNo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:id="@+id/TextView_Star_PatientNo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="住院号：" />
-
-                <EditText
-                    android:id="@+id/EditText_ZYH"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:id="@+id/TextView_Star_ZYH"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="年龄：" />
-
-                <EditText
-                    android:id="@+id/EditText_Age"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:inputType="numberDecimal"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="身高：" />
-
-                <EditText
-                    android:id="@+id/EditText_Height"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:inputType="numberDecimal"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="体重：" />
-
-                <EditText
-                    android:id="@+id/EditText_Weight"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:inputType="numberDecimal"
-                    android:selectAllOnFocus="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="性别：" />
-
-                <RadioGroup
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/RadioButton1"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="男 "
-                        android:textColor="@color/black" />
+                        android:layout_weight="0.3"
+                        android:text="患者姓名：" />
 
-                    <RadioButton
-                        android:id="@+id/RadioButton0"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/EditText_PatientName"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dip"
-                        android:text="女   "
-                        android:textColor="@color/black" />
-                </RadioGroup>
+                        android:layout_weight="0.6"
+                        android:selectAllOnFocus="true" />
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:id="@+id/TextView_Star_PatientName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="科室：" />
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <Spinner
+                        android:id="@+id/Spinner_Department"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6" />
+
+                    <TextView
+                        android:id="@+id/TextView_Star_Department"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="入院日期：" />
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <os.zxs.force.core.view.DatePickerView
-                    android:id="@+id/DatePickerView_HospitalDate"
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="床位：" />
+
+                    <EditText
+                        android:id="@+id/EditText_BedCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:id="@+id/TextView_Star_BedCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:width="130dip" />
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="病案号：" />
+
+                    <EditText
+                        android:id="@+id/EditText_PatientNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:id="@+id/TextView_Star_PatientNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_no_corner_without_bottom"
-                android:weightSum="1" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="住院号：" />
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <EditText
+                        android:id="@+id/EditText_ZYH"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:id="@+id/TextView_Star_ZYH"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="肿瘤分期：" />
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <Spinner
-                    android:id="@+id/Spinner_Staging"
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="年龄：" />
+
+                    <EditText
+                        android:id="@+id/EditText_Age"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:inputType="numberDecimal"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7" />
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="身高：" />
+
+                    <EditText
+                        android:id="@+id/EditText_Height"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:inputType="numberDecimal"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-            <TableRow
-                style="@style/tableRowStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_bottom_corner_no_top_line"
-                android:weightSum="1" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="体重：" />
 
-                <TextView
-                    android:layout_width="fill_parent"
+                    <EditText
+                        android:id="@+id/EditText_Weight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:inputType="numberDecimal"
+                        android:selectAllOnFocus="true" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="疾病（诊断）：" />
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <EditText
-                    android:id="@+id/EditText_ClinicalDiagnosis"
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="性别：" />
+
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/RadioButton1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="男 "
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButton0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dip"
+                            android:text="女   "
+                            android:textColor="@color/black" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:background="@android:drawable/edit_text"
-                    android:enabled="true"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:maxLines="10"
-                    android:minLines="3"
-                    android:scrollbars="vertical" >
-                </EditText>
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/TextView_Star_PatientNo"
-                    android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="入院日期：" />
+
+                    <os.zxs.force.core.view.DatePickerView
+                        android:id="@+id/DatePickerView_HospitalDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:width="130dip" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1"
-                    android:text="*"
-                    android:textColor="@color/red"
-                    android:textSize="20dip"
-                    android:visibility="invisible" />
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1">
 
-    <Button
-        android:id="@+id/Button_Save2"
-        style="@style/buttonStyle"
-        android:text="保存" >
-    </Button>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="肿瘤分期：" />
 
+                    <Spinner
+                        android:id="@+id/Spinner_Staging"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="疾病（诊断）：" />
+
+                    <EditText
+                        android:id="@+id/EditText_ClinicalDiagnosis"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:background="@android:drawable/edit_text"
+                        android:enabled="true"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:maxLines="10"
+                        android:minLines="3"
+                        android:scrollbars="vertical"></EditText>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/Button_Save2"
+            style="@style/buttonStyle"
+            android:text="保存"></Button>
+
+    </LinearLayout>
 </LinearLayout>
