@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import os.zxs.force.tablayoutsamples.adapter.SimpleHomeAdapter;
+import tablayoutsamples.adapter.SimpleHomeAdapter;
 
 public class SimpleHomeActivity extends FragmentActivity {
     private Context mContext = this;

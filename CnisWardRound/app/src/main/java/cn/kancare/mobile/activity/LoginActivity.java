@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +25,13 @@ import os.zxs.force.core.constant.AppConstant;
 import os.zxs.force.core.util.EncryptUtil;
 import os.zxs.force.core.util.PopUtil;
 import os.zxs.force.core.util.RawDBUtil;
+import os.zxs.force.core.view.Loading;
 import os.zxs.force.core.view.activity.BaseActivity;
 import tablayoutsamples.ui.SimpleHomeActivity;
 
 public class LoginActivity extends BaseActivity {
 
+	private Context context = this;
 	private UserBo userBo;
 	private SettingBo settingBo;
 
@@ -107,6 +110,7 @@ public class LoginActivity extends BaseActivity {
 				return;
 			}
 
+			Loading.turn(context);
 			if (loginName.equals("0") && pwd.equals("0")) {
 				Global.loginUser = new User();
 				Global.loginUser.setUser_DBKey(0);
@@ -125,6 +129,7 @@ public class LoginActivity extends BaseActivity {
 
 			if (user == null) {
 				PopUtil.show(this, "用户不存在！");
+				Loading.turnoff();
 				return;
 			}
 
@@ -136,6 +141,7 @@ public class LoginActivity extends BaseActivity {
 				Goto();
 			} else {
 				PopUtil.show(this, "密码错误！");
+				Loading.turnoff();
 			}
 			break;
 

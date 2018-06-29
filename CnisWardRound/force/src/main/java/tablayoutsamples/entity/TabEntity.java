@@ -1,4 +1,4 @@
-package os.zxs.force.tablayoutsamples.entity;
+package tablayoutsamples.entity;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

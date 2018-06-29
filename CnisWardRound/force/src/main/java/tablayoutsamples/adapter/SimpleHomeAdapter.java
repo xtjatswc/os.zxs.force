@@ -1,4 +1,4 @@
-package os.zxs.force.tablayoutsamples.adapter;
+package tablayoutsamples.adapter;
 
 import android.app.Activity;
 import android.content.Context;

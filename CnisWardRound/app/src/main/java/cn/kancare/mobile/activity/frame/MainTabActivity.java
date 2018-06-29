@@ -22,6 +22,7 @@ import cn.kancare.mobile.common.constant.LogTag;
 import os.zxs.force.core.App;
 import os.zxs.force.core.bridge.CallBackListener;
 import os.zxs.force.core.util.ViewFindUtils;
+import os.zxs.force.core.view.Loading;
 import os.zxs.force.core.view.activity.BaseActivity;
 
 public class MainTabActivity extends BaseActivity{
@@ -71,7 +72,7 @@ public class MainTabActivity extends BaseActivity{
 
 
         for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new os.zxs.force.tablayoutsamples.entity.TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new tablayoutsamples.entity.TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
 
         mDecorView = getWindow().getDecorView();
@@ -145,8 +146,10 @@ public class MainTabActivity extends BaseActivity{
     private void execCallBack(int position){
         if(position == 0){
             Fragment fragment = mFragments.get(position);
+            Loading.turn(mContext);
             CallBackListener callBackListener = (CallBackListener) fragment;
             callBackListener.doCallBack();
+            Loading.turnoff();
         }
     }
 
