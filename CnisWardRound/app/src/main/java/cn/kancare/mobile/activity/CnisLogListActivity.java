@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.common.constant.LogTag;
+import cn.yan.slidelayout.MainActivity;
 import os.zxs.force.core.constant.LogLevel;
 import os.zxs.force.core.log.CnisLog;
 import os.zxs.force.core.log.CnislogBo;
@@ -29,6 +30,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
 	Button btnClearLog;
 	Button ButtonTabLayout;
+	Button ButtonSlideLayout;
 
 	ColorStateList red;
 	ColorStateList green;
@@ -42,6 +44,8 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
 		btnClearLog.setOnClickListener(new onClickHandler());
 		ButtonTabLayout.setOnClickListener(new onClickHandler());
+		ButtonSlideLayout.setOnClickListener(new onClickHandler());
+
 	}
 
 	class onClickHandler implements View.OnClickListener {
@@ -60,6 +64,13 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 					Intent i = new Intent(context,
 							SimpleHomeActivity.class);
 					startActivity(i);
+
+					break;
+				case R.id.ButtonSlideLayout:
+
+					Intent i2 = new Intent(context,
+							MainActivity.class);
+					startActivity(i2);
 
 					break;
 				default:
@@ -151,7 +162,9 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 	@Override
 	protected void setView() throws Exception {
 		btnClearLog = (Button) findViewById(R.id.btnClearLog);
-		ButtonTabLayout = ViewFindUtils.find(this.getWindow().getDecorView(), R.id.ButtonTabLayout);
+		View decorView = this.getWindow().getDecorView();
+		ButtonTabLayout = ViewFindUtils.find(decorView, R.id.ButtonTabLayout);
+		ButtonSlideLayout = ViewFindUtils.find(decorView, R.id.ButtonSlideLayout);
 
 		red = ColorUtil.getColor(R.color.red);
 		green = ColorUtil.getColor(R.color.green);

@@ -15,7 +15,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
-import os.zxs.force.tablayoutsamples.entity.TabEntity;
+import tablayoutsamples.entity.TabEntity;
 import os.zxs.force.core.util.ViewFindUtils;
 
 import java.util.ArrayList;
