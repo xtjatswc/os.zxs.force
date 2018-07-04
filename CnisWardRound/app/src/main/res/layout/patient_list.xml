@@ -86,11 +86,6 @@
             android:orientation="vertical"
             >
 
-            <Spinner
-                android:id="@+id/spinnerDepartment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
             <fragment
                 android:id="@+id/fragment_patient_condition"
                 android:name="cn.kancare.mobile.activity.frame.PatientConditionFragment"

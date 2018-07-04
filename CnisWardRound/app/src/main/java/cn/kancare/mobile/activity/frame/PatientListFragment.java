@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ import cn.kancare.mobile.bo.questionnaire.PatientQuestionnaireBo;
 import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.constant.LogTag;
 import cn.kancare.mobile.common.constant.RequestCode;
+import cn.kancare.mobile.common.patient.IPatientCondition;
 import os.zxs.force.common.constant.SyncConstant.OperateFlag;
 import os.zxs.force.core.baseanimation.BadgeView;
 import os.zxs.force.core.bridge.CallBackListener;
@@ -51,6 +53,7 @@ import os.zxs.force.core.view.fragment.BaseListFragment;
 public class PatientListFragment extends
 		BaseListFragment<PatientHospitalizeBasicInfo> implements
 		OnScrollListener, CallBackListener {
+	FragmentActivity context;
 	PatientHospitalizeBasicInfoBo patientBo;
 	DepartmentBo departmentBo;
 	PatientFavoriteBo patientFavoriteBo;
@@ -67,10 +70,11 @@ public class PatientListFragment extends
 	ImageButton btnSearch;
 	ImageButton ImageButton_Add;
 	ClearEditText editTextCondition;
-	Spinner spinnerDepartment;
 	ImageView imageViewFavorite;
 	ImageView imageViewQuestionnaire;
 	CheckBox chkMyPatient;
+
+	IPatientCondition iPatientCondition;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,31 +82,11 @@ public class PatientListFragment extends
 		View layoutView = super.onCreateView(inflater, container,
 				savedInstanceState);
 
-		List<SpinnerOption> lstSpinnerOptions;
-		try {
-			lstSpinnerOptions = departmentBo.getDepartmentOptions();
-
-			SpinnerUtil.setSpinnerValue(getActivity(), spinnerDepartment, "",
-					lstSpinnerOptions);
-		} catch (Exception e) {
-			doException(e);
-		}
-
-		spinnerDepartment
-				.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-					public void onItemSelected(AdapterView<?> parent,
-							View view, int position, long id) {
-						refreshList();
-
-					}
-
-					public void onNothingSelected(AdapterView<?> parent) {
-						// TODO Auto-generated method stub
-
-					}
-
-				});
+		iPatientCondition.setOnConditionChangeListener(new CallBackListener() {
+			public void doCallBack() {
+				refreshList();
+			}
+		});
 
 		btnSearch.setOnClickListener(new onClickHandler());
 		ImageButton_Add.setOnClickListener(new onClickHandler());
@@ -134,8 +118,7 @@ public class PatientListFragment extends
 				Bundle bundle = new Bundle();
 				try {
 					// 新建患者，把科室带过去
-					String department_DBKey = SpinnerUtil
-							.getSpinnerValue(spinnerDepartment);
+					String department_DBKey = iPatientCondition.getDepartment_DBkey();
 					bundle.putString("department_DBKey", department_DBKey);
 					bundle.putInt("OperateType", RequestCode.NEW_PATIENT_INFO);
 				} catch (Exception e) {
@@ -215,8 +198,7 @@ public class PatientListFragment extends
 			throws Exception {
 
 		String keyword = editTextCondition.getText().toString();
-		String department_DBKey = SpinnerUtil
-				.getSpinnerValue(spinnerDepartment);
+		String department_DBKey = iPatientCondition.getDepartment_DBkey();
 		List<String> lstFavorite = null;
 		if (ifViewFavorite) {
 			lstFavorite = patientFavoriteBo.getFavorites();
@@ -235,8 +217,7 @@ public class PatientListFragment extends
 			throws Exception {
 
 		String keyword = editTextCondition.getText().toString();
-		String department_DBKey = SpinnerUtil
-				.getSpinnerValue(spinnerDepartment);
+		String department_DBKey = iPatientCondition.getDepartment_DBkey();
 		List<String> lstFavorite = null;
 		if (ifViewFavorite) {
 			lstFavorite = patientFavoriteBo.getFavorites();
@@ -496,13 +477,13 @@ public class PatientListFragment extends
 
 	@Override
 	protected void setView(View layout) throws Exception {
+		context = getActivity();
 		btnSearch = (ImageButton) layout.findViewById(R.id.btnSearch);
 		ImageButton_Add = (ImageButton) layout
 				.findViewById(R.id.ImageButton_Add);
 		editTextCondition = (ClearEditText) layout
 				.findViewById(R.id.editTextCondition);
-		spinnerDepartment = (Spinner) layout
-				.findViewById(R.id.spinnerDepartment);
+		iPatientCondition = (IPatientCondition) getChildFragmentManager().findFragmentById(R.id.fragment_patient_condition);
 		imageViewFavorite = (ImageView) layout
 				.findViewById(R.id.imageViewFavorite);
 		imageViewQuestionnaire = (ImageView) layout

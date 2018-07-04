@@ -32,17 +32,4 @@ public class DepartmentDao extends BaseDao<Department> {
 		return queryBuilder.query();
 	}
 
-	/**
-	 * 分页查询科室信息
-	 */
-	public List<Department> query(int limit, int offset) throws Exception {
-
-		QueryBuilder<Department, Integer> qBuilder = dao.queryBuilder();
-		qBuilder.where().eq("IsActive",
-					"1");
-		qBuilder.limit(limit).offset(offset)
-				.orderBy("DepartmentName", true);
-		return qBuilder.query();
-
-	}// ...other operations
 }
