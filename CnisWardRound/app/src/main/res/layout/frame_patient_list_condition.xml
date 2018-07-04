@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <CheckBox
+        android:id="@+id/tv_upper1"
+        style="@style/CustomCheckBoxTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的患者"
+        android:gravity="center_vertical" />
+
+    <CheckBox
+        android:id="@+id/tv_upper2"
+        style="@style/CustomCheckBoxTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关注的患者"
+        android:checked="true"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/TextViewDepartment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前科室："
+        android:textColor="@color/gray" />
 
     <GridView
         android:id="@+id/GridViewDepartment"
@@ -9,6 +35,5 @@
         android:layout_height="match_parent"
         android:horizontalSpacing="0dip"
         android:numColumns="2"
-        android:verticalSpacing="0dip" >
-    </GridView>
+        android:verticalSpacing="0dip"></GridView>
 </LinearLayout>
