@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.flyco.tablayout.CommonTabLayout;
@@ -76,13 +77,13 @@ public class MainTabActivity extends BaseActivity{
         }
 
         mDecorView = getWindow().getDecorView();
-        mViewPager = ViewFindUtils.find(mDecorView, os.zxs.force.R.id.vp_2);
-        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+//        mViewPager = ViewFindUtils.find(mDecorView, os.zxs.force.R.id.vp_2);
+//        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         /** with nothing */
         mTabLayout_1 = ViewFindUtils.find(mDecorView, os.zxs.force.R.id.tl_1);
         /** with ViewPager */
 
-        mTabLayout_1.setTabData(mTabEntities);
+        mTabLayout_1.setTabData(mTabEntities, this, R.id.fl_content, mFragments);
         tl_2();
 
     }
@@ -112,7 +113,7 @@ public class MainTabActivity extends BaseActivity{
         mTabLayout_1.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                mViewPager.setCurrentItem(position);
+                //mViewPager.setCurrentItem(position);
                 execCallBack(position);
             }
 
@@ -121,25 +122,26 @@ public class MainTabActivity extends BaseActivity{
             }
         });
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mTabLayout_1.setCurrentTab(position);
-                execCallBack(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        mViewPager.setCurrentItem(0);
+//        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                mTabLayout_1.setCurrentTab(position);
+//                execCallBack(position);
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//
+//        });
+//
+//        mViewPager.setCurrentItem(0);
     }
 
     //点击患者列表选项卡时，触发回调

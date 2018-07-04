@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import android.content.Context;
+
+import cn.kancare.mobile.bean.CourseRecord;
 import cn.kancare.mobile.bean.basic.Department;
 import cn.kancare.mobile.core.base.BaseDao;
 
@@ -29,4 +31,18 @@ public class DepartmentDao extends BaseDao<Department> {
 		queryBuilder.orderBy("DepartmentName", true);
 		return queryBuilder.query();
 	}
+
+	/**
+	 * 分页查询科室信息
+	 */
+	public List<Department> query(int limit, int offset) throws Exception {
+
+		QueryBuilder<Department, Integer> qBuilder = dao.queryBuilder();
+		qBuilder.where().eq("IsActive",
+					"1");
+		qBuilder.limit(limit).offset(offset)
+				.orderBy("DepartmentName", true);
+		return qBuilder.query();
+
+	}// ...other operations
 }
