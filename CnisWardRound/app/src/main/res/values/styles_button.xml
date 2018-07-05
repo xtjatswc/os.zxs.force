@@ -29,4 +29,17 @@
         <item name="android:layout_margin">5dip</item>
     </style>
 
+    <!--白色按钮-->
+    <style name="buttonStyle_white">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:background">@drawable/button_white</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">3dp</item>
+        <item name="android:paddingRight">3dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

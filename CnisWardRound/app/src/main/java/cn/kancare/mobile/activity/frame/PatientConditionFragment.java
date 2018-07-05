@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import cn.kancare.mobile.activity.mealrecord.MealRecordActivity;
 import cn.kancare.mobile.common.patient.IPatientCondition;
 
 import java.util.List;
@@ -23,6 +26,8 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     DepartmentBo departmentBo;
     CallBackListener callBackListener;
     String Department_DBKey = "";
+
+    TextView TextViewDepartment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +49,12 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     }
 
     protected List<Department> getInitializeData() throws Exception {
-        return departmentBo.getDao().queryForAll();
+        List<Department> lst = departmentBo.getDao().queryForAll();
+        Department department = new Department();
+        department.setDepartment_DBKey(0);
+        department.setDepartmentName("全部科室");
+        lst.add(0, department);
+        return lst;
     }
 
     protected int getGridId() {
@@ -55,24 +65,27 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return R.layout.frame_patient_list_condition_item;
     }
 
+    @Override
+    protected void setViewHolder(View view) {
+    }
+
     protected void setGridItemView(int position, View view, final Department data, ViewGroup parent) throws Exception {
-        Button ButtonDepartment = ViewFindUtils.hold(view, R.id.ButtonDepartment, new ViewFindUtils.HoldCallBack() {
-            public void doInit(View view) {
-                Button ButtonDepartment = (Button)view;
-                ButtonDepartment.setText(data.getDepartmentName());
-                ButtonDepartment.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Department_DBKey = data.getDepartment_DBKey() + "";
-                        callBackListener.doCallBack();
-                    }
-                });
+
+        Button ButtonDepartment = ViewFindUtils.hold(view, R.id.ButtonDepartment);
+        ButtonDepartment.setText(data.getDepartmentName());
+        ButtonDepartment.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Department_DBKey = data.getDepartment_DBKey() + "";
+                TextViewDepartment.setText("当前科室：" + data.getDepartmentName());
+                callBackListener.doCallBack();
             }
         });
 
     }
 
-    protected void setViewHolder(View view) {
-
+    @Override
+    protected void onListItemClick(Department data) {
+        super.onListItemClick(data);
     }
 
     protected String getLogTag() {
@@ -89,6 +102,7 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
 
     protected void setView(View layout) throws Exception {
         context = this.getActivity();
+        TextViewDepartment = ViewFindUtils.find(layout, R.id.TextViewDepartment);
     }
 
 }

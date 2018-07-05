@@ -6,12 +6,7 @@
 
     <Button
         android:id="@+id/ButtonDepartment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:background="@drawable/button_white"
-        android:padding="0dp"
-        android:text="保存"
-        android:textSize="14sp"></Button>
+        style="@style/buttonStyle_white"
+        android:layout_width="match_parent"></Button>
 
 </LinearLayout>

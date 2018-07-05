@@ -7,11 +7,6 @@ import android.view.View;
 public class ViewFindUtils
 {
 
-	public static <T extends View> T hold(View view, int id)
-	{
-		return hold(view, id, null);
-	}
-
 	/**
 	 * ViewHolder简洁写法,避免适配器中重复定义ViewHolder,减少代码量 用法:
 	 * 
@@ -24,7 +19,7 @@ public class ViewFindUtils
 	 * ImageView iv_demo = ViewHolderUtils.hold(convertView, R.id.iv_demo);
 	 * </pre>
 	 */
-	public static <T extends View> T hold(View view, int id, HoldCallBack holdCallBack)
+	public static <T extends View> T hold(View view, int id)
 	{
 		SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();
 
@@ -40,16 +35,9 @@ public class ViewFindUtils
 		{
 			childView = view.findViewById(id);
 			viewHolder.put(id, childView);
-			if(holdCallBack != null){
-				holdCallBack.doInit(childView);
-			}
 		}
 
 		return (T) childView;
-	}
-
-	public interface HoldCallBack{
-		void doInit(View view);
 	}
 
 	/**

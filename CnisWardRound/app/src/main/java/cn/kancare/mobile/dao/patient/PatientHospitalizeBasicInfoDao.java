@@ -59,7 +59,7 @@ public class PatientHospitalizeBasicInfoDao extends
 				where.and().in("PatientHospitalize_DBKey", favorites);
 			}
 		}
-		if (department_DBKey != "") {
+		if (department_DBKey != "" && !department_DBKey.equals("0")) {
 			where.and().eq("Department_DBKey", department_DBKey);
 		}
 		if (showMyPatient) {
