@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import cn.kancare.mobile.activity.mealrecord.MealRecordActivity;
@@ -28,12 +30,26 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     String Department_DBKey = "";
 
     TextView TextViewDepartment;
+    CheckBox CheckBoxMyPatient;
+    CheckBox CheckBoxMyStar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layoutView = super.onCreateView(inflater, container,
                 savedInstanceState);
+
+        CheckBoxMyPatient.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                callBackListener.doCallBack();
+            }
+        });
+
+        CheckBoxMyStar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                callBackListener.doCallBack();
+            }
+        });
 
         return layoutView;
     }
@@ -46,6 +62,14 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     public String getDepartment_DBkey()
     {
         return Department_DBKey;
+    }
+
+    public Boolean getMyPatientEnabled() {
+        return CheckBoxMyPatient.isChecked();
+    }
+
+    public Boolean getMyStarEnabled() {
+        return CheckBoxMyStar.isChecked();
     }
 
     protected List<Department> getInitializeData() throws Exception {
@@ -103,6 +127,8 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     protected void setView(View layout) throws Exception {
         context = this.getActivity();
         TextViewDepartment = ViewFindUtils.find(layout, R.id.TextViewDepartment);
+        CheckBoxMyPatient = ViewFindUtils.find(layout, R.id.CheckBoxMyPatient);
+        CheckBoxMyStar = ViewFindUtils.find(layout, R.id.CheckBoxMyStar);
     }
 
 }

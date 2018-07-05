@@ -95,6 +95,8 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 	}
 
 	protected void refreshList() {
+		Loading.turn(getContext());
+
 		List<Bean> list = null;
 		try {
 			list = getInitializeData();
@@ -108,6 +110,8 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		if (list != null && adapter != null) {
 			listView.setAdapter(adapter);
 		}
+
+		Loading.turnoff();
 	}
 
 	protected void removeAndRefresh() {

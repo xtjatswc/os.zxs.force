@@ -64,15 +64,10 @@ public class PatientListFragment extends
 	public TestResultBo testResultBo;
 	public SearchPageConfigBo searchPageConfigBo;
 
-	// 是否查看收藏的患者
-	Boolean ifViewFavorite = false;
-
 	ImageButton btnSearch;
 	ImageButton ImageButton_Add;
 	ClearEditText editTextCondition;
-	ImageView imageViewFavorite;
 	ImageView imageViewQuestionnaire;
-	CheckBox chkMyPatient;
 
 	IPatientCondition iPatientCondition;
 
@@ -90,9 +85,6 @@ public class PatientListFragment extends
 
 		btnSearch.setOnClickListener(new onClickHandler());
 		ImageButton_Add.setOnClickListener(new onClickHandler());
-		imageViewFavorite.setOnClickListener(new onClickHandler());
-		chkMyPatient.setOnClickListener(new onClickHandler());
-
 		editTextCondition.setCallBackListener(new CallBackListener() {
 
 			public void doCallBack() {
@@ -128,19 +120,6 @@ public class PatientListFragment extends
 				startActivityForResult(i, RequestCode.NEW_PATIENT_INFO);
 				break;
 			case R.id.btnSearch:
-			case R.id.chkMyPatient:
-				refreshList();
-				break;
-			case R.id.imageViewFavorite:
-				ifViewFavorite = !ifViewFavorite;
-				if (ifViewFavorite) {
-					imageViewFavorite
-							.setBackgroundResource(R.drawable.heart_love);
-				} else {
-					imageViewFavorite
-							.setBackgroundResource(R.drawable.heart_love2);
-				}
-
 				refreshList();
 				break;
 			default:
@@ -200,7 +179,7 @@ public class PatientListFragment extends
 		String keyword = editTextCondition.getText().toString();
 		String department_DBKey = iPatientCondition.getDepartment_DBkey();
 		List<String> lstFavorite = null;
-		if (ifViewFavorite) {
+		if (iPatientCondition.getMyStarEnabled()) {
 			lstFavorite = patientFavoriteBo.getFavorites();
 			if (lstFavorite == null || lstFavorite.size() == 0) {
 				return null;
@@ -208,7 +187,7 @@ public class PatientListFragment extends
 		}
 		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8, 0,
 				keyword, department_DBKey, lstFavorite,
-				chkMyPatient.isChecked());
+				iPatientCondition.getMyPatientEnabled());
 		return list;
 	}
 
@@ -219,7 +198,7 @@ public class PatientListFragment extends
 		String keyword = editTextCondition.getText().toString();
 		String department_DBKey = iPatientCondition.getDepartment_DBkey();
 		List<String> lstFavorite = null;
-		if (ifViewFavorite) {
+		if (iPatientCondition.getMyStarEnabled()) {
 			lstFavorite = patientFavoriteBo.getFavorites();
 			if (lstFavorite == null || lstFavorite.size() == 0) {
 				return null;
@@ -227,7 +206,7 @@ public class PatientListFragment extends
 		}
 		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8,
 				listCount, keyword, department_DBKey, lstFavorite,
-				chkMyPatient.isChecked());
+				iPatientCondition.getMyPatientEnabled());
 		return list;
 
 	}
@@ -484,11 +463,8 @@ public class PatientListFragment extends
 		editTextCondition = (ClearEditText) layout
 				.findViewById(R.id.editTextCondition);
 		iPatientCondition = (IPatientCondition) getChildFragmentManager().findFragmentById(R.id.fragment_patient_condition);
-		imageViewFavorite = (ImageView) layout
-				.findViewById(R.id.imageViewFavorite);
 		imageViewQuestionnaire = (ImageView) layout
 				.findViewById(R.id.imageViewQuestionnaire);
-		chkMyPatient = (CheckBox) layout.findViewById(R.id.chkMyPatient);
 
 	}
 
