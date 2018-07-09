@@ -5,6 +5,7 @@
     android:layout_height="fill_parent">
 
     <os.zxs.force.core.view.slide.SlideLayout
+        android:id="@+id/SlideLayoutCondition"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         app:slideCriticalValue="180dp"
@@ -20,12 +21,21 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btnMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dip"
+                    android:text=""
+                    android:drawableLeft="@drawable/more"
+                    />
+
                 <os.zxs.force.core.view.ClearEditText
                     android:id="@+id/editTextCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/LinearLayout_buttons"
+                    android:layout_toRightOf="@+id/btnMore"
                     android:hint="" />
 
                 <LinearLayout

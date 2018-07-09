@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ import os.zxs.force.core.util.spinner.SpinnerOption;
 import os.zxs.force.core.util.spinner.SpinnerUtil;
 import os.zxs.force.core.view.ClearEditText;
 import os.zxs.force.core.view.fragment.BaseListFragment;
+import os.zxs.force.core.view.slide.SlideLayout;
 
 public class PatientListFragment extends
 		BaseListFragment<PatientHospitalizeBasicInfo> implements
@@ -66,8 +68,10 @@ public class PatientListFragment extends
 
 	ImageButton btnSearch;
 	ImageButton ImageButton_Add;
+	Button btnMore;
 	ClearEditText editTextCondition;
 	ImageView imageViewQuestionnaire;
+	SlideLayout slideLayoutCondition;
 
 	IPatientCondition iPatientCondition;
 
@@ -84,6 +88,7 @@ public class PatientListFragment extends
 		});
 
 		btnSearch.setOnClickListener(new onClickHandler());
+		btnMore.setOnClickListener(new onClickHandler());
 		ImageButton_Add.setOnClickListener(new onClickHandler());
 		editTextCondition.setCallBackListener(new CallBackListener() {
 
@@ -121,6 +126,14 @@ public class PatientListFragment extends
 				break;
 			case R.id.btnSearch:
 				refreshList();
+				break;
+			case R.id.btnMore:
+				btnMore.setSelected(!btnMore.isSelected());
+				if(btnMore.isSelected()){
+					slideLayoutCondition.smoothOpenSlide();
+				}else{
+					slideLayoutCondition.smoothCloseSlide();
+				}
 				break;
 			default:
 				break;
@@ -458,6 +471,7 @@ public class PatientListFragment extends
 	protected void setView(View layout) throws Exception {
 		context = getActivity();
 		btnSearch = (ImageButton) layout.findViewById(R.id.btnSearch);
+		btnMore = (Button) layout.findViewById(R.id.btnMore);
 		ImageButton_Add = (ImageButton) layout
 				.findViewById(R.id.ImageButton_Add);
 		editTextCondition = (ClearEditText) layout
@@ -465,7 +479,7 @@ public class PatientListFragment extends
 		iPatientCondition = (IPatientCondition) getChildFragmentManager().findFragmentById(R.id.fragment_patient_condition);
 		imageViewQuestionnaire = (ImageView) layout
 				.findViewById(R.id.imageViewQuestionnaire);
-
+		slideLayoutCondition = (SlideLayout)layout.findViewById(R.id.SlideLayoutCondition);
 	}
 
 	@Override
