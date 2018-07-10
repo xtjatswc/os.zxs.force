@@ -128,8 +128,7 @@ public class PatientListFragment extends
 				refreshList();
 				break;
 			case R.id.btnMore:
-				btnMore.setSelected(!btnMore.isSelected());
-				if(btnMore.isSelected()){
+				if(slideLayoutCondition.getSlideState() == SlideLayout.STATE_CLOSE){
 					slideLayoutCondition.smoothOpenSlide();
 				}else{
 					slideLayoutCondition.smoothCloseSlide();
