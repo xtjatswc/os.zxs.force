@@ -1,3 +1,4 @@
 /CnisWardRound/app/build
 /CnisWardRound/.idea
 /CnisWardRound/.gradle
+*.iml
