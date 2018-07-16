@@ -73,6 +73,13 @@ public class PatientHospitalizeBasicInfoBo extends
 		patient.setStaging(spinnerOption2.getValue());
 		patient.setClinicalDiagnosis(activity.EditText_ClinicalDiagnosis
 				.getText().toString());
+		if(activity.RadioButtonIn.isChecked()){
+			patient.setTherapyStatus("0");
+			patient.setTherapyStatusName("待筛查");
+		}else{
+			patient.setTherapyStatus("9");
+			patient.setTherapyStatusName("出院");
+		}
 		getDao().update(patient);
 	}
 
@@ -119,6 +126,13 @@ public class PatientHospitalizeBasicInfoBo extends
 		}
 		patient.setClinicalDiagnosis(activity.EditText_ClinicalDiagnosis
 				.getText().toString());
+		if(activity.RadioButtonIn.isChecked()){
+			patient.setTherapyStatus("0");
+			patient.setTherapyStatusName("待筛查");
+		}else{
+			patient.setTherapyStatus("9");
+			patient.setTherapyStatusName("出院");
+		}
 		getDao().create(patient);
 	}
 

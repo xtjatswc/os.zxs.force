@@ -46,11 +46,15 @@
                 android:textSize="20dip"
                 android:width="130dip" />
 
-            <TextView
-                android:id="@+id/therapyStatusName"
+            <Switch
+                android:id="@+id/switchChildStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="130dip" />
+                android:checked="true"
+                android:text=""
+                android:focusable="false"
+                android:textOff="出院"
+                android:textOn="在院" />
 
             <TextView
                 android:id="@+id/inHospitalDate"

@@ -30,13 +30,24 @@
                     android:background="@drawable/gray"
                     />
 
+                <Switch
+                    android:id="@+id/switchStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_toRightOf="@+id/btnMore"
+                    android:text=""
+                    android:layout_centerVertical="true"
+                    android:textOff="出院"
+                    android:textOn="在院" />
+
                 <os.zxs.force.core.view.ClearEditText
                     android:id="@+id/editTextCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/LinearLayout_buttons"
-                    android:layout_toRightOf="@+id/btnMore"
+                    android:layout_toRightOf="@+id/switchStatus"
                     android:hint="" />
 
                 <LinearLayout

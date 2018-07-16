@@ -61,6 +61,8 @@ public class PatientInfoActivity extends BaseActivity {
 	public Spinner Spinner_Staging;
 	public EditText EditText_ClinicalDiagnosis;
 	public BackFragment backFragment;
+	public RadioButton RadioButtonIn;
+	public RadioButton RadioButtonOut;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -122,6 +124,11 @@ public class PatientInfoActivity extends BaseActivity {
 					.getHospitalizationNumber());
 			EditText_ClinicalDiagnosis.setText(Global.currentPatient
 					.getClinicalDiagnosis());
+			if(Global.currentPatient.getTherapyStatus().equals("9")){
+				RadioButtonOut.setChecked(true);
+			}else{
+				RadioButtonIn.setChecked(true);
+			}
 
 		} else {
 			backFragment.setTitle("新建患者信息");
@@ -254,6 +261,9 @@ public class PatientInfoActivity extends BaseActivity {
 		Spinner_Staging = (Spinner) findViewById(R.id.Spinner_Staging);
 		EditText_ClinicalDiagnosis = (EditText) findViewById(R.id.EditText_ClinicalDiagnosis);
 		backFragment = (BackFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_back);
+		RadioButtonIn = (RadioButton) findViewById(R.id.RadioButtonIn);
+		RadioButtonOut = (RadioButton) findViewById(R.id.RadioButtonOut);
+
 	}
 
 	@Override

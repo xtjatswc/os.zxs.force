@@ -397,7 +397,7 @@
                     style="@style/tableRowStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1">
 
                     <TextView
@@ -418,6 +418,51 @@
                         android:maxLines="10"
                         android:minLines="3"
                         android:scrollbars="vertical"></EditText>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="20dip"
+                        android:visibility="invisible" />
+                </TableRow>
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="在院状态：" />
+
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/RadioButtonIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="在院 "
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/RadioButtonOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dip"
+                            android:text="出院   "
+                            android:textColor="@color/black" />
+                    </RadioGroup>
 
                     <TextView
                         android:layout_width="0dp"

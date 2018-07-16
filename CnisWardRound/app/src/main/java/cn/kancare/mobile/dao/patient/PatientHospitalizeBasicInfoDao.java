@@ -33,11 +33,11 @@ public class PatientHospitalizeBasicInfoDao extends
 	/**
 	 * 查询记录
 	 * 
-	 * @param patient
+	 * @param inStatus true:在院，false:出院
 	 */
 	public List<PatientHospitalizeBasicInfo> query(int limit, int offset,
 			String keyword, String department_DBKey, List<String> favorites,
-			Boolean showMyPatient) throws Exception {
+			Boolean showMyPatient, Boolean inStatus) throws Exception {
 		QueryBuilder<PatientHospitalizeBasicInfo, Integer> qBuilder = dao
 				.queryBuilder();
 		Where<PatientHospitalizeBasicInfo, Integer> where = qBuilder.where();
@@ -67,11 +67,17 @@ public class PatientHospitalizeBasicInfoDao extends
 					Global.loginUser.getUser_DBKey());
 		}
 
-		// 是否隐藏历史患者
-		if (Global.IsHideHistoryPatient
-				.equals(SettingCode.HISTORY_PATIENT_HIDE)) {
-			where.and().eq("OrderBy", "1");
+		//在院状态
+		if(inStatus){
 			where.and().ne("TherapyStatus", "9");
+			// 是否隐藏历史患者
+			if (Global.IsHideHistoryPatient
+					.equals(SettingCode.HISTORY_PATIENT_HIDE)) {
+				where.and().eq("OrderBy", "1");
+				where.and().ne("TherapyStatus", "9");
+			}
+		}else{
+			where.and().eq("TherapyStatus", "9");
 		}
 
 		qBuilder.limit(limit).offset(offset);

@@ -14,9 +14,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.activity.courserecord.CourseRecordListActivity;
@@ -74,6 +76,7 @@ public class PatientListFragment extends
 	SlideLayout slideLayoutCondition;
 
 	IPatientCondition iPatientCondition;
+	Switch switchStatus;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,6 +96,11 @@ public class PatientListFragment extends
 		editTextCondition.setCallBackListener(new CallBackListener() {
 
 			public void doCallBack() {
+				refreshList();
+			}
+		});
+		switchStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				refreshList();
 			}
 		});
@@ -199,7 +207,7 @@ public class PatientListFragment extends
 		}
 		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8, 0,
 				keyword, department_DBKey, lstFavorite,
-				iPatientCondition.getMyPatientEnabled());
+				iPatientCondition.getMyPatientEnabled(), switchStatus.isChecked());
 		return list;
 	}
 
@@ -218,7 +226,7 @@ public class PatientListFragment extends
 		}
 		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8,
 				listCount, keyword, department_DBKey, lstFavorite,
-				iPatientCondition.getMyPatientEnabled());
+				iPatientCondition.getMyPatientEnabled(), switchStatus.isChecked());
 		return list;
 
 	}
@@ -249,7 +257,7 @@ public class PatientListFragment extends
 		TextView tvDiseaseName;
 		TextView tvHospitalizationNumber;
 		public TextView tvPatientNo;
-		TextView tvTherapyStatusName;
+		Switch switchChildStatus;
 		ImageView imageViewLove;
 		public ImageView imageViewQuestionnaire;
 		public ImageView imageViewCourseRecord;
@@ -276,8 +284,8 @@ public class PatientListFragment extends
 		holder.tvHospitalizationNumber = (TextView) view
 				.findViewById(R.id.hospitalizationNumber);
 		holder.tvPatientNo = (TextView) view.findViewById(R.id.patientNo);
-		holder.tvTherapyStatusName = (TextView) view
-				.findViewById(R.id.therapyStatusName);
+		holder.switchChildStatus = (Switch) view
+				.findViewById(R.id.switchChildStatus);
 		holder.imageViewLove = (ImageView) view
 				.findViewById(R.id.imageViewLove);
 		holder.imageViewQuestionnaire = (ImageView) view
@@ -381,13 +389,10 @@ public class PatientListFragment extends
 			}
 
 			// 营养治疗状态
-			holder.tvTherapyStatusName.setText(patientinfo
-					.getTherapyStatusName());
-			if (patientinfo.getTherapyStatusName().equals("待筛查")) {
-				holder.tvTherapyStatusName
-						.setBackgroundResource(R.color.orange);
+			if (patientinfo.getTherapyStatusName().equals("出院")) {
+				holder.switchChildStatus.setChecked(false);
 			} else {
-				holder.tvTherapyStatusName.setBackgroundResource(R.color.green);
+				holder.switchChildStatus.setChecked(true);
 			}
 
 			// 收藏
@@ -479,6 +484,7 @@ public class PatientListFragment extends
 		imageViewQuestionnaire = (ImageView) layout
 				.findViewById(R.id.imageViewQuestionnaire);
 		slideLayoutCondition = (SlideLayout)layout.findViewById(R.id.SlideLayoutCondition);
+		switchStatus = (Switch)layout.findViewById(R.id.switchStatus);
 	}
 
 	@Override
