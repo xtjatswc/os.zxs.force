@@ -118,7 +118,7 @@ public class MealRecordFoodFragment extends
 			holder.TextViewTip.setVisibility(View.GONE);
 		}
 
-		if(unit != null){
+		if(unit != null && !unit.equals("")){
 			holder.TextViewFoodName.setText(data.getFoodName() + " （"  + unit +"）");
 		}
 

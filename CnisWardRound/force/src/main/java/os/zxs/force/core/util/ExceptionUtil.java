@@ -62,10 +62,10 @@ public class ExceptionUtil {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\r\n");
 		for (int i = 0; i < stacks.length; i++) {
-			if (stacks[i].getClassName().contains(Global.rootPackageName)) {
+			//if (stacks[i].getClassName().contains(Global.rootPackageName)) {
 				getTraceInfo(sb, stacks[i]);
 				// break;
-			}
+			//}
 		}
 		return sb;
 	}
