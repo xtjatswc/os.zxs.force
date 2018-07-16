@@ -394,6 +394,13 @@ public class PatientListFragment extends
 			} else {
 				holder.switchChildStatus.setChecked(true);
 			}
+			holder.switchChildStatus.setOnClickListener(new View.OnClickListener() {
+
+				public void onClick(View v) {
+					PatientListFragment.this.onListItemSubClick(view, parent,
+							position, holder.switchChildStatus.getId());
+				}
+			});
 
 			// 收藏
 			final ImageView imageViewLove = holder.imageViewLove;
@@ -588,6 +595,16 @@ public class PatientListFragment extends
 				}
 
 				patientInfo.setOperateFlag(OperateFlag.NEED_EDIT_TO_SERVER);
+				patientBo.getDao().update(patientInfo);
+				break;
+			case R.id.switchChildStatus:
+				if(holder.switchChildStatus.isChecked()){
+					patientInfo.setTherapyStatus("0");
+					patientInfo.setTherapyStatusName("待筛查");
+				}else{
+					patientInfo.setTherapyStatus("9");
+					patientInfo.setTherapyStatusName("出院");
+				}
 				patientBo.getDao().update(patientInfo);
 				break;
 			default:

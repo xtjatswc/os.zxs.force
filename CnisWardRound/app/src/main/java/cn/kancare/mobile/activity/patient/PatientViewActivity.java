@@ -1,5 +1,6 @@
 package cn.kancare.mobile.activity.patient;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import android.content.DialogInterface;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.activity.advice.AdviceListActivity;
@@ -57,7 +59,7 @@ public class PatientViewActivity extends BaseActivity {
 	TextView textViewHospitalizationNumber;
 	TextView TextView_Height;
 	TextView TextView_Weight;
-	TextView textTherapyStatusName;
+	Switch switchStatus;
 	TextView textViewStaging;
 	Button btnToQuestionnaire;
 	Button btnToCourseRecord;
@@ -275,7 +277,7 @@ public class PatientViewActivity extends BaseActivity {
 	}
 
 	private void loadPatientInfo() throws Exception {
-		PatientHospitalizeBasicInfo hospitalInfo = hospitalInfoBo.getDao()
+		final PatientHospitalizeBasicInfo hospitalInfo = hospitalInfoBo.getDao()
 				.queryForId(PatientHospitalize_DBKey);
 
 		textViewPatientName.setText(hospitalInfo.getPatientName());
@@ -302,12 +304,30 @@ public class PatientViewActivity extends BaseActivity {
 			ImageViewSex.setImageResource(R.drawable.female);
 		}
 
-		textTherapyStatusName.setText(hospitalInfo.getTherapyStatusName());
-		if (hospitalInfo.getTherapyStatusName().equals("待筛查")) {
-			textTherapyStatusName.setBackgroundResource(R.color.orange);
+		// 营养治疗状态
+		if (hospitalInfo.getTherapyStatusName().equals("出院")) {
+			switchStatus.setChecked(false);
 		} else {
-			textTherapyStatusName.setBackgroundResource(R.color.green);
+			switchStatus.setChecked(true);
 		}
+		switchStatus.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				PatientHospitalizeBasicInfo patientInfo = Global.currentPatient;
+				if(switchStatus.isChecked()){
+					patientInfo.setTherapyStatus("0");
+					patientInfo.setTherapyStatusName("待筛查");
+				}else{
+					patientInfo.setTherapyStatus("9");
+					patientInfo.setTherapyStatusName("出院");
+				}
+				try {
+					hospitalInfoBo.getDao().update(patientInfo);
+				} catch (Exception e) {
+					doException(e);
+				}
+
+			}
+		});
 
 		if (hospitalInfo.getHeight() == 0) {
 			TextView_Height.setText("身高：_ cm");
@@ -396,7 +416,7 @@ public class PatientViewActivity extends BaseActivity {
 		textViewDiseaseName = (TextView) findViewById(R.id.textViewDiseaseName);
 		textViewPatientNo = (TextView) findViewById(R.id.textViewPatientNo);
 		textViewHospitalizationNumber = (TextView) findViewById(R.id.hospitalizationNumber);
-		textTherapyStatusName = (TextView) findViewById(R.id.textTherapyStatusName);
+		switchStatus = (Switch) findViewById(R.id.switchStatus);
 		btnToQuestionnaire = (Button) findViewById(R.id.btnToQuestionnaire);
 		btnToCourseRecord = (Button) findViewById(R.id.btnToCourseRecord);
 		btnToMealRecord = (Button) findViewById(R.id.btnToMealRecord);
