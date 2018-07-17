@@ -70,12 +70,6 @@ public class PatientHospitalizeBasicInfoDao extends
 		//在院状态
 		if(inStatus){
 			where.and().ne("TherapyStatus", "9");
-			// 是否隐藏历史患者
-			if (Global.IsHideHistoryPatient
-					.equals(SettingCode.HISTORY_PATIENT_HIDE)) {
-				where.and().eq("OrderBy", "1");
-				where.and().ne("TherapyStatus", "9");
-			}
 		}else{
 			where.and().eq("TherapyStatus", "9");
 		}
@@ -87,7 +81,6 @@ public class PatientHospitalizeBasicInfoDao extends
 
 		if (Global.PatientListOrderBy.equals(SettingCode.ORDER_BY_DEPARTMENT)) {
 
-			qBuilder.orderBy("OrderBy", true);
 			qBuilder.orderBy("DepartmentName", ascDesc)
 					.orderBy("BedCodePrefix", true)
 					.orderBy("BedCodeSuffix", true).orderBy("BedCode", true);
@@ -95,7 +88,6 @@ public class PatientHospitalizeBasicInfoDao extends
 		} else if (Global.PatientListOrderBy
 				.equals(SettingCode.ORDER_BY_BEDNUMBER)) {
 
-			qBuilder.orderBy("OrderBy", true);
 			qBuilder.orderBy("DepartmentName", true)
 					.orderBy("BedCodePrefix", ascDesc)
 					.orderBy("BedCodeSuffix", ascDesc)
@@ -125,14 +117,15 @@ public class PatientHospitalizeBasicInfoDao extends
 	}// ...other operations
 
 	/**
-	 * 更新排序
+	 * 每个床位只保留最新入院的患者，将其它的设置为出院状态
 	 * 
 	 * @throws SQLException
 	 */
 	public void updateOrderBy() throws SQLException {
-		dao.updateRaw("update patienthospitalizebasicinfo set OrderBy='999'");
-
-		dao.updateRaw("update patienthospitalizebasicinfo set OrderBy='1' where PatientHospitalize_DBKey IN (	select max(PatientHospitalize_DBKey) PatientHospitalize_DBKey from patienthospitalizebasicinfo GROUP BY DepartmentName, BedCode order by InHospitalData DESC)");
+		dao.updateRaw("update patienthospitalizebasicinfo set TherapyStatus='9', TherapyStatusName='出院' where TherapyStatus<>'9' and DepartmentName || BedCode || InHospitalData not IN\n" +
+				"(\n" +
+				"\tselect DepartmentName || BedCode || max(InHospitalData) from patienthospitalizebasicinfo  where TherapyStatus<>'9'  GROUP BY DepartmentName, BedCode\n" +
+				")");
 
 	}
 

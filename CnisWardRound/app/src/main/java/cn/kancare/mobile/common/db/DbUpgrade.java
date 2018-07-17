@@ -165,5 +165,10 @@ public class DbUpgrade {
             database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinNum' DOUBLE");
             oldVersion++;
         }
+
+		if (oldVersion == 64 && oldVersion < newVersion) {
+			database.execSQL("update patienthospitalizebasicinfo set BedCodeSuffix = BedCode where BedCodeSuffix is null");
+			oldVersion++;
+		}
 	}
 }
