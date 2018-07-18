@@ -9,6 +9,9 @@ public class SettingCode {
 	public static final String HISTORY_PATIENT = "HIDE_HISTORY_PATIENT";// 隐藏历史患者
 																		// 1、隐藏,
 																		// ""、显示
+	public static final String DEFAULT_DEPARTMENT = "DEFAULT_DEPARTMENT";// 登录后的默认科室
+
+
 	public static final String MACHINE_NO = "MACHINE_NO";// 设备编号
 
 	// 患者列表排序

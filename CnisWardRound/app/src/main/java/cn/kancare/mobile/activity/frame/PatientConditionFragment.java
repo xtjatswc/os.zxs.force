@@ -11,6 +11,9 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import cn.kancare.mobile.activity.mealrecord.MealRecordActivity;
+import cn.kancare.mobile.bo.basic.SettingBo;
+import cn.kancare.mobile.common.Global;
+import cn.kancare.mobile.common.constant.SettingCode;
 import cn.kancare.mobile.common.patient.IPatientCondition;
 
 import java.util.List;
@@ -27,12 +30,15 @@ import os.zxs.force.core.view.fragment.BaseGridFragment;
 public class PatientConditionFragment extends BaseGridFragment<Department> implements IPatientCondition{
     FragmentActivity context;
     DepartmentBo departmentBo;
+    SettingBo settingBo;
     CallBackListener callBackListener;
     String Department_DBKey = "";
 
     TextView TextViewDepartment;
     CheckBox CheckBoxMyPatient;
     CheckBox CheckBoxMyStar;
+
+    String DefaultDepartmentKey = SettingCode.DEFAULT_DEPARTMENT + "_" + Global.loginUser.getUserLoginID();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +57,13 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
                 callBackListener.doCallBack();
             }
         });
+
+        //读取默认科室
+        try {
+            Department_DBKey = settingBo.getSetting(DefaultDepartmentKey);
+        } catch (Exception e) {
+            doException(e);
+        }
 
         return layoutView;
     }
@@ -103,6 +116,14 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
                 Department_DBKey = data.getDepartment_DBKey() + "";
                 TextViewDepartment.setText("当前科室：" + data.getDepartmentName());
                 callBackListener.doCallBack();
+                //存储默认科室
+                try {
+                    settingBo.saveSetting(DefaultDepartmentKey, data.getDepartment_DBKey() + "");
+                } catch (Exception e) {
+                    doException(e);
+                }
+
+                //刷新显示
                 adapter.notifyDataSetChanged();
             }
         });
@@ -125,6 +146,7 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
 
     protected void initializeBo() throws Exception {
         departmentBo = new DepartmentBo(context);
+        settingBo = new SettingBo(context);
     }
 
     protected int getLayoutId() {

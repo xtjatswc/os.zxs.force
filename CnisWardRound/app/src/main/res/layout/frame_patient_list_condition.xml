@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="当前科室："
+        android:text="当前科室：全部科室"
         android:textSize="16dp"
         android:textColor="@color/gray" />
 
