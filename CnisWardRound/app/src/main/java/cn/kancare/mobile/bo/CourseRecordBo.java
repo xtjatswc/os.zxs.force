@@ -264,6 +264,13 @@ public class CourseRecordBo extends BaseBo<CourseRecordDao> {
 				.getText().toString()));
 		course.setHeight(Convert.cash2Double(activity.editHeight.getText().toString()));
 		course.setWeight(Convert.cash2Double(activity.editWeight.getText().toString()));
+
+		//如果患者基本信息中没填体重，则把问卷中的体重更新到患者基本信息中
+		if(Global.currentPatient.getWeight() == 0){
+			Global.currentPatient.setWeight(course.getWeight());
+			activity.patientHospitalizeBasicInfoBo.getDao().update(Global.currentPatient);
+		}
+
 		course.setBMI(Convert.cash2Double(activity.BMI.getText().toString()));
 		course.setGripLeft(Convert.cash2Double(activity.GripLeft.getText()
 				.toString()));

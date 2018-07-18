@@ -14,6 +14,7 @@ import android.widget.TextView;
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.bean.CourseRecord;
 import cn.kancare.mobile.bo.CourseRecordBo;
+import cn.kancare.mobile.bo.patient.PatientHospitalizeBasicInfoBo;
 import cn.kancare.mobile.common.constant.LogTag;
 import cn.kancare.mobile.common.constant.RequestCode;
 import os.zxs.force.core.util.Convert;
@@ -27,6 +28,7 @@ import com.google.common.collect.Range;
 public class CourseRecordInfoActivity extends BaseActivity {
 	int operateType;
 	CourseRecordBo courseBo;
+	public PatientHospitalizeBasicInfoBo patientHospitalizeBasicInfoBo;
 	CourseRecord course;
 	String PatientHospitalize_DBKey; // 新建时用
 	String CourseRecord_DBKey; // 编辑时用
@@ -228,7 +230,7 @@ public class CourseRecordInfoActivity extends BaseActivity {
 	@Override
 	protected void initializeBo() throws Exception {
 		courseBo = new CourseRecordBo(this);
-
+		patientHospitalizeBasicInfoBo = new PatientHospitalizeBasicInfoBo(this);
 	}
 
 	public void btnSaveOnclickHandler(View view) {

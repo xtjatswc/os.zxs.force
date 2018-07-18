@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import cn.kancare.mobile.R;
+import cn.kancare.mobile.common.Global;
 import os.zxs.force.activity.BackFragment;
 import cn.kancare.mobile.bean.patient.PatientHospitalizeBasicInfo;
 import cn.kancare.mobile.bean.questionnaire.PatientQuestionnaire;
@@ -41,7 +42,6 @@ public class QuestionnaireActivity extends BaseActivity implements
 	public String PatientQuestionnaire_DBKey;
 	public int QuestionProperty;
 	public String PatientHospitalize_DBKey;
-	public PatientHospitalizeBasicInfo patientInfo;
 	public Questionnaire questionnaire;
 
 	public OptionDetailBo optionDetailBo;
@@ -81,9 +81,6 @@ public class QuestionnaireActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 
 		try {
-			patientInfo = patientHospitalizeBasicInfoBo.getDao().queryForId(
-					PatientHospitalize_DBKey);
-
 			patientQuestionnaireBo.loadPatientQuestionnaire(this);
 
 			if (editTextCurrentHeight.getText().equals("")) {
@@ -206,9 +203,9 @@ public class QuestionnaireActivity extends BaseActivity implements
 	private void SaveQuestionnaire() {
 		try {
 			// 保存身高
-			patientInfo.setHeight(Convert.cash2Double(editTextCurrentHeight
+			Global.currentPatient.setHeight(Convert.cash2Double(editTextCurrentHeight
 					.getText().toString()));
-			patientHospitalizeBasicInfoBo.getDao().update(patientInfo);
+			patientHospitalizeBasicInfoBo.getDao().update(Global.currentPatient);
 
 			if (operateType == RequestCode.NEW_QUESTIONNAIRE) {
 				// 先保存

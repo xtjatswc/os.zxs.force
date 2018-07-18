@@ -151,11 +151,11 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 
 	public void loadPatientQuestionnaire(QuestionnaireActivity activity)
 			throws Exception {
-		activity.editTextPatientName.setText(activity.patientInfo
+		activity.editTextPatientName.setText(Global.currentPatient
 				.getPatientName());
-		activity.editTextHospitalizationNumber.setText(activity.patientInfo
+		activity.editTextHospitalizationNumber.setText(Global.currentPatient
 				.getHospitalizationNumber());
-		activity.editTextAge.setText(activity.patientInfo.getAge());
+		activity.editTextAge.setText(Global.currentPatient.getAge());
 
 		if (activity.operateType == RequestCode.NEW_QUESTIONNAIRE) {
 			PatientQuestionnaire patientQuestionnaire = activity.patientQuestionnaireBo
@@ -312,51 +312,74 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 			PatientQuestionnaire patientQuestionnaire) {
 		if (patientQuestionnaire == null) {
 
-			if (activity.patientInfo.getHeight() != 0) {
+			if (Global.currentPatient.getHeight() != 0) {
 				activity.editTextCurrentHeight.setText(Convert
-						.cash2Int(activity.patientInfo.getHeight()) + "");
+						.cash2Int(Global.currentPatient.getHeight()) + "");
 			}
-
-			if (activity.patientInfo.getWeight() != 0) {
+			//从患者信息获取体重信息
+			if (Global.currentPatient.getWeight() != 0) {
 				activity.editTextCurrentWeight.setText(Convert
-						.cash2Int(activity.patientInfo.getWeight()) + "");
+						.cash2Int(Global.currentPatient.getWeight()) + "");
 				activity.editTextWeight1MonthAgo.setText(Convert
-						.cash2Int(activity.patientInfo.getWeight()) + "");
+						.cash2Int(Global.currentPatient.getWeight()) + "");
 				activity.editTextWeight2MonthAgo.setText(Convert
-						.cash2Int(activity.patientInfo.getWeight()) + "");
+						.cash2Int(Global.currentPatient.getWeight()) + "");
 				activity.editTextWeight3MonthAgo.setText(Convert
-						.cash2Int(activity.patientInfo.getWeight()) + "");
+						.cash2Int(Global.currentPatient.getWeight()) + "");
 				activity.editTextWeight6MonthAgo.setText(Convert
-						.cash2Int(activity.patientInfo.getWeight()) + "");
+						.cash2Int(Global.currentPatient.getWeight()) + "");
 			}
 		} else {
-			if (patientQuestionnaire.getWeightNow() != 0)
+			//从上一次的问卷中获取体重信息,如果没有，则从患者基本信息中获取体重信息, 1、2、3、6月份如果获取不到体重信息，则从当前体重赋值
+
+			if (patientQuestionnaire.getWeightNow() == 0) {
+				activity.editTextCurrentWeight.setText(Convert
+						.cash2Int(Global.currentPatient.getWeight()) + "");
+			}else{
 				activity.editTextCurrentWeight.setText(Convert
 						.cash2Int(patientQuestionnaire.getWeightNow()) + "");
+			}
 
-			if (activity.patientInfo.getHeight() != 0)
+			if (Global.currentPatient.getHeight() != 0)
 				activity.editTextCurrentHeight.setText(Convert
-						.cash2Int(activity.patientInfo.getHeight()) + "");
+						.cash2Int(Global.currentPatient.getHeight()) + "");
 
-			if (patientQuestionnaire.getWeight1MonthAgo() != 0)
+			if (patientQuestionnaire.getWeight1MonthAgo() == 0){
 				activity.editTextWeight1MonthAgo.setText(Convert
-						.cash2Int(patientQuestionnaire.getWeight1MonthAgo())
+						.cash2Int(activity.editTextCurrentWeight.getText().toString()) + "");
+			}else{
+				activity.editTextWeight1MonthAgo.setText(Convert
+						.cash2Int(patientQuestionnaire.getWeight1MonthAgo() + "")
 						+ "");
+			}
 
-			if (patientQuestionnaire.getWeight2MonthAgo() != 0)
+
+			if (patientQuestionnaire.getWeight2MonthAgo() == 0){
+				activity.editTextWeight2MonthAgo.setText(Convert
+						.cash2Int(activity.editTextCurrentWeight.getText().toString()) + "");
+			}else{
 				activity.editTextWeight2MonthAgo.setText(Convert
 						.cash2Int(patientQuestionnaire.getWeight2MonthAgo())
 						+ "");
+			}
 
-			if (patientQuestionnaire.getWeight3MonthAgo() != 0)
+			if (patientQuestionnaire.getWeight3MonthAgo() == 0){
+				activity.editTextWeight3MonthAgo.setText(Convert
+						.cash2Int(activity.editTextCurrentWeight.getText().toString()) + "");
+			}else{
 				activity.editTextWeight3MonthAgo.setText(Convert
 						.cash2Int(patientQuestionnaire.getWeight3MonthAgo())
 						+ "");
+			}
 
-			if (patientQuestionnaire.getWeight6MonthAgo() != 0)
+			if (patientQuestionnaire.getWeight6MonthAgo() == 0){
+				activity.editTextWeight6MonthAgo.setText(Convert
+						.cash2Int(activity.editTextCurrentWeight.getText().toString()) + "");
+			}else{
 				activity.editTextWeight6MonthAgo.setText(Convert
 						.cash2Int(patientQuestionnaire.getWeight6MonthAgo())
 						+ "");
+			}
 		}
 	}
 
@@ -572,6 +595,12 @@ public class PatientQuestionnaireBo extends BaseBo<PatientQuestionnaireDao> {
 		patientQuestionnaire.setWeight6MonthAgo(Convert
 				.cash2Double(activity.editTextWeight6MonthAgo.getText()
 						.toString()));
+
+		//如果患者基本信息中没填体重，则把问卷中的体重更新到患者基本信息中
+		if(Global.currentPatient.getWeight() == 0){
+			Global.currentPatient.setWeight(patientQuestionnaire.getWeightNow());
+			activity.patientHospitalizeBasicInfoBo.getDao().update(Global.currentPatient);
+		}
 
 		patientQuestionnaire
 				.setPatientHospitalize_DBKey(activity.PatientHospitalize_DBKey);

@@ -89,7 +89,7 @@ public class PatientQuestionnaireDao extends BaseDao<PatientQuestionnaire> {
 	}// ...other operations
 
 	/**
-	 * 获取某个患者最新一条记录
+	 * 获取某个患者最新的且当前体重不为空的一条记录
 	 * 
 	 * @return
 	 * @throws Exception
@@ -99,8 +99,8 @@ public class PatientQuestionnaireDao extends BaseDao<PatientQuestionnaire> {
 		QueryBuilder<PatientQuestionnaire, Integer> queryBuilder = dao
 				.queryBuilder();
 		queryBuilder.where().eq("PatientHospitalize_DBKey",
-				PatientHospitalize_DBKey);
-		return queryBuilder.orderBy(getPrimaryKey(), false).limit(1)
+				PatientHospitalize_DBKey).and().ne("WeightNow", 0);
+		return queryBuilder.orderBy("ScreeningDate", false).limit(1)
 				.queryForFirst();
 	}
 
