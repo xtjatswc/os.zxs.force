@@ -20,6 +20,7 @@ import cn.kancare.mobile.bean.basic.Department;
 import cn.kancare.mobile.bo.basic.DepartmentBo;
 import cn.kancare.mobile.common.constant.LogTag;
 import os.zxs.force.core.bridge.CallBackListener;
+import os.zxs.force.core.util.Convert;
 import os.zxs.force.core.util.ViewFindUtils;
 import os.zxs.force.core.view.fragment.BaseGridFragment;
 
@@ -102,8 +103,14 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
                 Department_DBKey = data.getDepartment_DBKey() + "";
                 TextViewDepartment.setText("当前科室：" + data.getDepartmentName());
                 callBackListener.doCallBack();
+                adapter.notifyDataSetChanged();
             }
         });
+        if(data.getDepartment_DBKey() == Convert.cash2Int(Department_DBKey)){
+            ButtonDepartment.setSelected(true);
+        }else{
+            ButtonDepartment.setSelected(false);
+        }
 
     }
 
