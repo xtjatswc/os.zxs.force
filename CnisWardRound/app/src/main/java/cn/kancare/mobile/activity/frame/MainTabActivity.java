@@ -25,6 +25,7 @@ import os.zxs.force.core.bridge.CallBackListener;
 import os.zxs.force.core.util.ViewFindUtils;
 import os.zxs.force.core.view.Loading;
 import os.zxs.force.core.view.activity.BaseActivity;
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
 public class MainTabActivity extends BaseActivity{
     private Context mContext = this;
@@ -86,6 +87,13 @@ public class MainTabActivity extends BaseActivity{
         mTabLayout_1.setTabData(mTabEntities, this, R.id.fl_content, mFragments);
         tl_2();
 
+        SQLiteStudioService.instance().start(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        SQLiteStudioService.instance().stop();
+        super.onDestroy();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
