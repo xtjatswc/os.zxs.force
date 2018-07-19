@@ -76,10 +76,18 @@ public class PatientHospitalizeBasicInfoDao extends
 
 		qBuilder.limit(limit).offset(offset);
 
-		Boolean ascDesc = Global.PatientListOrderByAscDesc
-				.equals(SettingCode.ORDER_BY_ASC);
+		//排序方式写死，不按设置走
+		Boolean ascDesc = true;//Global.PatientListOrderByAscDesc.equals(SettingCode.ORDER_BY_ASC);
 
-		if (Global.PatientListOrderBy.equals(SettingCode.ORDER_BY_DEPARTMENT)) {
+		if (Global.PatientListOrderBy
+				.equals(SettingCode.ORDER_BY_INHOSPITALDATE) || !inStatus) {
+
+			qBuilder.orderBy("InHospitalData", false);
+			qBuilder.orderBy("DepartmentName", true)
+					.orderBy("BedCodePrefix", true)
+					.orderBy("BedCodeSuffix", true).orderBy("BedCode", true);
+
+		} else if (Global.PatientListOrderBy.equals(SettingCode.ORDER_BY_DEPARTMENT)) {
 
 			qBuilder.orderBy("DepartmentName", ascDesc)
 					.orderBy("BedCodePrefix", true)
@@ -92,14 +100,6 @@ public class PatientHospitalizeBasicInfoDao extends
 					.orderBy("BedCodePrefix", ascDesc)
 					.orderBy("BedCodeSuffix", ascDesc)
 					.orderBy("BedCode", ascDesc);
-
-		} else if (Global.PatientListOrderBy
-				.equals(SettingCode.ORDER_BY_INHOSPITALDATE)) {
-
-			qBuilder.orderBy("InHospitalData", ascDesc);
-			qBuilder.orderBy("DepartmentName", true)
-					.orderBy("BedCodePrefix", true)
-					.orderBy("BedCodeSuffix", true).orderBy("BedCode", true);
 
 		} else if (Global.PatientListOrderBy
 				.equals(SettingCode.ORDER_BY_DOCTOR)) {
