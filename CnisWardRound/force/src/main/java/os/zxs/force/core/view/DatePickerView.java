@@ -29,6 +29,13 @@ public class DatePickerView extends EditText {
 		this.callBackListener = callBackListener;
 	}
 
+	public void setDate(String text) {
+		text = DateHelper.getInstance()
+				.getDataString_3(text);
+		java.util.Date date = DateHelper.getInstance().getDate(text);
+		setDate(date);
+	}
+
 	public void setDate(java.util.Date date) {
 		this.date = date;
 		this.setText(DateHelper.getInstance().getDataString_2(date));

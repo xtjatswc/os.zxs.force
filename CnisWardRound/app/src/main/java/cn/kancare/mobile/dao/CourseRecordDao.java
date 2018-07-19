@@ -20,6 +20,18 @@ public class CourseRecordDao extends BaseDao<CourseRecord> {
 		return "CourseRecord_DBKey";
 	}
 
+	public List<CourseRecord> query(String PatientHospitalize_DBKey) throws Exception {
+
+		QueryBuilder<CourseRecord, Integer> qBuilder = dao.queryBuilder();
+		if (!PatientHospitalize_DBKey.equals("")) {
+			qBuilder.where().eq("PatientHospitalize_DBKey",
+					PatientHospitalize_DBKey);
+		}
+		qBuilder.orderBy("CourseRecordDate", true);
+		return qBuilder.query();
+
+	}// ...other operations
+
 	/**
 	 * 查询记录
 	 * 

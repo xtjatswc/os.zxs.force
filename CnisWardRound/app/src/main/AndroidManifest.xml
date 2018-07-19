@@ -48,6 +48,8 @@
         </activity>
         <activity android:name=".activity.courserecord.CourseRecordInfoActivity" >
         </activity>
+        <activity android:name=".activity.courserecord.CourseRecordChartActivity" >
+        </activity>
         <activity android:name=".activity.patient.PatientViewActivity" >
         </activity>
         <activity android:name=".activity.CnisLogListActivity" >

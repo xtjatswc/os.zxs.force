@@ -15,6 +15,7 @@ import android.widget.TextView;
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.activity.advice.AdviceListActivity;
 import cn.kancare.mobile.activity.bodyanalysis.BodyAnalysisListActivity;
+import cn.kancare.mobile.activity.courserecord.CourseRecordChartActivity;
 import cn.kancare.mobile.activity.courserecord.CourseRecordListActivity;
 import cn.kancare.mobile.activity.laboratoryindex.LaboratoryIndexListActivity;
 import cn.kancare.mobile.activity.mealrecord.MealRecordActivity;
@@ -67,6 +68,7 @@ public class PatientViewActivity extends BaseActivity {
 	Button btnToNutrientAdvice;
 	Button btnBodyAnalysisReport;
 	Button btnLaboratoryIndex;
+	Button btnWeightChart;
 	ImageButton ImageButton_Edit;
 	ImageButton ImageButton_Delete;
 	TextView textViewChiefComplaint;
@@ -91,6 +93,7 @@ public class PatientViewActivity extends BaseActivity {
 			btnLaboratoryIndex.setOnClickListener(new onClickListener());
 			ImageButton_Edit.setOnClickListener(new onClickListener());
 			ImageButton_Delete.setOnClickListener(new onClickListener());
+			btnWeightChart.setOnClickListener(new onClickListener());
 
 			// 人体成分分析气泡
 			List<BodyAnalysisReport> lstAnalysisReports = bodyAnalysisReportBo
@@ -164,6 +167,10 @@ public class PatientViewActivity extends BaseActivity {
 
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.btnWeightChart:
+				Intent i1 = new Intent(PatientViewActivity.this, CourseRecordChartActivity.class);
+				startActivity(i1);
+				break;
 			case R.id.ImageButton_Edit:
 				Intent i7 = new Intent(PatientViewActivity.this,
 						PatientInfoActivity.class);
@@ -430,7 +437,7 @@ public class PatientViewActivity extends BaseActivity {
 		textViewStaging = (TextView) findViewById(R.id.textViewStaging);
 		textViewChiefComplaint = (TextView) findViewById(R.id.textViewChiefComplaint);
 		textViewMedicalHistory = (TextView) findViewById(R.id.textViewMedicalHistory);
-
+		btnWeightChart = (Button) findViewById(R.id.btnWeightChart);
 	}
 
 }

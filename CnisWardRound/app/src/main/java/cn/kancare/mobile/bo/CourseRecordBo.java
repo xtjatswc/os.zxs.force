@@ -179,8 +179,7 @@ public class CourseRecordBo extends BaseBo<CourseRecordDao> {
 		}
 
 		// 查房日期
-		activity.DatePickerViewRecordDate.setText(DateHelper.getInstance()
-				.getDataString_3(course.getCourseRecordDate()));
+		activity.DatePickerViewRecordDate.setDate(course.getCourseRecordDate());
 
 		// if(Global.AppMode.equals(SettingCode.APP_MODE_INNER)){
 		// activity.chkNoShow.setVisibility(View.GONE);
