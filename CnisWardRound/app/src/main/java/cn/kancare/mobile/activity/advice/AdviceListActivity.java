@@ -206,9 +206,10 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 			// 计算总能量
 			ChinaFoodComposition totalChinaFoodComposition = chinaFoodCompositionBo
 					.computeNutritionTotal(listChinaFoodCompositions);
-			holder.TextViewEnergy.setText("	"
-					+ Convert.Round(totalChinaFoodComposition.getEnergy(), 2)
+			holder.TextViewEnergy.setText("能量:" + Convert.Round(totalChinaFoodComposition.getEnergy(), 2)
 					+ "Kcal");
+			holder.TextViewProtein.setText("蛋白质:" + Convert.Round(totalChinaFoodComposition.getProtein(), 2)
+					+ "g");
 		} catch (Exception e) {
 			doException(e);
 		}
@@ -274,6 +275,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		ImageButton ImageButton_Delete;
 		TextView TextViewRemark;
 		TextView TextViewEnergy;
+		TextView TextViewProtein;
 		TextView TextViewAdviceDate;
 	}
 
@@ -290,6 +292,8 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 				.findViewById(R.id.TextViewRemark);
 		holder.TextViewEnergy = (TextView) view
 				.findViewById(R.id.TextViewEnergy);
+		holder.TextViewProtein = (TextView) view
+				.findViewById(R.id.TextViewProtein);
 		holder.TextViewAdviceDate = (TextView) view
 				.findViewById(R.id.TextViewAdviceDate);
 		view.setTag(holder);
