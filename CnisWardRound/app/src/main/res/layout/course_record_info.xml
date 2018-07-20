@@ -44,43 +44,43 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_top_corner_no_bottom_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="未见患者：" />
 
                     <CheckBox
                         android:id="@+id/chkNoShow"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:text=" (如果查房时患者不在床位请打对勾)" />
                 </TableRow>
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="查房日期：" />
 
                     <os.zxs.force.core.view.DatePickerView
                         android:id="@+id/DatePickerViewRecordDate"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:focusable="false"
                         android:hint="" />
                 </TableRow>
@@ -101,21 +101,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_top_corner_no_bottom_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="恶心：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -135,21 +135,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="腹泻：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -169,21 +169,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="便秘：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -203,21 +203,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="呕吐：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -237,21 +237,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="腹胀：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -271,21 +271,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="腹痛：" />
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="vertical" >
 
                         <Spinner
@@ -319,21 +319,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_top_corner_no_bottom_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="体温（℃）：" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:gravity="center_vertical"
                         android:orientation="horizontal" >
 
@@ -364,65 +364,65 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="呼吸（次/分）：" />
 
                     <EditText
                         android:id="@+id/editTextBreathe"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" />
                 </TableRow>
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="皮肤：" />
 
                     <Spinner
                         android:id="@+id/SpinnerSkin"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8" >
+                        android:layout_weight="0.7" >
                     </Spinner>
                 </TableRow>
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="心率（次/分）：" />
 
                     <EditText
                         android:id="@+id/editHeartRate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -430,21 +430,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="血压（mmHg）：" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.7"
                         android:orientation="horizontal"
                         android:weightSum="1" >
 
@@ -477,22 +477,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:text="水肿：" />
 
                     <Spinner
                         android:id="@+id/SpinnerEdema"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8" >
+                        android:layout_weight="0.7" >
                     </Spinner>
                 </TableRow>
 
@@ -512,22 +512,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_top_corner_no_bottom_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="三头肌皮脂厚度（mm）：" />
 
                     <EditText
                         android:id="@+id/editTricepsSkinfold"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -535,22 +535,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="身高（cm）：" />
 
                     <EditText
                         android:id="@+id/editHeight"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -558,22 +558,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="体重（Kg）：" />
 
                     <EditText
                         android:id="@+id/editWeight"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -581,22 +581,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="BMI（㎏∕㎡）：" />
 
                     <EditText
                         android:id="@+id/editBMI"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -604,21 +604,21 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="握力 R/L（N）：" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:orientation="horizontal"
                         android:weightSum="1" >
 
@@ -651,22 +651,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="基础代谢（BMR）：" />
 
                     <EditText
                         android:id="@+id/editBMR"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -674,22 +674,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="6分钟步行速度（m/s）：" />
 
                     <EditText
                         android:id="@+id/editWalkSpeed"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -711,22 +711,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_top_corner_no_bottom_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="引流量（ml）：" />
 
                     <EditText
                         android:id="@+id/editDrainage"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -734,22 +734,22 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_no_corner_without_bottom"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="胃肠减压量（ml）：" />
 
                     <EditText
                         android:id="@+id/editGastrointestinalDecompression"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
@@ -757,60 +757,61 @@
 
                 <TableRow
                     style="@style/tableRowStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_bottom_corner_no_top_line"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.4"
                         android:text="尿量（ml）：" />
 
                     <EditText
                         android:id="@+id/editUrineVolume"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="numberDecimal"
                         android:selectAllOnFocus="true" >
                     </EditText>
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="30dip"
                     android:weightSum="1" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="1"
                         android:text="备注"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
 
                     <EditText
                         android:id="@+id/editRemark"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:layout_span="2"
+                        android:layout_weight="0.9"
                         android:background="@android:drawable/edit_text"
                         android:enabled="true"
                         android:gravity="top"
                         android:inputType="textMultiLine"
                         android:maxLines="5"
                         android:minLines="4"
-                        android:scrollbars="vertical" >
-                    </EditText>
+                        android:scrollbars="vertical"></EditText>
                 </TableRow>
             </TableLayout>
         </ScrollView>
