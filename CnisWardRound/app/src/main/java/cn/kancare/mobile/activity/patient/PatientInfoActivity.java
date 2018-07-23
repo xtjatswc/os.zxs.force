@@ -63,6 +63,7 @@ public class PatientInfoActivity extends BaseActivity {
 	public BackFragment backFragment;
 	public RadioButton RadioButtonIn;
 	public RadioButton RadioButtonOut;
+	public Button btnMore;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -145,6 +146,7 @@ public class PatientInfoActivity extends BaseActivity {
 
 		Button_Save.setOnClickListener(new onClickListener());
 		Button_Save2.setOnClickListener(new onClickListener());
+		btnMore.setOnClickListener(new onClickListener());
 
 	}
 
@@ -185,6 +187,10 @@ public class PatientInfoActivity extends BaseActivity {
 		public void onClick(View v) {
 
 			switch (v.getId()) {
+			case R.id.btnMore:
+				Intent intent2 = new Intent(PatientInfoActivity.this, DiagnosisActivity.class);
+				startActivity(intent2);
+				break;
 			case R.id.Button_Save:
 			case R.id.Button_Save2:
 
@@ -263,7 +269,7 @@ public class PatientInfoActivity extends BaseActivity {
 		backFragment = (BackFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_back);
 		RadioButtonIn = (RadioButton) findViewById(R.id.RadioButtonIn);
 		RadioButtonOut = (RadioButton) findViewById(R.id.RadioButtonOut);
-
+		btnMore = (Button) findViewById(R.id.btnMore);
 	}
 
 	@Override

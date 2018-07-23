@@ -13,6 +13,7 @@ import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
 import cn.kancare.mobile.bean.basic.ChinaFoodComposition;
+import cn.kancare.mobile.bean.basic.Diagnosis;
 import cn.kancare.mobile.bean.laboratoryindex.LaboratoryIndex;
 import cn.kancare.mobile.bean.laboratoryindex.SearchPageConfig;
 import cn.kancare.mobile.bean.laboratoryindex.TestItemDetail;
@@ -168,6 +169,11 @@ public class DbUpgrade {
 
 		if (oldVersion == 64 && oldVersion < newVersion) {
 			database.execSQL("update patienthospitalizebasicinfo set BedCodeSuffix = BedCode where BedCodeSuffix is null");
+			oldVersion++;
+		}
+
+		if (oldVersion == 65 && oldVersion < newVersion) {
+			TableUtils.createTable(connectionSource, Diagnosis.class);
 			oldVersion++;
 		}
 	}

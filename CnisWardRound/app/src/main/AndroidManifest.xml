@@ -76,6 +76,8 @@
         </activity>
         <activity android:name=".activity.advice.AdviceInfoActivity" >
         </activity>
+        <activity android:name=".activity.patient.DiagnosisActivity" >
+        </activity>
         <activity android:name="tablayoutsamples.ui.SimpleHomeActivity" >
         </activity>
         <activity android:name="tablayoutsamples.ui.CommonTabActivity" >

@@ -16,6 +16,7 @@ import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
 import cn.kancare.mobile.bean.basic.BedNumber;
 import cn.kancare.mobile.bean.basic.ChinaFoodComposition;
 import cn.kancare.mobile.bean.basic.Department;
+import cn.kancare.mobile.bean.basic.Diagnosis;
 import cn.kancare.mobile.bean.basic.Setting;
 import cn.kancare.mobile.bean.basic.SysCode;
 import cn.kancare.mobile.bean.basic.User;
@@ -38,7 +39,7 @@ public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
     public static final String DATABASE_NAME = "cnis-ward-round.db";
 
     static {
-        DATABASE_VERSION = 65;
+        DATABASE_VERSION = 66;
     }
 
     private static DatabaseHelper instance;
@@ -103,6 +104,9 @@ public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
                     NutrientAdviceDetail.class);
             TableUtils.createTable(connectionSource,
                     NutrientAdviceSummary.class);
+            TableUtils.createTable(connectionSource,
+                    Diagnosis.class);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
