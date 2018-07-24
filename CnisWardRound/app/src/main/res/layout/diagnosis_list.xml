@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:hint="请输入拼音缩写或疾病关键字检索"/>
+            android:hint="请输入拼音缩写或关键字检索"/>
 
         <ListView
             android:id="@+id/lvDiagnosis"
