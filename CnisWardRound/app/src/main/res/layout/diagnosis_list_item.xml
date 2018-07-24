@@ -6,29 +6,37 @@
     android:paddingBottom="15dip"
     android:paddingTop="15dip" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textViewID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dip" />
-
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dip" />
 
         <TextView
             android:id="@+id/textViewCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dip"
-            android:visibility="gone" />
-    </LinearLayout>
+            android:layout_marginRight="8dp"
+            android:text="Code"
+            android:textColor="@color/blue" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textViewCode"
+            android:text="Name"
+            android:textSize="20dip" />
+
+        <TextView
+            android:id="@+id/textInputCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InputCode"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/gray"
+            android:textSize="20dip" />
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -18,12 +18,12 @@ public class Diagnosis {
     private String DiagnosisCode;
 
     // DiagnosisName
-    @DatabaseField(columnName = "DiagnosisName")
-    private int DiagnosisName;
+    @DatabaseField(columnName = "DiagnosisName",index=true)
+    private String DiagnosisName;
 
     // InputCode
-    @DatabaseField(columnName = "InputCode")
-    private int InputCode;
+    @DatabaseField(columnName = "InputCode",index=true)
+    private String InputCode;
 
     public int getID() {
         return ID;
@@ -41,19 +41,19 @@ public class Diagnosis {
         DiagnosisCode = diagnosisCode;
     }
 
-    public int getDiagnosisName() {
+    public String getDiagnosisName() {
         return DiagnosisName;
     }
 
-    public void setDiagnosisName(int diagnosisName) {
+    public void setDiagnosisName(String diagnosisName) {
         DiagnosisName = diagnosisName;
     }
 
-    public int getInputCode() {
+    public String getInputCode() {
         return InputCode;
     }
 
-    public void setInputCode(int inputCode) {
+    public void setInputCode(String inputCode) {
         InputCode = inputCode;
     }
 }

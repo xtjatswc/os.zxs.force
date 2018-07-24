@@ -2,6 +2,7 @@ package cn.kancare.mobile.activity.patient;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,10 +11,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.kancare.mobile.R;
+import cn.kancare.mobile.activity.BackFragment;
 import cn.kancare.mobile.bean.basic.Diagnosis;
 import cn.kancare.mobile.bo.basic.DiagnosisBo;
 import cn.kancare.mobile.common.constant.LogTag;
+import os.zxs.force.core.bridge.CallBackListener;
 import os.zxs.force.core.util.ViewFindUtils;
+import os.zxs.force.core.view.ClearEditText;
 import os.zxs.force.core.view.activity.BaseListActivity;
 
 public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
@@ -21,7 +25,22 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
     Context context;
     DiagnosisBo diagnosisBo;
 
-    EditText editTextKeyword;
+    ClearEditText editTextKeyword;
+    BackFragment backFragment;
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        editTextKeyword.setCallBackListener(new CallBackListener() {
+
+            public void doCallBack() {
+                refreshList();
+            }
+        });
+
+    }
 
     protected List<Diagnosis> getInitializeData() throws Exception {
         String keyword = editTextKeyword.getText().toString();
@@ -42,8 +61,15 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
     }
 
     protected void setListItemView(int position, View view, Diagnosis data, ViewGroup parent) {
+        TextView textViewCode = ViewFindUtils.hold(view, R.id.textViewCode);
+        textViewCode.setText(data.getDiagnosisCode());
+
         TextView textViewName = ViewFindUtils.hold(view, R.id.textViewName);
         textViewName.setText(data.getDiagnosisName());
+
+        TextView textInputCode = ViewFindUtils.hold(view, R.id.textInputCode);
+        textInputCode.setText(data.getInputCode());
+
     }
 
     protected void setViewHolder(View view) {
@@ -70,5 +96,7 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
         context = this;
         View view = this.getWindow().getDecorView();
         editTextKeyword = ViewFindUtils.find(view, R.id.editTextKeyword);
+        backFragment = (BackFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_back);
+        backFragment.setTitle("ICD-10疾病编码");
     }
 }

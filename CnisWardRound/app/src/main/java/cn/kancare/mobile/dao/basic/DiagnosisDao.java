@@ -25,14 +25,11 @@ public class DiagnosisDao  extends BaseDao<Diagnosis> {
 
         QueryBuilder<Diagnosis, Integer> qBuilder = dao.queryBuilder();
         Where<Diagnosis, Integer> where = qBuilder.where();
+        keyword = "%" + keyword + "%";
+        where.or(where.like("InputCode", keyword),
+                where.like("DiagnosisName", keyword)
+        );
 
-        if (!keyword.equals("")) {
-//            keyword = "%" + keyword + "%";
-//            where.or(where.like("InputCode", keyword),
-//                    where.like("DiagnosisName", keyword)
-//            );
-
-        }
         qBuilder.limit(limit).offset(offset)
                 .orderBy("ID", true);
         return qBuilder.query();
