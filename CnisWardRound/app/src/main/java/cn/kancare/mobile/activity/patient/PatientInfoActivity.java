@@ -1,5 +1,6 @@
 package cn.kancare.mobile.activity.patient;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import android.content.Intent;
@@ -13,7 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import cn.kancare.mobile.R;
 import cn.kancare.mobile.activity.BackFragment;
+import cn.kancare.mobile.bean.basic.Diagnosis;
 import cn.kancare.mobile.bo.basic.DepartmentBo;
+import cn.kancare.mobile.bo.basic.DiagnosisBo;
 import cn.kancare.mobile.bo.basic.SysCodeBo;
 import cn.kancare.mobile.bo.patient.PatientHospitalizeBasicInfoBo;
 import cn.kancare.mobile.common.Global;
@@ -36,6 +39,7 @@ public class PatientInfoActivity extends BaseActivity {
 	PatientHospitalizeBasicInfoBo patientBo;
 	DepartmentBo departmentBo;
 	SysCodeBo sysCodeBo;
+	DiagnosisBo diagnosisBo;
 
 	Button Button_Save;
 	Button Button_Save2;
@@ -182,6 +186,29 @@ public class PatientInfoActivity extends BaseActivity {
 
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if(resultCode == RESULT_OK){
+			if(requestCode == 0){
+				//返回疾病编码
+				int id = data.getIntExtra("ID", 0);
+				try {
+					Diagnosis diagnosis = diagnosisBo.getDao().queryForId(id);
+					if(EditText_ClinicalDiagnosis.getText().toString().equals("")){
+						EditText_ClinicalDiagnosis.setText(diagnosis.getDiagnosisName());
+					}else{
+						EditText_ClinicalDiagnosis.setText(EditText_ClinicalDiagnosis.getText().toString() + "，" + diagnosis.getDiagnosisName());
+					}
+				} catch (SQLException e) {
+					doException(e);
+				}
+			}
+		}
+
+	}
+
 	class onClickListener implements OnClickListener {
 
 		public void onClick(View v) {
@@ -189,7 +216,7 @@ public class PatientInfoActivity extends BaseActivity {
 			switch (v.getId()) {
 			case R.id.btnMore:
 				Intent intent2 = new Intent(PatientInfoActivity.this, DiagnosisActivity.class);
-				startActivity(intent2);
+				startActivityForResult(intent2, 0);
 				break;
 			case R.id.Button_Save:
 			case R.id.Button_Save2:
@@ -241,6 +268,7 @@ public class PatientInfoActivity extends BaseActivity {
 		patientBo = new PatientHospitalizeBasicInfoBo(this);
 		departmentBo = new DepartmentBo(this);
 		sysCodeBo = new SysCodeBo(this);
+		diagnosisBo = new DiagnosisBo(this);
 	}
 
 	@Override

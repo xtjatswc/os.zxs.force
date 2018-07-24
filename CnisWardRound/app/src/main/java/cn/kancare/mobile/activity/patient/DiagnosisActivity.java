@@ -39,6 +39,11 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
                 refreshList();
             }
         });
+        editTextKeyword.setCallBackChangeListener(new CallBackListener() {
+            public void doCallBack() {
+                refreshList();
+            }
+        });
 
     }
 
@@ -74,6 +79,15 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     protected void setViewHolder(View view) {
 
+    }
+
+    @Override
+    protected void onListItemClick(Diagnosis data) {
+        super.onListItemClick(data);
+        Intent intent = new Intent();
+        intent.putExtra("ID", data.getID());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     protected String getLogTag() {

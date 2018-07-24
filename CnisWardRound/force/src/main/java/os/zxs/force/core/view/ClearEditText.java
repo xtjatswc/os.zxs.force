@@ -18,9 +18,16 @@ import os.zxs.force.core.util.ResUtil;
 public class ClearEditText extends EditText implements TextWatcher,
 		OnFocusChangeListener {
 
+	//清空文本框时触发
 	CallBackListener callBackListener;
 	public void setCallBackListener(CallBackListener callBack) {
 		callBackListener = callBack;
+	}
+
+	//文本框输入改变时触发
+	CallBackListener callBackChangeListener;
+	public void setCallBackChangeListener(CallBackListener callBack) {
+		callBackChangeListener = callBack;
 	}
 
 	/**
@@ -123,6 +130,10 @@ public class ClearEditText extends EditText implements TextWatcher,
 					right = getCompoundDrawables()[2];
 				}
 				setCompoundDrawablesWithIntrinsicBounds(left, null, right, null);
+				//触发文本改变事件
+				if(callBackChangeListener != null){
+					callBackChangeListener.doCallBack();
+				}
 			}
 		}
 	}
