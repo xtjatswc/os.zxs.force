@@ -221,9 +221,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		}
 
 		/**
-		 * 移除数据列表项
-		 * 
-		 * @param item
+		 * 获取数据列表项
 		 */
 		public List<Bean> getItems() {
 			return items;

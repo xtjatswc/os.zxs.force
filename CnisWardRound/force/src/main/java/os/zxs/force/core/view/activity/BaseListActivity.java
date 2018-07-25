@@ -209,8 +209,6 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 		/**
 		 * 获取所有数据列表项
-		 * 
-		 * @param item
 		 */
 		public List<Bean> getItems() {
 			return items;
