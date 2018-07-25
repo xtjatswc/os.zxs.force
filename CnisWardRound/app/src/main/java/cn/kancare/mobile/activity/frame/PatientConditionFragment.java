@@ -61,6 +61,10 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         //读取默认科室
         try {
             Department_DBKey = settingBo.getSetting(DefaultDepartmentKey);
+            Department department = departmentBo.getDao().queryForId(Department_DBKey);
+            if(department != null){
+                TextViewDepartment.setText("当前科室：" + department.getDepartmentName());
+            }
         } catch (Exception e) {
             doException(e);
         }
