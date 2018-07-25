@@ -27,15 +27,14 @@ public class BodyAnalysisListActivity extends
 	}
 
 	@Override
-	protected List<BodyAnalysisReport> getInitializeData() throws Exception {
-		return bodyAnalysisReportBo.getDao().query(20, 0,
-				Global.currentPatient.getPatientHospitalize_DBKey());
+	protected int getPageSize() {
+		return 20;
 	}
 
 	@Override
-	protected List<BodyAnalysisReport> getMoreData(int listCount)
+	protected List<BodyAnalysisReport> getMoreData(int pageSize, int offset)
 			throws Exception {
-		return bodyAnalysisReportBo.getDao().query(20, listCount,
+		return bodyAnalysisReportBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 

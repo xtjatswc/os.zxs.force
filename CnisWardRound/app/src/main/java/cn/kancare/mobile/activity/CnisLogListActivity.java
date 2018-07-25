@@ -84,13 +84,13 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 	}
 
 	@Override
-	protected List<CnisLog> getInitializeData() throws Exception {
-		return cnislogBo.getDao().query(20, 0);
+	protected int getPageSize() {
+		return 20;
 	}
 
 	@Override
-	protected List<CnisLog> getMoreData(int listCount) throws Exception {
-		return cnislogBo.getDao().query(20, listCount);
+	protected List<CnisLog> getMoreData(int pageSize, int offset) throws Exception {
+		return cnislogBo.getDao().query(pageSize, offset);
 	}
 
 	@Override

@@ -82,15 +82,14 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 	}
 
 	@Override
-	protected List<NutrientAdviceSummary> getInitializeData() throws Exception {
-		return nutrientAdviceSummaryBo.getDao().query(20, 0,
-				PatientHospitalize_DBKey);
+	protected int getPageSize() {
+		return 20;
 	}
 
 	@Override
-	protected List<NutrientAdviceSummary> getMoreData(int listCount)
+	protected List<NutrientAdviceSummary> getMoreData(int pageSize, int offset)
 			throws Exception {
-		return nutrientAdviceSummaryBo.getDao().query(20, listCount,
+		return nutrientAdviceSummaryBo.getDao().query(pageSize, offset,
 				PatientHospitalize_DBKey);
 	}
 

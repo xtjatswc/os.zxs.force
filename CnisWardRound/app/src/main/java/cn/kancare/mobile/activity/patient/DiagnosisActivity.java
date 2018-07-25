@@ -47,14 +47,14 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
-    protected List<Diagnosis> getInitializeData() throws Exception {
-        String keyword = editTextKeyword.getText().toString();
-        return diagnosisBo.getDao().query(20, 0, keyword);
+    @Override
+    protected int getPageSize() {
+        return 20;
     }
 
-    protected List<Diagnosis> getMoreData(int listCount) throws Exception {
+    protected List<Diagnosis> getMoreData(int pageSize, int offset) throws Exception {
         String keyword = editTextKeyword.getText().toString();
-        return diagnosisBo.getDao().query(20, listCount, keyword);
+        return diagnosisBo.getDao().query(pageSize, offset, keyword);
     }
 
     protected int getListId() {

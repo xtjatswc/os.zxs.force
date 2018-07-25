@@ -77,14 +77,13 @@ public class LaboratoryIndexListActivity extends
 	}
 
 	@Override
-	protected List<LaboratoryIndex> getInitializeData() throws Exception {
-		return laboratoryIndexBo.getDao().query(20, 0,
-				Global.currentPatient.getPatientHospitalize_DBKey());
+	protected int getPageSize() {
+		return 20;
 	}
 
 	@Override
-	protected List<LaboratoryIndex> getMoreData(int listCount) throws Exception {
-		return laboratoryIndexBo.getDao().query(20, listCount,
+	protected List<LaboratoryIndex> getMoreData(int pageSize, int offset) throws Exception {
+		return laboratoryIndexBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 

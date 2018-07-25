@@ -22,9 +22,9 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 	protected int visibleLastIndex = 0; // 最后的可视项索引
 	protected PaginationAdapter adapter;
 
-	protected abstract List<Bean> getInitializeData() throws Exception;
+	protected abstract int getPageSize();
 
-	protected abstract List<Bean> getMoreData(int listCount) throws Exception;
+	protected abstract List<Bean> getMoreData(int pageSize, int offset) throws Exception;
 
 	protected abstract int getListId();
 
@@ -93,7 +93,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 	protected void refreshList() {
 		List<Bean> list = null;
 		try {
-			list = getInitializeData();
+			list = getMoreData(getPageSize(), 0);
 		} catch (Exception e) {
 			doException(e);
 		}
@@ -120,7 +120,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 			int count = adapter.getCount();
 			List<Bean> list = null;
 			try {
-				list = getMoreData(count);
+				list = getMoreData(getPageSize(), count);
 			} catch (Exception e) {
 				doException(e);
 			}

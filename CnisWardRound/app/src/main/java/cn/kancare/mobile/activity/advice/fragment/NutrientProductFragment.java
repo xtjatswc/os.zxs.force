@@ -48,17 +48,15 @@ public class NutrientProductFragment extends
 		return layout;
 	}
 
-	@Override
-	protected List<ChinaFoodComposition> getInitializeData() throws Exception {
-		return chinaFoodCompositionBo.getDao().query(2000, 0, "2");
+    @Override
+    protected int getPageSize() {
+        return 2000;
+    }
 
-	}
-
-	@Override
-	protected List<ChinaFoodComposition> getMoreData(int listCount)
+    @Override
+	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset)
 			throws Exception {
-		return chinaFoodCompositionBo.getDao().query(2000, listCount, "2");
-
+		return chinaFoodCompositionBo.getDao().query(pageSize, offset, "2");
 	}
 
 	@Override

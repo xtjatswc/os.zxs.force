@@ -155,15 +155,9 @@ public class QuestionnaireListActivity extends
 		patientQuestionnaireResultBo = new PatientQuestionnaireResultBo(this);
 	}
 
-	/**
-	 * 初始化ListView数据
-	 * 
-	 * @throws Exception
-	 */
 	@Override
-	protected List<PatientQuestionnaire> getInitializeData() throws Exception {
-		return patientQuestionnaireBo.getDao().query(20, 0,
-				PatientHospitalize_DBKey, QuestionProperty);
+	protected int getPageSize() {
+		return 20;
 	}
 
 	/**
@@ -172,10 +166,10 @@ public class QuestionnaireListActivity extends
 	 * @throws Exception
 	 */
 	@Override
-	protected List<PatientQuestionnaire> getMoreData(int listCount)
+	protected List<PatientQuestionnaire> getMoreData(int pageSize, int offset)
 			throws Exception {
 
-		return patientQuestionnaireBo.getDao().query(20, listCount,
+		return patientQuestionnaireBo.getDao().query(pageSize, offset,
 				PatientHospitalize_DBKey, QuestionProperty);
 
 	}

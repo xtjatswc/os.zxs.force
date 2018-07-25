@@ -45,24 +45,14 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 
 	}
 
-	/**
-	 * 初始化ListView数据
-	 * 
-	 * @throws Exception
-	 */
 	@Override
-	protected List<CourseRecord> getInitializeData() throws Exception {
-		return courseBo.getDao().query(20, 0, PatientHospitalize_DBKey);
+	protected int getPageSize() {
+		return 20;
 	}
 
-	/**
-	 * 加载更多数据
-	 * 
-	 * @throws Exception
-	 */
 	@Override
-	protected List<CourseRecord> getMoreData(int listCount) throws Exception {
-		return courseBo.getDao().query(20, listCount, PatientHospitalize_DBKey);
+	protected List<CourseRecord> getMoreData(int pageSize, int offset) throws Exception {
+		return courseBo.getDao().query(pageSize, offset, PatientHospitalize_DBKey);
 	}
 
 	/**

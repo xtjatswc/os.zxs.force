@@ -193,26 +193,12 @@ public class PatientListFragment extends
 	}
 
 	@Override
-	protected List<PatientHospitalizeBasicInfo> getInitializeData()
-			throws Exception {
-
-		String keyword = editTextCondition.getText().toString();
-		String department_DBKey = iPatientCondition.getDepartment_DBkey();
-		List<String> lstFavorite = null;
-		if (iPatientCondition.getMyStarEnabled()) {
-			lstFavorite = patientFavoriteBo.getFavorites();
-			if (lstFavorite == null || lstFavorite.size() == 0) {
-				return null;
-			}
-		}
-		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8, 0,
-				keyword, department_DBKey, lstFavorite,
-				iPatientCondition.getMyPatientEnabled(), switchStatus.isChecked());
-		return list;
+	protected int getPageSize() {
+		return 8;
 	}
 
 	@Override
-	protected List<PatientHospitalizeBasicInfo> getMoreData(int listCount)
+	protected List<PatientHospitalizeBasicInfo> getMoreData(int pageSize, int offset)
 			throws Exception {
 
 		String keyword = editTextCondition.getText().toString();
@@ -224,8 +210,8 @@ public class PatientListFragment extends
 				return null;
 			}
 		}
-		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(8,
-				listCount, keyword, department_DBKey, lstFavorite,
+		List<PatientHospitalizeBasicInfo> list = patientBo.getDao().query(pageSize,
+				offset, keyword, department_DBKey, lstFavorite,
 				iPatientCondition.getMyPatientEnabled(), switchStatus.isChecked());
 		return list;
 
