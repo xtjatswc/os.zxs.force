@@ -51,7 +51,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
 
 	// 行元素点击事件
 	protected void onGridItemSubClick(View item, View widget, int position,
-			int which) {
+			int which) throws Exception{
 		adapter.setCurrentItem(adapter.getItem(position));
 	}
 

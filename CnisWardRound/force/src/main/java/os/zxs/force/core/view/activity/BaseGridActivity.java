@@ -49,9 +49,23 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 	}
 
 	// 行元素点击事件
-	protected void onGridItemSubClick(View item, View widget, int position,
-			int which) {
+	protected abstract void onGridItemSubClick(View item, View widget, int position,
+											   int which) throws Exception;
+
+	protected void setOnGridItemSubClick(final View item, final View widget, final int position,
+										 final View subView)throws Exception {
 		adapter.setCurrentItem(adapter.getItem(position));
+		subView.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				try {
+					onGridItemSubClick(item, widget,
+							position, subView.getId());
+				} catch (Exception e) {
+					doException(e);
+				}
+			}
+		});
 	}
 
 	protected abstract void setViewHolder(View view);

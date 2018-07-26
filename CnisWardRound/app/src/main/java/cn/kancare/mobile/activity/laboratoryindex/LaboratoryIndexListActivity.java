@@ -199,7 +199,6 @@ public class LaboratoryIndexListActivity extends
 	@Override
 	public void onListItemSubClick(View item, View widget, int position,
 			int which) {
-		super.onListItemSubClick(item, widget, position, which);
 		try {
 			final LaboratoryIndex laboratoryIndex = adapter.getItem(position);
 

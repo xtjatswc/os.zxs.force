@@ -145,6 +145,10 @@ public class NutrientProductFragment extends
 		return 0xFF008000;
 	}
 
+	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+
+	}
+
 	public void refreshProductStatus(String NutrientAdviceSummary_DBKey)
 			throws Exception {
 		NutrientAdvice nutrientAdvice = nutrientAdviceBo

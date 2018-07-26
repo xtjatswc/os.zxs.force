@@ -132,12 +132,12 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 
 	@Override
 	protected int getPageSize() {
-		return 1000;
+		return 6;
 	}
 
 	@Override
 	protected List<MealRecord> getMoreData(int pageSize, int offset) throws Exception {
-		return mealRecordBo.getDao().query(0, 0,
+		return mealRecordBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 
@@ -158,13 +158,8 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		holder.TextViewTitle.setText(DateHelper.getInstance().getDataString_2(
 				data.getMealDate()));
 
-		holder.ImageButtonDelete.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				MealRecordActivity.this.onGridItemSubClick(view, parent,
-						position, holder.ImageButtonDelete.getId());
-			}
-		});
+		setOnGridItemSubClick(view, parent,
+				position, holder.ImageButtonDelete);
 
 		// 合计
 		lstChinaFoodCompositions = mealRecordBo.getFoodAmountList(this,
@@ -211,50 +206,46 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 	}
 
 	protected void onGridItemSubClick(View item, View widget, int position,
-			int which) {
-		super.onGridItemSubClick(item, widget, position, which);
-		try {
-			final ViewHolder holder = (ViewHolder) item.getTag();
+			int which) throws Exception {
 
-			final MealRecord mealRecord = adapter.getItem(position);
+		final ViewHolder holder = (ViewHolder) item.getTag();
 
-			switch (which) {
-			case R.id.ImageButtonDelete:
-				// 删除
-				PopUtil.AlertDialog(
-						MealRecordActivity.this,
-						"提示",
-						"确定删除『"
-								+ DateHelper.getInstance().getDataString_2(
-										mealRecord.getMealDate()) + "』的记录？",
-						"确定", new DialogInterface.OnClickListener() {
+		final MealRecord mealRecord = adapter.getItem(position);
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								try {
-									mealRecordBo.getDao().deleteById(
-											mealRecord.getMealRecord_DBKey());
+		switch (which) {
+		case R.id.ImageButtonDelete:
+			// 删除
+			PopUtil.AlertDialog(
+					MealRecordActivity.this,
+					"提示",
+					"确定删除『"
+							+ DateHelper.getInstance().getDataString_2(
+									mealRecord.getMealDate()) + "』的记录？",
+					"确定", new DialogInterface.OnClickListener() {
 
-									relationOfDietaryFoodBo
-											.getDao()
-											.deleteByMealRecord_DBKey(
-													mealRecord
-															.getMealRecord_DBKey());
-									removeAndRefresh();
-								} catch (Exception e) {
-									doException(e);
-								}
-								dialog.dismiss();
+						public void onClick(DialogInterface dialog,
+								int which) {
+							try {
+								mealRecordBo.getDao().deleteById(
+										mealRecord.getMealRecord_DBKey());
 
+								relationOfDietaryFoodBo
+										.getDao()
+										.deleteByMealRecord_DBKey(
+												mealRecord
+														.getMealRecord_DBKey());
+								removeAndRefresh();
+							} catch (Exception e) {
+								doException(e);
 							}
-						});
-				break;
+							dialog.dismiss();
 
-			default:
-				break;
-			}
-		} catch (Exception e) {
-			doException(e);
+						}
+					});
+			break;
+
+		default:
+			break;
 		}
 	}
 

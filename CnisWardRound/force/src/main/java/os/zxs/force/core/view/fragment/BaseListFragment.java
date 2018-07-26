@@ -51,9 +51,23 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 	}
 
 	// 行元素点击事件
-	protected void onListItemSubClick(View item, View widget, int position,
-			int which) {
+	protected abstract void onListItemSubClick(View item, View widget, int position,
+											   int which) throws Exception;
+	protected void setOnListItemSubClick(final View item, final View widget, final int position,
+										 final View subView) throws Exception{
 		adapter.setCurrentItem(adapter.getItem(position));
+		subView.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				try {
+					onListItemSubClick(item, widget,
+                            position, subView.getId());
+				} catch (Exception e) {
+					doException(e);
+				}
+			}
+		});
+
 	}
 
 	protected abstract void setViewHolder(View view);

@@ -383,6 +383,10 @@ public class QuestionnaireListActivity extends
 		}
 	}
 
+	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+
+	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub

@@ -138,6 +138,10 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		}
 	}
 
+	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+
+	}
+
 	@Override
 	protected String getLogTag() {
 		return LogTag.CNIS_LOG;

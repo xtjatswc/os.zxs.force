@@ -345,13 +345,8 @@ public class PatientListFragment extends
 		}
 
 		// 设置我的患者
-		holder.ImageViewSex.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				PatientListFragment.this.onListItemSubClick(view, parent,
-						position, holder.ImageViewSex.getId());
-			}
-		});
+		setOnListItemSubClick(view, parent,
+				position, holder.ImageViewSex);
 
 		// 年龄
 		holder.tvAge.setText("	"
@@ -380,13 +375,10 @@ public class PatientListFragment extends
 		} else {
 			holder.switchChildStatus.setChecked(true);
 		}
-		holder.switchChildStatus.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				PatientListFragment.this.onListItemSubClick(view, parent,
-						position, holder.switchChildStatus.getId());
-			}
-		});
+		setOnListItemSubClick(view, parent,
+				position, holder.switchChildStatus);
+
 
 		// 收藏
 		final ImageView imageViewLove = holder.imageViewLove;
@@ -400,37 +392,23 @@ public class PatientListFragment extends
 			imageViewLove.setBackgroundResource(R.drawable.heart_love);
 		}
 
-		imageViewLove.setOnClickListener(new View.OnClickListener() {
+		setOnListItemSubClick(view, parent,
+				position, holder.imageViewLove);
 
-			public void onClick(View v) {
-				PatientListFragment.this.onListItemSubClick(view, parent,
-						position, imageViewLove.getId());
-			}
-		});
+		setOnListItemSubClick(view, parent,
+				position, imageViewLove);
+
 
 		// 问卷图标
 		patientQuestionnaireBo.setQuestionnaireInfo(patientinfo, holder);
-		holder.imageViewQuestionnaire
-				.setOnClickListener(new View.OnClickListener() {
+		setOnListItemSubClick(view, parent,
+				position, holder.imageViewQuestionnaire);
 
-					public void onClick(View v) {
-						PatientListFragment.this.onListItemSubClick(view,
-								parent, position,
-								holder.imageViewQuestionnaire.getId());
-					}
-				});
 
 		// 查房记录图标
 		courseRecordBo.setCourseInfo(patientinfo, holder);
-		holder.imageViewCourseRecord
-				.setOnClickListener(new View.OnClickListener() {
-
-					public void onClick(View v) {
-						PatientListFragment.this.onListItemSubClick(view,
-								parent, position,
-								holder.imageViewCourseRecord.getId());
-					}
-				});
+		setOnListItemSubClick(view, parent,
+				position, holder.imageViewCourseRecord);
 
 		// 根据检验数据判断是否有营养不良风险
 		// if (patientBo.checkIsRisk(this,
@@ -478,122 +456,118 @@ public class PatientListFragment extends
 
 	@Override
 	public void onListItemSubClick(View item, View widget, int position,
-			int which) {
+			int which) throws Exception{
 
-		try {
-			final ViewHolder holder = (ViewHolder) item.getTag();
+		final ViewHolder holder = (ViewHolder) item.getTag();
 
-			final PatientHospitalizeBasicInfo patientInfo = adapter
-					.getItem(position);
+		final PatientHospitalizeBasicInfo patientInfo = adapter
+				.getItem(position);
 
-			Global.currentPatient = patientInfo;
+		Global.currentPatient = patientInfo;
 
-			switch (which) {
-			case R.id.imageViewLove:
-				// 收藏
-				String pkey = Global.loginUser.getUser_DBKey() + "+"
-						+ patientInfo.getPatientHospitalize_DBKey();
+		switch (which) {
+		case R.id.imageViewLove:
+			// 收藏
+			String pkey = Global.loginUser.getUser_DBKey() + "+"
+					+ patientInfo.getPatientHospitalize_DBKey();
 
-				PatientFavorite patientFavorite = patientFavoriteBo.getDao()
-						.queryForId(pkey);
-				if (patientFavorite == null) {
-					// 添加收藏
-					patientFavorite = new PatientFavorite();
-					patientFavorite.setPKey(pkey);
-					patientFavorite.setUser_DBKey(Global.loginUser
-							.getUser_DBKey());
-					patientFavorite.setPatientHospitalize_DBKey(patientInfo
-							.getPatientHospitalize_DBKey());
-					patientFavoriteBo.getDao().create(patientFavorite);
-					holder.imageViewLove
-							.setBackgroundResource(R.drawable.heart_love);
-				} else {
-					// 取消收藏
-					patientFavoriteBo.getDao().deleteById(pkey);
-					holder.imageViewLove
-							.setBackgroundResource(R.drawable.heart_love2);
-				}
-				break;
-			case R.id.imageViewQuestionnaire:
-				// 筛查
-				Intent i = new Intent(PatientListFragment.this.getActivity(),
-						QuestionnaireListActivity.class);
-				Bundle bundle = new Bundle();
-				try {
-					bundle.putInt("OperateType", RequestCode.LIST_QUESTIONNAIRE);
-					bundle.putString("PatientHospitalize_DBKey",
-							patientInfo.getPatientHospitalize_DBKey());
-				} catch (Exception e) {
-					doException(e);
-				}
-				i.putExtras(bundle);
-
-				startActivityForResult(i, RequestCode.LIST_QUESTIONNAIRE);
-
-				break;
-			case R.id.imageViewCourseRecord:
-				// 查房记录
-				Intent i2 = new Intent(PatientListFragment.this.getActivity(),
-						CourseRecordListActivity.class);
-				Bundle bundle2 = new Bundle();
-				try {
-					bundle2.putInt("OperateType",
-							RequestCode.LIST_COURSE_RECORD);
-					bundle2.putString("PatientHospitalize_DBKey",
-							patientInfo.getPatientHospitalize_DBKey());
-				} catch (Exception e) {
-					doException(e);
-				}
-				i2.putExtras(bundle2);
-
-				startActivityForResult(i2, RequestCode.LIST_COURSE_RECORD);
-				break;
-			case R.id.ImageViewSex:
-				// 设置我为我的患者
-				// 收藏
-				if (Global.loginUser.getUser_DBKey() == 0) {
-					PopUtil.AlertDialog(this.getActivity(), "提示", "请用营养师的帐号登录！");
-				} else {
-					if (patientInfo.getNutrientDoctor_DBKey() == Global.loginUser
-							.getUser_DBKey()) {
-						// 取消我的患者
-						patientInfo.setNutrientDoctor_DBKey(0);
-						holder.tvPatientNo.setTextColor(ColorUtil
-								.getColor(R.color.gray));// gray
-						holder.badgeDietician.hide();
-					} else {
-						if (patientInfo.getNutrientDoctor_DBKey() == 0) {
-							// 设置为我的患者
-							patientBo.setPatientDietician(
-									PatientListFragment.this.getActivity(),
-									holder, patientInfo, userBo);
-						} else {
-							// 询问是否切换
-							patientBo.setPatientDietician2(this.getActivity(),
-									holder, patientInfo, userBo);
-						}
-
-					}
-				}
-
-				patientInfo.setOperateFlag(OperateFlag.NEED_EDIT_TO_SERVER);
-				patientBo.getDao().update(patientInfo);
-				break;
-			case R.id.switchChildStatus:
-				if(holder.switchChildStatus.isChecked()){
-					patientInfo.setTherapyStatus("0");
-					patientInfo.setTherapyStatusName("待筛查");
-				}else{
-					patientInfo.setTherapyStatus("9");
-					patientInfo.setTherapyStatusName("出院");
-				}
-				patientBo.getDao().update(patientInfo);
-				break;
-			default:
-				break;
+			PatientFavorite patientFavorite = patientFavoriteBo.getDao()
+					.queryForId(pkey);
+			if (patientFavorite == null) {
+				// 添加收藏
+				patientFavorite = new PatientFavorite();
+				patientFavorite.setPKey(pkey);
+				patientFavorite.setUser_DBKey(Global.loginUser
+						.getUser_DBKey());
+				patientFavorite.setPatientHospitalize_DBKey(patientInfo
+						.getPatientHospitalize_DBKey());
+				patientFavoriteBo.getDao().create(patientFavorite);
+				holder.imageViewLove
+						.setBackgroundResource(R.drawable.heart_love);
+			} else {
+				// 取消收藏
+				patientFavoriteBo.getDao().deleteById(pkey);
+				holder.imageViewLove
+						.setBackgroundResource(R.drawable.heart_love2);
 			}
-		} catch (Exception e) {
-			doException(e);
+			break;
+		case R.id.imageViewQuestionnaire:
+			// 筛查
+			Intent i = new Intent(PatientListFragment.this.getActivity(),
+					QuestionnaireListActivity.class);
+			Bundle bundle = new Bundle();
+			try {
+				bundle.putInt("OperateType", RequestCode.LIST_QUESTIONNAIRE);
+				bundle.putString("PatientHospitalize_DBKey",
+						patientInfo.getPatientHospitalize_DBKey());
+			} catch (Exception e) {
+				doException(e);
+			}
+			i.putExtras(bundle);
+
+			startActivityForResult(i, RequestCode.LIST_QUESTIONNAIRE);
+
+			break;
+		case R.id.imageViewCourseRecord:
+			// 查房记录
+			Intent i2 = new Intent(PatientListFragment.this.getActivity(),
+					CourseRecordListActivity.class);
+			Bundle bundle2 = new Bundle();
+			try {
+				bundle2.putInt("OperateType",
+						RequestCode.LIST_COURSE_RECORD);
+				bundle2.putString("PatientHospitalize_DBKey",
+						patientInfo.getPatientHospitalize_DBKey());
+			} catch (Exception e) {
+				doException(e);
+			}
+			i2.putExtras(bundle2);
+
+			startActivityForResult(i2, RequestCode.LIST_COURSE_RECORD);
+			break;
+		case R.id.ImageViewSex:
+			// 设置我为我的患者
+			// 收藏
+			if (Global.loginUser.getUser_DBKey() == 0) {
+				PopUtil.AlertDialog(this.getActivity(), "提示", "请用营养师的帐号登录！");
+			} else {
+				if (patientInfo.getNutrientDoctor_DBKey() == Global.loginUser
+						.getUser_DBKey()) {
+					// 取消我的患者
+					patientInfo.setNutrientDoctor_DBKey(0);
+					holder.tvPatientNo.setTextColor(ColorUtil
+							.getColor(R.color.gray));// gray
+					holder.badgeDietician.hide();
+				} else {
+					if (patientInfo.getNutrientDoctor_DBKey() == 0) {
+						// 设置为我的患者
+						patientBo.setPatientDietician(
+								PatientListFragment.this.getActivity(),
+								holder, patientInfo, userBo);
+					} else {
+						// 询问是否切换
+						patientBo.setPatientDietician2(this.getActivity(),
+								holder, patientInfo, userBo);
+					}
+
+				}
+			}
+
+			patientInfo.setOperateFlag(OperateFlag.NEED_EDIT_TO_SERVER);
+			patientBo.getDao().update(patientInfo);
+			break;
+		case R.id.switchChildStatus:
+			if(holder.switchChildStatus.isChecked()){
+				patientInfo.setTherapyStatus("0");
+				patientInfo.setTherapyStatusName("待筛查");
+			}else{
+				patientInfo.setTherapyStatus("9");
+				patientInfo.setTherapyStatusName("出院");
+			}
+			patientBo.getDao().update(patientInfo);
+			break;
+		default:
+			break;
 		}
 
 	}

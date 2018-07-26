@@ -77,6 +77,10 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
+    protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+
+    }
+
     protected void setViewHolder(View view) {
 
     }

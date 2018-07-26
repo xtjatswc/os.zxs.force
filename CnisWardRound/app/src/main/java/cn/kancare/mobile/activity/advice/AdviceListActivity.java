@@ -105,7 +105,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 
 	@Override
 	protected void setListItemView(final int position, final View view,
-			NutrientAdviceSummary data, final ViewGroup parent) {
+			NutrientAdviceSummary data, final ViewGroup parent) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) view.getTag();
 		holder.TextViewNutrientAdviceSummary_DBKey.setText(data
@@ -119,26 +119,11 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 			holder.ImageButton_Edit.setVisibility(View.GONE);
 		}
 
-		holder.ImageButton_Delete
-				.setOnClickListener(new View.OnClickListener() {
+        setOnListItemSubClick(view, parent,
+                position, holder.ImageButton_Delete);
 
-					public void onClick(View v) {
-						AdviceListActivity.this.onListItemSubClick(view,
-								parent, position,
-								holder.ImageButton_Delete.getId());
-
-					}
-
-				});
-
-		holder.ImageButton_Edit.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				AdviceListActivity.this.onListItemSubClick(view, parent,
-						position, holder.ImageButton_Edit.getId());
-
-			}
-		});
+        setOnListItemSubClick(view, parent,
+                position, holder.ImageButton_Edit);
 
 		String adviceDateString = "";
 		if (data.getAdviceBeginDate().equals(data.getAdviceEndDate())) {
@@ -218,8 +203,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 
 	@Override
 	protected void onListItemSubClick(View item, View widget, int position,
-			int which) {
-		super.onListItemSubClick(item, widget, position, which);
+			int which) throws Exception {
 
 		final NutrientAdviceSummary nutrientAdviceSummary = adapter
 				.getItem(position);

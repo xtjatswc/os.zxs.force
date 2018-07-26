@@ -62,6 +62,10 @@ public class BodyAnalysisListActivity extends
 
 	}
 
+	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+
+	}
+
 	@Override
 	protected void onListItemClick(BodyAnalysisReport data) {
 		super.onListItemClick(data);
