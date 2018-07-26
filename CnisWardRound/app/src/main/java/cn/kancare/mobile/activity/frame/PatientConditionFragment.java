@@ -90,7 +90,13 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return CheckBoxMyStar.isChecked();
     }
 
-    protected List<Department> getInitializeData() throws Exception {
+    @Override
+    protected int getPageSize() {
+        return 1000;
+    }
+
+    @Override
+    protected List<Department> getMoreData(int pageSize, int offset) throws Exception {
         List<Department> lst = departmentBo.getDao().queryForAll();
         Department department = new Department();
         department.setDepartment_DBKey(0);

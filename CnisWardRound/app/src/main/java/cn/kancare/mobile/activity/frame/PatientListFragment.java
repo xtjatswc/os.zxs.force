@@ -301,148 +301,144 @@ public class PatientListFragment extends
 
 	@Override
 	protected void setListItemView(final int position, final View view,
-			PatientHospitalizeBasicInfo patientinfo, final ViewGroup parent) {
-		try {
-			final ViewHolder holder = (ViewHolder) view.getTag();
+			PatientHospitalizeBasicInfo patientinfo, final ViewGroup parent) throws Exception {
 
-			// 患者姓名
-			holder.tvPatientName.setText(patientinfo.getPatientName());
-			// 科室
-			holder.tvDepartmentName.setText("	"
-					+ patientinfo.getDepartmentName());
-			// 床号
-			holder.tvBedCode.setText("床号：" + patientinfo.getBedCode());
+		final ViewHolder holder = (ViewHolder) view.getTag();
 
-			// 临床医生
-			holder.tvClinicistName.setText(patientinfo.getClinicistName());
-			// 入院日期
-			String d = DateHelper.getInstance().getDataString_2(
-					patientinfo.getInHospitalData());
-			holder.tvInHospitalDate.setText(d + " 入院");
+		// 患者姓名
+		holder.tvPatientName.setText(patientinfo.getPatientName());
+		// 科室
+		holder.tvDepartmentName.setText("	"
+				+ patientinfo.getDepartmentName());
+		// 床号
+		holder.tvBedCode.setText("床号：" + patientinfo.getBedCode());
 
-			// 主管营养师气泡
-			if (patientinfo.getNutrientDoctor_DBKey() == 0) {
-				holder.badgeDietician.hide();
-			} else {
-				User user = userBo.getDao().queryForId(
-						patientinfo.getNutrientDoctor_DBKey());
-				if (user != null) {
-					holder.badgeDietician.setText(user.getUserName());
-				}
-				holder.badgeDietician.show();
+		// 临床医生
+		holder.tvClinicistName.setText(patientinfo.getClinicistName());
+		// 入院日期
+		String d = DateHelper.getInstance().getDataString_2(
+				patientinfo.getInHospitalData());
+		holder.tvInHospitalDate.setText(d + " 入院");
+
+		// 主管营养师气泡
+		if (patientinfo.getNutrientDoctor_DBKey() == 0) {
+			holder.badgeDietician.hide();
+		} else {
+			User user = userBo.getDao().queryForId(
+					patientinfo.getNutrientDoctor_DBKey());
+			if (user != null) {
+				holder.badgeDietician.setText(user.getUserName());
 			}
-
-			// 性别
-			// String sex = patientinfo.getGender().equals("M") ? "男" : "女";
-			// TextView tvGender = (TextView) view.findViewById(R.id.gender);
-			// tvGender.setText("	性别：" + sex);
-
-			// 性别图标
-			if (patientinfo.getGender().equals("M")) {
-				holder.ImageViewSex.setImageResource(R.drawable.male);
-			} else {
-				holder.ImageViewSex.setImageResource(R.drawable.female);
-			}
-
-			// 设置我的患者
-			holder.ImageViewSex.setOnClickListener(new View.OnClickListener() {
-
-				public void onClick(View v) {
-					PatientListFragment.this.onListItemSubClick(view, parent,
-							position, holder.ImageViewSex.getId());
-				}
-			});
-
-			// 年龄
-			holder.tvAge.setText("	"
-					+ Convert.RoundString2(patientinfo.getAge(), 2) + " 岁");
-			// 疾病
-			holder.tvDiseaseName.setText("	" + patientinfo.getDiseaseName()
-					+ " " + patientinfo.getClinicalDiagnosis());
-			// 住院号
-			holder.tvHospitalizationNumber.setText("住院号："
-					+ patientinfo.getHospitalizationNumber());
-			// 患者编号
-			holder.tvPatientNo.setText(patientinfo.getPatientNo());
-			if (patientinfo.getNutrientDoctor_DBKey() == Global.loginUser
-					.getUser_DBKey() && Global.loginUser.getUser_DBKey() != 0) {
-
-				holder.tvPatientNo
-						.setTextColor(ColorUtil.getColor(R.color.red));// red
-			} else {
-				holder.tvPatientNo.setTextColor(ColorUtil
-						.getColor(R.color.gray));// gray
-			}
-
-			// 营养治疗状态
-			if (patientinfo.getTherapyStatusName().equals("出院")) {
-				holder.switchChildStatus.setChecked(false);
-			} else {
-				holder.switchChildStatus.setChecked(true);
-			}
-			holder.switchChildStatus.setOnClickListener(new View.OnClickListener() {
-
-				public void onClick(View v) {
-					PatientListFragment.this.onListItemSubClick(view, parent,
-							position, holder.switchChildStatus.getId());
-				}
-			});
-
-			// 收藏
-			final ImageView imageViewLove = holder.imageViewLove;
-			String pkey = Global.loginUser.getUser_DBKey() + "+"
-					+ patientinfo.getPatientHospitalize_DBKey();
-			PatientFavorite patientFavorite = patientFavoriteBo.getDao()
-					.queryForId(pkey);
-			if (patientFavorite == null) {
-				imageViewLove.setBackgroundResource(R.drawable.heart_love2);
-			} else {
-				imageViewLove.setBackgroundResource(R.drawable.heart_love);
-			}
-
-			imageViewLove.setOnClickListener(new View.OnClickListener() {
-
-				public void onClick(View v) {
-					PatientListFragment.this.onListItemSubClick(view, parent,
-							position, imageViewLove.getId());
-				}
-			});
-
-			// 问卷图标
-			patientQuestionnaireBo.setQuestionnaireInfo(patientinfo, holder);
-			holder.imageViewQuestionnaire
-					.setOnClickListener(new View.OnClickListener() {
-
-						public void onClick(View v) {
-							PatientListFragment.this.onListItemSubClick(view,
-									parent, position,
-									holder.imageViewQuestionnaire.getId());
-						}
-					});
-
-			// 查房记录图标
-			courseRecordBo.setCourseInfo(patientinfo, holder);
-			holder.imageViewCourseRecord
-					.setOnClickListener(new View.OnClickListener() {
-
-						public void onClick(View v) {
-							PatientListFragment.this.onListItemSubClick(view,
-									parent, position,
-									holder.imageViewCourseRecord.getId());
-						}
-					});
-
-			// 根据检验数据判断是否有营养不良风险
-			// if (patientBo.checkIsRisk(this,
-			// patientinfo.getPatientHospitalize_DBKey())) {
-			// holder.imageViewWarning.setVisibility(View.VISIBLE);
-			// } else {
-			// holder.imageViewWarning.setVisibility(View.INVISIBLE);
-			// }
-
-		} catch (Exception e) {
-			doException(e);
+			holder.badgeDietician.show();
 		}
+
+		// 性别
+		// String sex = patientinfo.getGender().equals("M") ? "男" : "女";
+		// TextView tvGender = (TextView) view.findViewById(R.id.gender);
+		// tvGender.setText("	性别：" + sex);
+
+		// 性别图标
+		if (patientinfo.getGender().equals("M")) {
+			holder.ImageViewSex.setImageResource(R.drawable.male);
+		} else {
+			holder.ImageViewSex.setImageResource(R.drawable.female);
+		}
+
+		// 设置我的患者
+		holder.ImageViewSex.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				PatientListFragment.this.onListItemSubClick(view, parent,
+						position, holder.ImageViewSex.getId());
+			}
+		});
+
+		// 年龄
+		holder.tvAge.setText("	"
+				+ Convert.RoundString2(patientinfo.getAge(), 2) + " 岁");
+		// 疾病
+		holder.tvDiseaseName.setText("	" + patientinfo.getDiseaseName()
+				+ " " + patientinfo.getClinicalDiagnosis());
+		// 住院号
+		holder.tvHospitalizationNumber.setText("住院号："
+				+ patientinfo.getHospitalizationNumber());
+		// 患者编号
+		holder.tvPatientNo.setText(patientinfo.getPatientNo());
+		if (patientinfo.getNutrientDoctor_DBKey() == Global.loginUser
+				.getUser_DBKey() && Global.loginUser.getUser_DBKey() != 0) {
+
+			holder.tvPatientNo
+					.setTextColor(ColorUtil.getColor(R.color.red));// red
+		} else {
+			holder.tvPatientNo.setTextColor(ColorUtil
+					.getColor(R.color.gray));// gray
+		}
+
+		// 营养治疗状态
+		if (patientinfo.getTherapyStatusName().equals("出院")) {
+			holder.switchChildStatus.setChecked(false);
+		} else {
+			holder.switchChildStatus.setChecked(true);
+		}
+		holder.switchChildStatus.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				PatientListFragment.this.onListItemSubClick(view, parent,
+						position, holder.switchChildStatus.getId());
+			}
+		});
+
+		// 收藏
+		final ImageView imageViewLove = holder.imageViewLove;
+		String pkey = Global.loginUser.getUser_DBKey() + "+"
+				+ patientinfo.getPatientHospitalize_DBKey();
+		PatientFavorite patientFavorite = patientFavoriteBo.getDao()
+				.queryForId(pkey);
+		if (patientFavorite == null) {
+			imageViewLove.setBackgroundResource(R.drawable.heart_love2);
+		} else {
+			imageViewLove.setBackgroundResource(R.drawable.heart_love);
+		}
+
+		imageViewLove.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				PatientListFragment.this.onListItemSubClick(view, parent,
+						position, imageViewLove.getId());
+			}
+		});
+
+		// 问卷图标
+		patientQuestionnaireBo.setQuestionnaireInfo(patientinfo, holder);
+		holder.imageViewQuestionnaire
+				.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View v) {
+						PatientListFragment.this.onListItemSubClick(view,
+								parent, position,
+								holder.imageViewQuestionnaire.getId());
+					}
+				});
+
+		// 查房记录图标
+		courseRecordBo.setCourseInfo(patientinfo, holder);
+		holder.imageViewCourseRecord
+				.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View v) {
+						PatientListFragment.this.onListItemSubClick(view,
+								parent, position,
+								holder.imageViewCourseRecord.getId());
+					}
+				});
+
+		// 根据检验数据判断是否有营养不良风险
+		// if (patientBo.checkIsRisk(this,
+		// patientinfo.getPatientHospitalize_DBKey())) {
+		// holder.imageViewWarning.setVisibility(View.VISIBLE);
+		// } else {
+		// holder.imageViewWarning.setVisibility(View.INVISIBLE);
+		// }
 	}
 
 	@Override

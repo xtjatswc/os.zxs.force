@@ -32,7 +32,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 	protected abstract int getListItemLayoutId();
 
 	protected abstract void setListItemView(int position, View view, Bean data,
-			ViewGroup parent);
+			ViewGroup parent)  throws Exception;
 
 	// 选择行的时候是否改变颜色
 	protected Boolean isSelectedChangeColor() {
@@ -79,8 +79,8 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			final ListView listView = (ListView) parent;
-			final Bean data = (Bean) listView.getItemAtPosition(position);
+			//final ListView listView = (ListView) parent;
+			final Bean data = (Bean) parent.getItemAtPosition(position);
 
 			onListItemClick(data);
 
@@ -183,7 +183,11 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 			Bean data = items.get(position);
 
-			setListItemView(position, view, data, parent);
+			try {
+				setListItemView(position, view, data, parent);
+			} catch (Exception e) {
+				doException(e);
+			}
 
 			if (isSelectedChangeColor()) {
 				if (getCurrentItem() == data) {
@@ -204,6 +208,10 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 			items.remove(item);
 		}
 
+		public List<Bean> getItems() {
+			return items;
+		}
+		
 		public  void setItems(List<Bean> items){
 			this.items = items;
 		}

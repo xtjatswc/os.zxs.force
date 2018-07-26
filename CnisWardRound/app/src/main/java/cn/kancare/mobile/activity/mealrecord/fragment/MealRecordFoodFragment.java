@@ -34,10 +34,6 @@ public class MealRecordFoodFragment extends
 	MealRecordInfoListener mealRecordInfoListener;
 	ChinaFoodCompositionBo chinaFoodCompositionBo;
 
-	OnBackListener onBackListener;
-
-	Button btnButton;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -84,7 +80,12 @@ public class MealRecordFoodFragment extends
 	}
 
 	@Override
-	protected List<ChinaFoodComposition> getInitializeData() throws Exception {
+	protected int getPageSize() {
+		return 1000;
+	}
+
+	@Override
+	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset) throws Exception {
 		return chinaFoodCompositionBo.getDao().query(FoodType.FOOD);
 	}
 

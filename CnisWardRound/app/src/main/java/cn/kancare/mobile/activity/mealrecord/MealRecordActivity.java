@@ -131,7 +131,12 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 	}
 
 	@Override
-	protected List<MealRecord> getInitializeData() throws Exception {
+	protected int getPageSize() {
+		return 1000;
+	}
+
+	@Override
+	protected List<MealRecord> getMoreData(int pageSize, int offset) throws Exception {
 		return mealRecordBo.getDao().query(0, 0,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}

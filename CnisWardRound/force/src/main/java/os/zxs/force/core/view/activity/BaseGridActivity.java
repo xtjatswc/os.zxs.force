@@ -6,17 +6,25 @@ import java.util.List;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
-public abstract class BaseGridActivity<Bean> extends BaseActivity {
+import os.zxs.force.core.view.Loading;
+
+public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
+		AbsListView.OnScrollListener {
 	protected GridView gridView;
+	protected int visibleLastIndex = 0; // 最后的可视项索引
 
-	protected MyAdapter adapter;
+	protected PaginationAdapter adapter;
 
-	protected abstract List<Bean> getInitializeData() throws Exception;
+	protected abstract int getPageSize();
+
+	//offset 不是页数，是跳过的记录行数
+	protected abstract List<Bean> getMoreData(int pageSize, int offset) throws Exception;
 
 	protected abstract int getGridId();
 
@@ -24,6 +32,21 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 
 	protected abstract void setGridItemView(int position, View view, Bean data,
 			ViewGroup parent) throws Exception;
+
+	// 选择行的时候是否改变颜色
+	protected Boolean isSelectedChangeColor() {
+		return false;
+	}
+
+	// 得到选中行的颜色
+	protected int getSelectedColor() {
+		return 0xFFED9516;// 金色
+	}
+
+	// 得到未选中行的颜色
+	protected int getUnSelectedColor() {
+		return 0x80ffffff;// 透明
+	}
 
 	// 行元素点击事件
 	protected void onGridItemSubClick(View item, View widget, int position,
@@ -38,6 +61,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 		super.onCreate(paramBundle);
 
 		gridView = (GridView) findViewById(getGridId());
+		initData();
 		refreshList();
 
 		// 条目点击事件
@@ -56,24 +80,31 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 			final Bean data = (Bean) parent.getItemAtPosition(position);
 
 			onListItemClick(data);
+			if (isSelectedChangeColor()) {
+				adapter.notifyDataSetInvalidated();
+			}
 			return;
 		}
 	}
 
+	private void initData(){
+		adapter = new PaginationAdapter();
+		gridView.setAdapter(adapter);
+	}
+
 	protected void refreshList() {
-		List<Bean> list = null;
+		Loading.turn(this);
+
 		try {
-			list = getInitializeData();
+			List<Bean> list = getMoreData(getPageSize(), 0);
+			adapter.setItems(list);
 		} catch (Exception e) {
 			doException(e);
 		}
-		if (list == null || list.size() == 0) {
-			list = new ArrayList<Bean>();
-		}
-		adapter = new MyAdapter(list);
-		if (list != null && adapter != null) {
-			gridView.setAdapter(adapter);
-		}
+		adapter.notifyDataSetChanged();
+		gridView.setSelection(0);//直接返回顶部，不带滑动效果
+		Loading.turnoff();
+
 	}
 	
 	protected void removeAndRefresh() {
@@ -81,14 +112,38 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 		adapter.notifyDataSetChanged();
 	}
 
-	/**
-	 * 
-	 * @author Administrator
-	 * 
-	 */
-	public class MyAdapter extends BaseAdapter {
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+		int itemsLastIndex = adapter.getCount() - 1; // 数据集最后一项的索引
+		int lastIndex = itemsLastIndex;
+		if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE
+				&& visibleLastIndex == lastIndex) {
+			Loading.turn(this);
+			// 如果是自动加载,可以在这里放置异步加载数据的代码
+			int count = adapter.getCount();
+			List<Bean> list = null;
+			try {
+				list = getMoreData(getPageSize(), count);
+			} catch (Exception e) {
+				doException(e);
+			}
+			if (list != null) {
+				for (Bean model : list) {
+					adapter.addItem(model);
+				}
+				adapter.notifyDataSetChanged();
+			}
+			Loading.turnoff();
+		}
+	}
 
-		private List<Bean> items;
+	public void onScroll(AbsListView view, int firstVisibleItem,
+						 int visibleItemCount, int totalItemCount) {
+		visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
+	}
+
+	public class PaginationAdapter extends BaseAdapter {
+
+		List<Bean> items = new ArrayList<Bean>();
 
 		Bean currentItem;
 
@@ -100,25 +155,16 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 			return currentItem;
 		}
 
-		public MyAdapter(List<Bean> list) {
-			this.items = list;
+		public PaginationAdapter() {
+
 		}
 
-		public List<Bean> getItems() {
-			return items;
-		}
 
-		/**
-		 * 数据总数
-		 */
 		public int getCount() {
 
 			return items.size();
 		}
 
-		/**
-		 * 获取当前数据
-		 */
 		public Bean getItem(int position) {
 
 			return items.get(position);
@@ -144,16 +190,33 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity {
 				doException(e);
 			}
 
+			if (isSelectedChangeColor()) {
+				if (getCurrentItem() == data) {
+					view.setBackgroundColor(getSelectedColor());
+				} else {
+					view.setBackgroundColor(getUnSelectedColor());
+				}
+			}
+
 			return view;
 		}
-		
-		/**
-		 * 移除数据列表项
-		 * 
-		 * @param item
-		 */
+
+		public void addItem(Bean item) {
+			items.add(item);
+		}
+
 		public void removeItem(Bean item) {
 			items.remove(item);
 		}
+
+		public List<Bean> getItems() {
+			return items;
+		}
+		
+		public  void setItems(List<Bean> items){
+			this.items = items;
+		}
+		
+		
 	}
 }
