@@ -132,7 +132,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 
 	@Override
 	protected int getPageSize() {
-		return 6;
+		return 12;
 	}
 
 	@Override

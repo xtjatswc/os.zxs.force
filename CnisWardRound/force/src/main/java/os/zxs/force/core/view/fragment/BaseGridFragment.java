@@ -70,6 +70,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
 		gridView = (GridView) layoutView.findViewById(getGridId());
 		initData();
 		refreshList();
+		gridView.setOnScrollListener(this);
 
 		// 条目点击事件
 		gridView.setOnItemClickListener(new ItemClickListener());

@@ -85,7 +85,7 @@ public class MealRecordFoodFragment extends
 
 	@Override
 	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset) throws Exception {
-		return chinaFoodCompositionBo.getDao().query(FoodType.FOOD);
+		return chinaFoodCompositionBo.getDao().query(pageSize, offset, FoodType.FOOD);
 	}
 
 	public static class ViewHolder {

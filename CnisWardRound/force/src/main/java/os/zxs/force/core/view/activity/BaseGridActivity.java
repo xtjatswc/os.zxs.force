@@ -82,6 +82,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 		gridView = (GridView) findViewById(getGridId());
 		initData();
 		refreshList();
+		gridView.setOnScrollListener(this);
 
 		// 条目点击事件
 		gridView.setOnItemClickListener(new ItemClickListener());
