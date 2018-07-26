@@ -65,6 +65,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 				savedInstanceState);
 
 		listView = (ListView) layoutView.findViewById(getListId());
+		initData();
 		refreshList();
 		listView.setOnScrollListener(this);
 
@@ -95,23 +96,22 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		}
 	}
 
+	private void initData(){
+		adapter = new PaginationAdapter();
+		listView.setAdapter(adapter);
+	}
+
 	protected void refreshList() {
 		Loading.turn(getContext());
 
-		List<Bean> list = null;
 		try {
-			list = getMoreData(getPageSize(), 0);
+			List<Bean> list = getMoreData(getPageSize(), 0);
+			adapter.setItems(list);
 		} catch (Exception e) {
 			doException(e);
 		}
-		if (list == null || list.size() == 0) {
-			list = new ArrayList<Bean>();
-		}
-		adapter = new PaginationAdapter(list);
-		if (list != null && adapter != null) {
-			listView.setAdapter(adapter);
-		}
-
+		adapter.notifyDataSetChanged();
+		listView.setSelection(0);//直接返回顶部，不带滑动效果
 		Loading.turnoff();
 	}
 
@@ -151,7 +151,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 
 	protected class PaginationAdapter extends BaseAdapter {
 
-		List<Bean> items;
+		List<Bean> items = new ArrayList<Bean>();
 
 		Bean currentItem;
 
@@ -163,8 +163,8 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 			return currentItem;
 		}
 
-		public PaginationAdapter(List<Bean> items) {
-			this.items = items;
+		public PaginationAdapter() {
+
 		}
 
 		public int getCount() {
@@ -202,29 +202,16 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 			return view;
 		}
 
-		/**
-		 * 添加数据列表项
-		 * 
-		 * @param item
-		 */
 		public void addItem(Bean item) {
 			items.add(item);
 		}
 
-		/**
-		 * 移除数据列表项
-		 * 
-		 * @param item
-		 */
 		public void removeItem(Bean item) {
 			items.remove(item);
 		}
 
-		/**
-		 * 获取数据列表项
-		 */
-		public List<Bean> getItems() {
-			return items;
+		public  void setItems(List<Bean> items){
+			this.items = items;
 		}
 	}
 }

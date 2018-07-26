@@ -24,6 +24,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 	protected abstract int getPageSize();
 
+	//offset 不是页数，是跳过的记录行数
 	protected abstract List<Bean> getMoreData(int pageSize, int offset) throws Exception;
 
 	protected abstract int getListId();
@@ -61,6 +62,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		super.onCreate(paramBundle);
 
 		listView = (ListView) findViewById(getListId());
+		initData();
 		refreshList();
 		listView.setOnScrollListener(this);
 
@@ -90,20 +92,23 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		}
 	}
 
+	private void initData(){
+		adapter = new PaginationAdapter();
+		listView.setAdapter(adapter);
+	}
+
 	protected void refreshList() {
-		List<Bean> list = null;
+		Loading.turn(this);
+
 		try {
-			list = getMoreData(getPageSize(), 0);
+			List<Bean> list = getMoreData(getPageSize(), 0);
+			adapter.setItems(list);
 		} catch (Exception e) {
 			doException(e);
 		}
-		if (list == null || list.size() == 0) {
-			list = new ArrayList<Bean>();
-		}
-		adapter = new PaginationAdapter(list);
-		if (list != null && adapter != null) {
-			listView.setAdapter(adapter);
-		}
+		adapter.notifyDataSetChanged();
+		listView.setSelection(0);//直接返回顶部，不带滑动效果
+		Loading.turnoff();
 	}
 
 	protected void removeAndRefresh() {
@@ -116,6 +121,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		int lastIndex = itemsLastIndex;
 		if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
 				&& visibleLastIndex == lastIndex) {
+			Loading.turn(this);
 			// 如果是自动加载,可以在这里放置异步加载数据的代码
 			int count = adapter.getCount();
 			List<Bean> list = null;
@@ -130,6 +136,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 				}
 				adapter.notifyDataSetChanged();
 			}
+			Loading.turnoff();
 		}
 	}
 
@@ -140,7 +147,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 	protected class PaginationAdapter extends BaseAdapter {
 
-		List<Bean> items;
+		List<Bean> items = new ArrayList<Bean>();
 
 		Bean currentItem;
 
@@ -152,8 +159,8 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 			return currentItem;
 		}
 
-		public PaginationAdapter(List<Bean> items) {
-			this.items = items;
+		public PaginationAdapter() {
+
 		}
 
 		public int getCount() {
@@ -189,29 +196,16 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 			return view;
 		}
 
-		/**
-		 * 添加数据列表项
-		 * 
-		 * @param item
-		 */
 		public void addItem(Bean item) {
 			items.add(item);
 		}
 
-		/**
-		 * 移除数据列表项
-		 * 
-		 * @param item
-		 */
 		public void removeItem(Bean item) {
 			items.remove(item);
 		}
 
-		/**
-		 * 获取所有数据列表项
-		 */
-		public List<Bean> getItems() {
-			return items;
+		public  void setItems(List<Bean> items){
+			this.items = items;
 		}
 	}
 }
