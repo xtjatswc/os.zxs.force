@@ -98,13 +98,11 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		return R.id.lvAdvice;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.advice_list_item;
 	}
 
-	@Override
-	protected void setListItemView(final int position, final View view,
+	public void setListItemView(final int position, final View view,
 			NutrientAdviceSummary data, final ViewGroup parent) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) view.getTag();
@@ -262,8 +260,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		TextView TextViewAdviceDate;
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.TextViewNutrientAdviceSummary_DBKey = (TextView) view
 				.findViewById(R.id.TextViewNutrientAdviceSummary_DBKey);

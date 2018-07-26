@@ -146,13 +146,11 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		return R.id.gridView1;
 	}
 
-	@Override
-	protected int getGridItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.mealrecord_item;
 	}
 
-	@Override
-	protected void setGridItemView(final int position, final View view,
+	public void setListItemView(final int position, final View view,
 			MealRecord data, final ViewGroup parent) throws Exception {
 		final ViewHolder holder = (ViewHolder) view.getTag();
 		holder.TextViewTitle.setText(DateHelper.getInstance().getDataString_2(
@@ -280,8 +278,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		ImageView ImageButtonDelete;
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.TextViewTitle = (TextView) view.findViewById(R.id.TextViewTitle);
 		holder.TextViewEnergy = (TextView) view

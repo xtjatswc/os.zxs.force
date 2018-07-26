@@ -109,15 +109,14 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return R.id.GridViewDepartment;
     }
 
-    protected int getGridItemLayoutId() {
+    public int getListItemLayoutId() {
         return R.layout.frame_patient_list_condition_item;
     }
 
-    @Override
-    protected void setViewHolder(View view) {
+    public void setViewHolder(View view) {
     }
 
-    protected void setGridItemView(int position, View view, final Department data, ViewGroup parent) throws Exception {
+    public void setListItemView(int position, View view, final Department data, ViewGroup parent) throws Exception {
 
         Button ButtonDepartment = ViewFindUtils.hold(view, R.id.ButtonDepartment);
         ButtonDepartment.setText(data.getDepartmentName());

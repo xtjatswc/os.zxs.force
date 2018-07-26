@@ -74,8 +74,7 @@ public class MealRecordFoodFragment extends
 		return R.id.gridView1;
 	}
 
-	@Override
-	protected int getGridItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.mealrecord_fragment_food_item;
 	}
 
@@ -100,8 +99,7 @@ public class MealRecordFoodFragment extends
 		TextView TextViewTip;
 	}
 
-	@Override
-	protected void setGridItemView(final int position, final View view,
+	public void setListItemView(final int position, final View view,
 			ChinaFoodComposition data, final ViewGroup parent) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) view.getTag();
@@ -155,8 +153,7 @@ public class MealRecordFoodFragment extends
 		});
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		final ViewHolder holder = new ViewHolder();
 		holder.ImageViewFoodPic = (ImageView) view
 				.findViewById(R.id.ImageViewFoodPic);

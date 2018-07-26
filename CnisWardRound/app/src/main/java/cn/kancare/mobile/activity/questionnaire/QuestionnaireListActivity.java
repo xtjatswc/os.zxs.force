@@ -189,8 +189,7 @@ public class QuestionnaireListActivity extends
 		return R.layout.questionnaire_list;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.questionnaire_list_item;
 	}
 
@@ -305,8 +304,7 @@ public class QuestionnaireListActivity extends
 		}
 	}
 
-	@Override
-	protected void setListItemView(final int position, View view,
+	public void setListItemView(final int position, View view,
 			PatientQuestionnaire data, final ViewGroup parent) {
 		QuestionDetailType questionDetailType;
 		try {
@@ -420,8 +418,7 @@ public class QuestionnaireListActivity extends
 
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		// TODO Auto-generated method stub
 
 	}

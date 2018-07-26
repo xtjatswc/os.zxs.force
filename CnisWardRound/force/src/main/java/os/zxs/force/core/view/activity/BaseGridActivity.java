@@ -3,6 +3,7 @@ package os.zxs.force.core.view.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,15 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 
 import os.zxs.force.core.view.Loading;
+import os.zxs.force.core.view.base.IGridList;
+import os.zxs.force.core.view.base.PaginationAdapter;
 
 public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
-		AbsListView.OnScrollListener {
+		AbsListView.OnScrollListener , IGridList<Bean>{
 	protected GridView gridView;
 	protected int visibleLastIndex = 0; // 最后的可视项索引
 
-	protected PaginationAdapter adapter;
+	protected PaginationAdapter<Bean> adapter;
 
 	protected abstract int getPageSize();
 
@@ -28,23 +31,27 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 
 	protected abstract int getGridId();
 
-	protected abstract int getGridItemLayoutId();
 
-	protected abstract void setGridItemView(int position, View view, Bean data,
-			ViewGroup parent) throws Exception;
+	public Activity getTheActivity() {
+		return this;
+	}
+
+	public void doException(Exception e) {
+		doException(e);
+	}
 
 	// 选择行的时候是否改变颜色
-	protected Boolean isSelectedChangeColor() {
+	public Boolean isSelectedChangeColor() {
 		return false;
 	}
 
 	// 得到选中行的颜色
-	protected int getSelectedColor() {
+	public int getSelectedColor() {
 		return 0xFFED9516;// 金色
 	}
 
 	// 得到未选中行的颜色
-	protected int getUnSelectedColor() {
+	public int getUnSelectedColor() {
 		return 0x80ffffff;// 透明
 	}
 
@@ -67,8 +74,6 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 			}
 		});
 	}
-
-	protected abstract void setViewHolder(View view);
 
 	@Override
 	public void onCreate(Bundle paramBundle) {
@@ -102,7 +107,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 	}
 
 	private void initData(){
-		adapter = new PaginationAdapter();
+		adapter = new PaginationAdapter(this);
 		gridView.setAdapter(adapter);
 	}
 
@@ -155,82 +160,4 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 		visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
 	}
 
-	public class PaginationAdapter extends BaseAdapter {
-
-		List<Bean> items = new ArrayList<Bean>();
-
-		Bean currentItem;
-
-		public void setCurrentItem(Bean item) {
-			currentItem = item;
-		}
-
-		public Bean getCurrentItem() {
-			return currentItem;
-		}
-
-		public PaginationAdapter() {
-
-		}
-
-
-		public int getCount() {
-
-			return items.size();
-		}
-
-		public Bean getItem(int position) {
-
-			return items.get(position);
-		}
-
-		public long getItemId(int position) {
-
-			return position;
-		}
-
-		public View getView(int position, View view, ViewGroup parent) {
-
-			if (view == null) {
-				view = getLayoutInflater().inflate(getGridItemLayoutId(), null);
-				setViewHolder(view);
-			}
-
-			Bean data = items.get(position);
-
-			try {
-				setGridItemView(position, view, data, parent);
-			} catch (Exception e) {
-				doException(e);
-			}
-
-			if (isSelectedChangeColor()) {
-				if (getCurrentItem() == data) {
-					view.setBackgroundColor(getSelectedColor());
-				} else {
-					view.setBackgroundColor(getUnSelectedColor());
-				}
-			}
-
-			return view;
-		}
-
-		public void addItem(Bean item) {
-			items.add(item);
-		}
-
-		public void removeItem(Bean item) {
-			items.remove(item);
-		}
-
-		public List<Bean> getItems() {
-			return items;
-		}
-		
-		public  void setItems(List<Bean> items){
-			this.items = items;
-		}
-		
-		
-	}
 }

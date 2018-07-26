@@ -43,13 +43,11 @@ public class BodyAnalysisListActivity extends
 		return R.id.lvBodyAnalysis;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.body_analysis_list_item;
 	}
 
-	@Override
-	protected void setListItemView(final int position, View view,
+	public void setListItemView(final int position, View view,
 			BodyAnalysisReport data, final ViewGroup parent) {
 		// 编号
 		TextView tvBodyAnalysisReportNo = (TextView) view
@@ -111,8 +109,7 @@ public class BodyAnalysisListActivity extends
 
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		// TODO Auto-generated method stub
 
 	}

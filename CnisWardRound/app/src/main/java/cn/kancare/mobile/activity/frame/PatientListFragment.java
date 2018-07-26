@@ -228,7 +228,7 @@ public class PatientListFragment extends
 	}
 
 	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.patient_list_item;
 	}
 
@@ -255,7 +255,7 @@ public class PatientListFragment extends
 	}
 
 	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.tvPatientName = (TextView) view.findViewById(R.id.patientName);
 		holder.tvDepartmentName = (TextView) view.findViewById(R.id.departName);
@@ -299,8 +299,7 @@ public class PatientListFragment extends
 		view.setTag(holder);
 	}
 
-	@Override
-	protected void setListItemView(final int position, final View view,
+	public void setListItemView(final int position, final View view,
 			PatientHospitalizeBasicInfo patientinfo, final ViewGroup parent) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) view.getTag();

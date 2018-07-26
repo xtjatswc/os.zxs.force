@@ -102,8 +102,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		return R.layout.course_record_list;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.course_record_list_item;
 	}
 
@@ -161,8 +160,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		}
 	}
 
-	@Override
-	protected void setListItemView(final int position, View view,
+	public void setListItemView(final int position, View view,
 			CourseRecord data, final ViewGroup parent) {
 		// 编号
 		TextView tvCourseRecordNo = (TextView) view
@@ -210,8 +208,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		// TODO Auto-generated method stub
 		
 	}

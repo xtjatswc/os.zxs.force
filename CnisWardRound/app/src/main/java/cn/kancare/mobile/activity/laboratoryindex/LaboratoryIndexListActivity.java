@@ -92,13 +92,11 @@ public class LaboratoryIndexListActivity extends
 		return R.id.lvLaboratoryindex;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.laboratoryindex_list_item;
 	}
 
-	@Override
-	protected void setListItemView(final int position, final View view,
+	public void setListItemView(final int position, final View view,
 			LaboratoryIndex data, final ViewGroup parent) {
 		// 报告名称
 		TextView TextViewTestType = (TextView) view
@@ -289,8 +287,7 @@ public class LaboratoryIndexListActivity extends
 		btnNew = (ImageButton) findViewById(R.id.btnAdd);
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		// TODO Auto-generated method stub
 
 	}

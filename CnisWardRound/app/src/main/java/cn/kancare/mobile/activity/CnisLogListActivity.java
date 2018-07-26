@@ -98,13 +98,11 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		return R.id.lvCnisLog;
 	}
 
-	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.cnislog_list_item;
 	}
 
-	@Override
-	protected void setListItemView(final int position, View view, CnisLog data,
+	public void setListItemView(final int position, View view, CnisLog data,
 			final ViewGroup parent) {
 		// 编号
 		TextView textViewLogID = (TextView) view
@@ -176,8 +174,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		black = ColorUtil.getColor(R.color.black);
 	}
 
-	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		// TODO Auto-generated method stub
 
 	}

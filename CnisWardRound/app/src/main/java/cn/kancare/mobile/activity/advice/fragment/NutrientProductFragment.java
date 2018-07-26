@@ -65,12 +65,11 @@ public class NutrientProductFragment extends
 	}
 
 	@Override
-	protected int getListItemLayoutId() {
+	public int getListItemLayoutId() {
 		return R.layout.advice_product_list_item;
 	}
 
-	@Override
-	protected void setListItemView(int position, View view,
+	public void setListItemView(int position, View view,
 			ChinaFoodComposition data, ViewGroup parent) {
 		final ViewHolder holder = (ViewHolder) view.getTag();
 		holder.TextView_ProductName.setText(data.getFoodName());
@@ -96,7 +95,7 @@ public class NutrientProductFragment extends
 	}
 
 	@Override
-	protected void setViewHolder(View view) {
+	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.TextView_ProductName = (TextView) view
 				.findViewById(R.id.TextView_ProductName);
@@ -136,12 +135,12 @@ public class NutrientProductFragment extends
 	}
 
 	@Override
-	protected Boolean isSelectedChangeColor() {
+	public Boolean isSelectedChangeColor() {
 		return true;
 	}
 
 	@Override
-	protected int getUnSelectedColor() {
+	public int getUnSelectedColor() {
 		return 0xFF008000;
 	}
 

@@ -61,11 +61,11 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
         return R.id.lvDiagnosis;
     }
 
-    protected int getListItemLayoutId() {
+    public int getListItemLayoutId() {
         return R.layout.diagnosis_list_item;
     }
 
-    protected void setListItemView(int position, View view, Diagnosis data, ViewGroup parent) {
+    public void setListItemView(int position, View view, Diagnosis data, ViewGroup parent) {
         TextView textViewCode = ViewFindUtils.hold(view, R.id.textViewCode);
         textViewCode.setText(data.getDiagnosisCode());
 
@@ -81,7 +81,7 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
-    protected void setViewHolder(View view) {
+    public void setViewHolder(View view) {
 
     }
 
