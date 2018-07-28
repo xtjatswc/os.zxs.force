@@ -16,8 +16,7 @@ public interface IGridList<Bean> {
 
     void setViewHolder(View view);
 
-    void doException(Exception e);
-
+    void handleException(Exception e);
     Boolean isSelectedChangeColor();
 
     int getSelectedColor();

@@ -27,17 +27,17 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 	// 选择行的时候是否改变颜色
 	public Boolean isSelectedChangeColor() {
-		return false;
+		return adapter.isSelectedChangeColor();
 	}
 
 	// 得到选中行的颜色
 	public int getSelectedColor() {
-		return 0xFFED9516;// 金色
+		return adapter.getSelectedColor();// 金色
 	}
 
 	// 得到未选中行的颜色
 	public int getUnSelectedColor() {
-		return 0x80ffffff;// 透明
+		return adapter.getUnSelectedColor();// 透明
 	}
 
 	protected void setOnListItemSubClick(final View item, final View widget, final int position,
@@ -63,8 +63,8 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		return this;
 	}
 
-	public void doException(Exception e) {
-		doException(e);
+	public void handleException(Exception e) {
+		super.doException(e);
 	}
 
 	@Override

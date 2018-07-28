@@ -27,7 +27,7 @@ public class GridListAdapter<Bean> implements
             try {
                 list = iGridList.getMoreData(iGridList.getPageSize(), count);
             } catch (Exception e) {
-                iGridList.doException(e);
+                iGridList.handleException(e);
             }
             if (list != null) {
                 for (Bean model : list) {

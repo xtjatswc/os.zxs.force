@@ -56,6 +56,7 @@ public abstract class BaseActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
+		log = new CnislogBo(this);
 		try {
 
 			setContentView(getLayoutId());
@@ -68,7 +69,6 @@ public abstract class BaseActivity extends FragmentActivity {
 		} catch (Exception e) {
 			doException(e);
 		}
-		log = new CnislogBo(this);
 	}
 	
 	protected void doException(Exception e)

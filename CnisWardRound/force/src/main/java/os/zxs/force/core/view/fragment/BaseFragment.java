@@ -51,6 +51,7 @@ public abstract class BaseFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View layoutView = inflater.inflate(getLayoutId(), container, false);
+		log = new CnislogBo(this.getActivity());
 		try {
 			setView(layoutView);
 			setValidation();
@@ -58,7 +59,6 @@ public abstract class BaseFragment extends Fragment {
 		} catch (Exception e) {
 			doException(e);
 		}
-		log = new CnislogBo(this.getActivity());
 
 		return layoutView;
 	}

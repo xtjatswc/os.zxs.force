@@ -13,6 +13,15 @@ public class PaginationAdapter<Bean> extends BaseAdapter {
     Bean currentItem;
     IGridList<Bean> iGridList;
 
+    // 选择行的时候是否改变颜色
+    public Boolean isSelectedChangeColor(){ return false;}
+
+    // 得到选中行的颜色
+    public int getSelectedColor(){ return 0xFFED9516;}// 金色
+
+    // 得到未选中行的颜色
+    public int getUnSelectedColor (){ return 0x80ffffff;}// 透明
+
     public void setCurrentItem(Bean item) {
         currentItem = item;
     }
@@ -50,7 +59,7 @@ public class PaginationAdapter<Bean> extends BaseAdapter {
         try {
             iGridList.setListItemView(position, view, data, parent);
         } catch (Exception e) {
-            iGridList.doException(e);
+            iGridList.handleException(e);
         }
 
         if (iGridList.isSelectedChangeColor()) {
@@ -77,6 +86,8 @@ public class PaginationAdapter<Bean> extends BaseAdapter {
     }
 
     public  void setItems(List<Bean> items){
+        if(items == null)
+            items = new ArrayList<Bean>();
         this.items = items;
     }
 }
