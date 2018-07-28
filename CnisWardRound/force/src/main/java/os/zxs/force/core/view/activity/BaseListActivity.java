@@ -55,6 +55,9 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 			}
 		});
 	}
+	public PaginationAdapter getPaginationAdapter() {
+		return adapter;
+	}
 
 	public Activity getTheActivity() {
 		return this;

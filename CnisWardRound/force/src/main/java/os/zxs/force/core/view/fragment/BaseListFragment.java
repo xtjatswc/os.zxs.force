@@ -67,6 +67,10 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		doException(e);
 	}
 
+	public PaginationAdapter getPaginationAdapter() {
+		return adapter;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

@@ -64,6 +64,10 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
 		});
 	}
 
+    public PaginationAdapter getPaginationAdapter() {
+        return adapter;
+    }
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

@@ -35,4 +35,6 @@ public interface IGridList<Bean> {
     void onListItemSubClick(View item, View widget, int position,
                                                int which) throws Exception;
 
+    PaginationAdapter getPaginationAdapter();
+
 }
