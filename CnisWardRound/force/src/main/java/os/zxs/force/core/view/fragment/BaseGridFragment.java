@@ -15,13 +15,12 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 
 import os.zxs.force.core.view.Loading;
+import os.zxs.force.core.view.base.GridListAdapter;
 import os.zxs.force.core.view.base.IGridList;
 import os.zxs.force.core.view.base.PaginationAdapter;
 
-public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
-		AbsListView.OnScrollListener, IGridList<Bean> {
+public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IGridList<Bean> {
 	protected GridView gridView;
-	protected int visibleLastIndex = 0; // 最后的可视项索引
 
 	protected PaginationAdapter<Bean> adapter;
 
@@ -77,7 +76,8 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
 		gridView = (GridView) layoutView.findViewById(getListId());
 		initData();
 		refreshList();
-		gridView.setOnScrollListener(this);
+		GridListAdapter<Bean> gridListAdapter = new GridListAdapter<Bean>(this);
+		gridView.setOnScrollListener(gridListAdapter);
 
 		// 条目点击事件
 		gridView.setOnItemClickListener(new ItemClickListener());
@@ -127,34 +127,4 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements
 		adapter.removeItem(adapter.getCurrentItem());
 		adapter.notifyDataSetChanged();
 	}
-
-	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		int itemsLastIndex = adapter.getCount() - 1; // 数据集最后一项的索引
-		int lastIndex = itemsLastIndex;
-		if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE
-				&& visibleLastIndex == lastIndex) {
-			Loading.turn(getContext());
-			// 如果是自动加载,可以在这里放置异步加载数据的代码
-			int count = adapter.getCount();
-			List<Bean> list = null;
-			try {
-				list = getMoreData(getPageSize(), count);
-			} catch (Exception e) {
-				doException(e);
-			}
-			if (list != null) {
-				for (Bean model : list) {
-					adapter.addItem(model);
-				}
-				adapter.notifyDataSetChanged();
-			}
-			Loading.turnoff();
-		}
-	}
-
-	public void onScroll(AbsListView view, int firstVisibleItem,
-						 int visibleItemCount, int totalItemCount) {
-		visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
-	}
-
 }

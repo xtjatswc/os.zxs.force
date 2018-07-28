@@ -55,8 +55,7 @@ import os.zxs.force.core.view.fragment.BaseListFragment;
 import os.zxs.force.core.view.slide.SlideLayout;
 
 public class PatientListFragment extends
-		BaseListFragment<PatientHospitalizeBasicInfo> implements
-		OnScrollListener, CallBackListener {
+		BaseListFragment<PatientHospitalizeBasicInfo> implements CallBackListener {
 	FragmentActivity context;
 	PatientHospitalizeBasicInfoBo patientBo;
 	DepartmentBo departmentBo;
