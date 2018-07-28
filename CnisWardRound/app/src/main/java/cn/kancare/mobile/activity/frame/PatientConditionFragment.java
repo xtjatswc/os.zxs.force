@@ -97,16 +97,22 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
 
     @Override
     protected List<Department> getMoreData(int pageSize, int offset) throws Exception {
-        List<Department> lst = departmentBo.getDao().queryForAll();
-        Department department = new Department();
-        department.setDepartment_DBKey(0);
-        department.setDepartmentName("全部科室");
-        lst.add(0, department);
+        List<Department> lst = departmentBo.getDao().query(pageSize, offset);
+        if(offset == 0) {
+            Department department = new Department();
+            department.setDepartment_DBKey(0);
+            department.setDepartmentName("全部科室");
+            lst.add(0, department);
+        }
         return lst;
     }
 
     protected int getGridId() {
         return R.id.GridViewDepartment;
+    }
+
+    protected void onGridItemSubClick(View item, View widget, int position, int which) throws Exception {
+
     }
 
     public int getListItemLayoutId() {

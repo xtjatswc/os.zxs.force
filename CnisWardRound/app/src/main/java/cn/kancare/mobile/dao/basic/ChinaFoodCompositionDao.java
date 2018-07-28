@@ -7,6 +7,7 @@ import android.content.Context;
 import cn.kancare.mobile.bean.basic.ChinaFoodComposition;
 import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.constant.SettingCode;
+import cn.kancare.mobile.common.constant.SyncConstant;
 import cn.kancare.mobile.core.base.BaseDao;
 
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -56,9 +57,14 @@ public class ChinaFoodCompositionDao extends BaseDao<ChinaFoodComposition> {
 
 		QueryBuilder<ChinaFoodComposition, Integer> qBuilder = dao
 				.queryBuilder();
-		qBuilder.where().eq("FoodTableInsideType", FoodTableInsideType);
+		if(FoodTableInsideType.equals(SyncConstant.FoodType.FOOD)) {
+			qBuilder.limit(limit).offset(offset).orderBy("FoodTableInsideType", true)
+					.orderBy("FoodCode", true).query();
+		}else{
+            qBuilder.where().eq("FoodTableInsideType", FoodTableInsideType);
+			qBuilder.limit(limit).offset(offset).orderBy("FoodName", true);
+        }
 
-		qBuilder.limit(limit).offset(offset).orderBy("FoodName", true);
 		return qBuilder.query();
 
 	}// ...other operations

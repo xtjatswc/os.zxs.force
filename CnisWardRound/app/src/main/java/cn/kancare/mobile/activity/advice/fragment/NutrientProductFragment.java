@@ -19,6 +19,7 @@ import cn.kancare.mobile.bo.basic.ChinaFoodCompositionBo;
 import cn.kancare.mobile.common.advice.AdviceListener.AdviceInfoListener;
 import cn.kancare.mobile.common.advice.AdviceListener.NutrientProductListener;
 import cn.kancare.mobile.common.constant.LogTag;
+import cn.kancare.mobile.common.constant.SyncConstant;
 import os.zxs.force.core.view.fragment.BaseListFragment;
 
 public class NutrientProductFragment extends
@@ -56,7 +57,7 @@ public class NutrientProductFragment extends
     @Override
 	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset)
 			throws Exception {
-		return chinaFoodCompositionBo.getDao().query(pageSize, offset, "2");
+		return chinaFoodCompositionBo.getDao().query(pageSize, offset, SyncConstant.FoodType.NUTRIENT_PRODUCT);
 	}
 
 	@Override

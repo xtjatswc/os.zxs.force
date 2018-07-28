@@ -32,4 +32,13 @@ public class DepartmentDao extends BaseDao<Department> {
 		return queryBuilder.query();
 	}
 
+	public List<Department> query(int limit, int offset) throws Exception {
+
+		QueryBuilder<Department, Integer> qBuilder = dao
+				.queryBuilder();
+			qBuilder.limit(limit).offset(offset).orderBy("DepartmentName", true);
+
+		return qBuilder.query();
+
+	}
 }

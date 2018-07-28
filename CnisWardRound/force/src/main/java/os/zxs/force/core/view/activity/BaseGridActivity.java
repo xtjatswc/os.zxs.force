@@ -108,7 +108,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 	}
 
 	private void initData(){
-		adapter = new PaginationAdapter(this);
+		adapter = new PaginationAdapter<Bean>(this);
 		gridView.setAdapter(adapter);
 	}
 
