@@ -114,11 +114,11 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 			holder.ImageButton_Edit.setVisibility(View.GONE);
 		}
 
-        setOnListItemSubClick(view, parent,
-                position, holder.ImageButton_Delete);
+       gridListAdapter.setOnListItemSubClick(view, parent,
+                position, holder.ImageButton_Delete, data);
 
-        setOnListItemSubClick(view, parent,
-                position, holder.ImageButton_Edit);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+                position, holder.ImageButton_Edit, data);
 
 		String adviceDateString = "";
 		if (data.getAdviceBeginDate().equals(data.getAdviceEndDate())) {
@@ -196,11 +196,10 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		holder.TextViewRemark.setText(remark);
 	}
 
-	public void onListItemSubClick(View item, View widget, int position,
-			int which) throws Exception {
+	public void onListItemSubClick(View item, ViewGroup widget, int position,
+			int which, NutrientAdviceSummary data)  throws Exception {
 
-		final NutrientAdviceSummary nutrientAdviceSummary = adapter
-				.getItem(position);
+		final NutrientAdviceSummary nutrientAdviceSummary = data;
 
 		switch (which) {
 		case R.id.ImageButton_Edit:

@@ -34,8 +34,8 @@ public interface IGridList<Bean> {
     List<Bean> getMoreData(int pageSize, int offset) throws Exception;
 
     // 行元素点击事件
-    void onListItemSubClick(View item, View widget, int position,
-                                               int which) throws Exception;
+    void onListItemSubClick(View item, ViewGroup parent, int position,
+                                               int which, Bean data) throws Exception;
 
     PaginationAdapter getPaginationAdapter();
 

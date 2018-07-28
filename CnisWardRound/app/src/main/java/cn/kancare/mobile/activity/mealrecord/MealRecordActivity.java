@@ -152,8 +152,8 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		holder.TextViewTitle.setText(DateHelper.getInstance().getDataString_2(
 				data.getMealDate()));
 
-		setOnGridItemSubClick(view, parent,
-				position, holder.ImageButtonDelete);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.ImageButtonDelete, data);
 
 		// 合计
 		lstChinaFoodCompositions = mealRecordBo.getFoodAmountList(this,
@@ -199,12 +199,11 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		}
 	}
 
-	public void onListItemSubClick(View item, View widget, int position,
-			int which) throws Exception {
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, MealRecord data) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) item.getTag();
 
-		final MealRecord mealRecord = adapter.getItem(position);
+		final MealRecord mealRecord = data;
 
 		switch (which) {
 		case R.id.ImageButtonDelete:

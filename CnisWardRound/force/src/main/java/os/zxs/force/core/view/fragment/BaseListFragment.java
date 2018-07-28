@@ -47,23 +47,6 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		return adapter.getUnSelectedColor();// 透明
 	}
 
-	protected void setOnListItemSubClick(final View item, final View widget, final int position,
-										 final View subView) throws Exception{
-		adapter.setCurrentItem(adapter.getItem(position));
-		subView.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				try {
-					onListItemSubClick(item, widget,
-                            position, subView.getId());
-				} catch (Exception e) {
-					doException(e);
-				}
-			}
-		});
-
-	}
-
 	public AbsListView getAbsListView() {
 		return listView;
 	}
@@ -85,34 +68,13 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		listView = (ListView) layoutView.findViewById(getListId());
 		initData();
 		gridListAdapter = new GridListAdapter<Bean>(this);
-		listView.setOnScrollListener(gridListAdapter);
-		gridListAdapter.refreshList();
-
-		// 条目点击事件
-		listView.setOnItemClickListener(new ItemClickListener());
+		gridListAdapter.initFinish();
 
 		return layoutView;
 	}
 
 	public void onListItemClick(Bean data) {
 		adapter.setCurrentItem(data);
-	}
-
-	// 获取点击事件
-	private final class ItemClickListener implements OnItemClickListener {
-
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			//final ListView listView = (ListView) parent;
-			final Bean data = (Bean) parent.getItemAtPosition(position);
-
-			onListItemClick(data);
-
-			if (isSelectedChangeColor()) {
-				adapter.notifyDataSetInvalidated();
-			}
-			return;
-		}
 	}
 
 	private void initData(){

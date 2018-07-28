@@ -337,8 +337,8 @@ public class PatientListFragment extends
 		}
 
 		// 设置我的患者
-		setOnListItemSubClick(view, parent,
-				position, holder.ImageViewSex);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.ImageViewSex, patientinfo);
 
 		// 年龄
 		holder.tvAge.setText("	"
@@ -368,8 +368,8 @@ public class PatientListFragment extends
 			holder.switchChildStatus.setChecked(true);
 		}
 
-		setOnListItemSubClick(view, parent,
-				position, holder.switchChildStatus);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.switchChildStatus, patientinfo);
 
 
 		// 收藏
@@ -384,23 +384,23 @@ public class PatientListFragment extends
 			imageViewLove.setBackgroundResource(R.drawable.heart_love);
 		}
 
-		setOnListItemSubClick(view, parent,
-				position, holder.imageViewLove);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.imageViewLove, patientinfo);
 
-		setOnListItemSubClick(view, parent,
-				position, imageViewLove);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, imageViewLove, patientinfo);
 
 
 		// 问卷图标
 		patientQuestionnaireBo.setQuestionnaireInfo(patientinfo, holder);
-		setOnListItemSubClick(view, parent,
-				position, holder.imageViewQuestionnaire);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.imageViewQuestionnaire, patientinfo);
 
 
 		// 查房记录图标
 		courseRecordBo.setCourseInfo(patientinfo, holder);
-		setOnListItemSubClick(view, parent,
-				position, holder.imageViewCourseRecord);
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.imageViewCourseRecord, patientinfo);
 
 		// 根据检验数据判断是否有营养不良风险
 		// if (patientBo.checkIsRisk(this,
@@ -446,13 +446,11 @@ public class PatientListFragment extends
 		switchStatus = (Switch)layout.findViewById(R.id.switchStatus);
 	}
 
-	public void onListItemSubClick(View item, View widget, int position,
-			int which) throws Exception{
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, PatientHospitalizeBasicInfo data) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) item.getTag();
 
-		final PatientHospitalizeBasicInfo patientInfo = adapter
-				.getItem(position);
+		final PatientHospitalizeBasicInfo patientInfo = data;
 
 		Global.currentPatient = patientInfo;
 

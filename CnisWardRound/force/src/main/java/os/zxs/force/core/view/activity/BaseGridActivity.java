@@ -46,21 +46,6 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 		return adapter.getUnSelectedColor();// 透明
 	}
 	
-	protected void setOnGridItemSubClick(final View item, final View widget, final int position,
-										 final View subView)throws Exception {
-		adapter.setCurrentItem(adapter.getItem(position));
-		subView.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				try {
-					onListItemSubClick(item, widget,
-							position, subView.getId());
-				} catch (Exception e) {
-					doException(e);
-				}
-			}
-		});
-	}
 	public AbsListView getAbsListView() {
 		return gridView;
 	}

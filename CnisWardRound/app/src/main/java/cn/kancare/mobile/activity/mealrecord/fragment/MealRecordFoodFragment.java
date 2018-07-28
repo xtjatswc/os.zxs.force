@@ -133,21 +133,11 @@ public class MealRecordFoodFragment extends
 					data.getCurrentMealAmount(), 2));
 		}
 
-		holder.ImageViewMinus.setOnClickListener(new View.OnClickListener() {
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.ImageViewMinus, data);
 
-			public void onClick(View v) {
-				MealRecordFoodFragment.this.onListItemSubClick(view, parent,
-						position, holder.ImageViewMinus.getId());
-			}
-		});
-
-		holder.ImageViewPlus.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				MealRecordFoodFragment.this.onListItemSubClick(view, parent,
-						position, holder.ImageViewPlus.getId());
-			}
-		});
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, holder.ImageViewPlus, data);
 	}
 
 	public void setViewHolder(View view) {
@@ -189,14 +179,12 @@ public class MealRecordFoodFragment extends
 		view.setTag(holder);
 	}
 
-	public void onListItemSubClick(View item, View widget, int position,
-			int which) {
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, ChinaFoodComposition data) throws Exception {
 
 		try {
 			final ViewHolder holder = (ViewHolder) item.getTag();
 
-			final ChinaFoodComposition chinaFoodComposition = adapter
-					.getItem(position);
+			final ChinaFoodComposition chinaFoodComposition = data;
 			double value = Convert.cash2Double(holder.EditTextValue.getText()
 					.toString());
 			switch (which) {

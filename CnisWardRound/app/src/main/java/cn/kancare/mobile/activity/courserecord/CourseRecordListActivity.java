@@ -53,6 +53,10 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		return courseBo.getDao().query(pageSize, offset, PatientHospitalize_DBKey);
 	}
 
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, CourseRecord data) throws Exception {
+
+	}
+
 	/**
 	 * 新建查房记录
 	 * 
@@ -170,10 +174,6 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		TextView tvCourseRecordCreateBy = (TextView) view
 				.findViewById(R.id.courseRecordCreateBy);
 		tvCourseRecordCreateBy.setText("	记录人：" + data.getCreateBy());
-
-	}
-
-	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 

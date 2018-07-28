@@ -91,6 +91,10 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		return cnislogBo.getDao().query(pageSize, offset);
 	}
 
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, CnisLog data) throws Exception {
+
+	}
+
 	public int getListId() {
 		return R.id.lvCnisLog;
 	}
@@ -131,10 +135,6 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		} else {
 			textViewMsg.setTextColor(black);
 		}
-	}
-
-	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
-
 	}
 
 	@Override

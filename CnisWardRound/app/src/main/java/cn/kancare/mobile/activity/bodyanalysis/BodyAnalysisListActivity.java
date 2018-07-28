@@ -36,6 +36,10 @@ public class BodyAnalysisListActivity extends
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, BodyAnalysisReport data) throws Exception {
+
+	}
+
 	public int getListId() {
 		return R.id.lvBodyAnalysis;
 	}
@@ -57,9 +61,6 @@ public class BodyAnalysisListActivity extends
 
 	}
 
-	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
-
-	}
 
 	public void onListItemClick(BodyAnalysisReport data) {
 		super.onListItemClick(data);

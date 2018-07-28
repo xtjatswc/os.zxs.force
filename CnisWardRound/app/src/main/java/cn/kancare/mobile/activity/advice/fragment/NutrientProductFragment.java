@@ -58,6 +58,10 @@ public class NutrientProductFragment extends
 		return chinaFoodCompositionBo.getDao().query(pageSize, offset, SyncConstant.FoodType.NUTRIENT_PRODUCT);
 	}
 
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, ChinaFoodComposition data) throws Exception {
+
+	}
+
 	public int getListId() {
 		return R.id.ListView_Product;
 	}
@@ -137,10 +141,6 @@ public class NutrientProductFragment extends
 	@Override
 	public int getUnSelectedColor() {
 		return 0xFF008000;
-	}
-
-	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
-
 	}
 
 	public void refreshProductStatus(String NutrientAdviceSummary_DBKey)

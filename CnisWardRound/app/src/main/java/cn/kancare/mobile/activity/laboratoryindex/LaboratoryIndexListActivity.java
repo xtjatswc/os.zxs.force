@@ -94,7 +94,7 @@ public class LaboratoryIndexListActivity extends
 	}
 
 	public void setListItemView(final int position, final View view,
-			LaboratoryIndex data, final ViewGroup parent) {
+			LaboratoryIndex data, final ViewGroup parent) throws Exception {
 		// 报告名称
 		TextView TextViewTestType = (TextView) view
 				.findViewById(R.id.TextViewTestType);
@@ -120,13 +120,10 @@ public class LaboratoryIndexListActivity extends
 		// 删除
 		final ImageView imageDelete = (ImageView) view
 				.findViewById(R.id.imageDelete);
-		imageDelete.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				LaboratoryIndexListActivity.this.onListItemSubClick(view,
-						parent, position, imageDelete.getId());
-			}
-		});
+		gridListAdapter.setOnListItemSubClick(view, parent,
+				position, imageDelete, data);
+
 
 		TextView tvNew = (TextView) view.findViewById(R.id.tvNew);
 		if (data.getOperateFlag() == OperateFlag.NEED_ADD_TO_SERVER) {
@@ -191,10 +188,9 @@ public class LaboratoryIndexListActivity extends
 		return sb.toString();
 	}
 
-	public void onListItemSubClick(View item, View widget, int position,
-			int which) {
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, LaboratoryIndex data) throws Exception {
 		try {
-			final LaboratoryIndex laboratoryIndex = adapter.getItem(position);
+			final LaboratoryIndex laboratoryIndex = data;
 
 			switch (which) {
 			case R.id.imageDelete:

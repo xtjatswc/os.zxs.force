@@ -377,7 +377,7 @@ public class QuestionnaireListActivity extends
 		}
 	}
 
-	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, ViewGroup parent, int position, int which, PatientQuestionnaire data) throws Exception {
 
 	}
 

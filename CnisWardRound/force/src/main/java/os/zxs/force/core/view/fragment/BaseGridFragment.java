@@ -23,6 +23,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 	protected GridView gridView;
 
 	protected PaginationAdapter<Bean> adapter;
+	protected GridListAdapter<Bean> gridListAdapter;
 
 	public Activity getTheActivity() {
 		return getActivity();
@@ -46,22 +47,6 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 	public int getUnSelectedColor() {
 		return adapter.getUnSelectedColor();// 透明
 	}
-	
-	protected void setOnGridItemSubClick(final View item, final View widget, final int position,
-										 final View subView)throws Exception {
-		adapter.setCurrentItem(adapter.getItem(position));
-		subView.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-				try {
-					onListItemSubClick(item, widget,
-							position, subView.getId());
-				} catch (Exception e) {
-					doException(e);
-				}
-			}
-		});
-	}
 
     public PaginationAdapter getPaginationAdapter() {
         return adapter;
@@ -75,12 +60,8 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 
 		gridView = (GridView) layoutView.findViewById(getListId());
 		initData();
-		refreshList();
-		GridListAdapter<Bean> gridListAdapter = new GridListAdapter<Bean>(this);
-		gridView.setOnScrollListener(gridListAdapter);
-
-		// 条目点击事件
-		gridView.setOnItemClickListener(new ItemClickListener());
+		gridListAdapter = new GridListAdapter<Bean>(this);
+		gridListAdapter.initFinish();
 
 		return layoutView;
 	}
@@ -89,39 +70,11 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 		adapter.setCurrentItem(data);
 	}
 
-	// 获取点击事件
-	private final class ItemClickListener implements OnItemClickListener {
-
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			final Bean data = (Bean) parent.getItemAtPosition(position);
-
-			onListItemClick(data);
-			if (isSelectedChangeColor()) {
-				adapter.notifyDataSetInvalidated();
-			}
-			return;
-		}
-	}
-
 	private void initData(){
 		adapter = new PaginationAdapter<Bean>(this);
 		gridView.setAdapter(adapter);
 	}
 
-	protected void refreshList() {
-		Loading.turn(getContext());
-
-		try {
-			List<Bean> list = getMoreData(getPageSize(), 0);
-			adapter.setItems(list);
-		} catch (Exception e) {
-			doException(e);
-		}
-		adapter.notifyDataSetChanged();
-		gridView.setSelection(0);//直接返回顶部，不带滑动效果
-		Loading.turnoff();
-	}
 	public AbsListView getAbsListView() {
 		return gridView;
 	}

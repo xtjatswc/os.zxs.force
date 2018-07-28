@@ -107,8 +107,8 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return lst;
     }
 
-    public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
-        Department department = adapter.getItem(position);
+    public void onListItemSubClick(View item, ViewGroup parent, int position, int which, Department data) throws Exception {
+        Department department = data;
         switch (which) {
             case R.id.ButtonDepartment:
                 Department_DBKey = department.getDepartment_DBKey() + "";
@@ -143,7 +143,7 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
 
         Button ButtonDepartment = ViewFindUtils.hold(view, R.id.ButtonDepartment);
         ButtonDepartment.setText(data.getDepartmentName());
-        setOnGridItemSubClick(view, parent, position, ButtonDepartment);
+        gridListAdapter.setOnListItemSubClick(view, parent, position, ButtonDepartment, data);
 
         if(data.getDepartment_DBKey() == Convert.cash2Int(Department_DBKey)){
             ButtonDepartment.setSelected(true);

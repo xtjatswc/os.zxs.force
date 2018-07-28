@@ -1,6 +1,7 @@
 package os.zxs.force.core.view.base;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 
@@ -10,7 +11,7 @@ import os.zxs.force.core.view.Loading;
 
 public class GridListAdapter<Bean> implements
         AbsListView.OnScrollListener{
-    IGridList iGridList;
+    IGridList<Bean> iGridList;
     protected int visibleLastIndex = 0; // 最后的可视项索引
 
     public GridListAdapter(IGridList iGridList){
@@ -88,4 +89,24 @@ public class GridListAdapter<Bean> implements
         iGridList.getAbsListView().setOnItemClickListener(new GridListAdapter.ItemClickListener());
 
     }
+
+    public void setOnListItemSubClick(final View item, final ViewGroup parent, final int position,
+                                      final View subView, final Bean data)throws Exception {
+        iGridList.getPaginationAdapter().setCurrentItem(iGridList.getPaginationAdapter().getItem(position));
+        subView.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                try {
+//                  Bean data = (Bean)iGridList.getPaginationAdapter()
+//                            .getItem(position);
+
+                    iGridList.onListItemSubClick(item, parent,
+                            position, subView.getId(), data);
+                } catch (Exception e) {
+                    iGridList.handleException(e);
+                }
+            }
+        });
+    }
+
 }
