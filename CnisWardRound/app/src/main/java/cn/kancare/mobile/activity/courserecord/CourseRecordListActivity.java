@@ -144,7 +144,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 											adapter.getCurrentItem()
 													.getCourseRecord_DBKey());
 
-									removeAndRefresh();
+									gridListAdapter.removeAndRefresh();
 								} catch (Exception e) {
 									doException(e);
 								}
@@ -187,10 +187,10 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
 			case RequestCode.NEW_COURSE_RECORD:
-				refreshList();
+				gridListAdapter.refreshList();
 				break;
 			case RequestCode.EDIT_COURSE_RECORD:
-				refreshList();
+				gridListAdapter.refreshList();
 				break;
 			default:
 				break;

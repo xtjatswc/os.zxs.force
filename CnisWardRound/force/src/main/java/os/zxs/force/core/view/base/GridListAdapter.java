@@ -43,4 +43,24 @@ public class GridListAdapter<Bean> implements
                          int visibleItemCount, int totalItemCount) {
         visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
     }
+
+    public void refreshList() {
+        Loading.turn(iGridList.getTheActivity());
+
+        try {
+            List<Bean> list = iGridList.getMoreData(iGridList.getPageSize(), 0);
+            iGridList.getPaginationAdapter().setItems(list);
+        } catch (Exception e) {
+            iGridList.handleException(e);
+        }
+        iGridList.getPaginationAdapter().notifyDataSetChanged();
+        iGridList.getAbsListView().setSelection(0);//直接返回顶部，不带滑动效果
+        Loading.turnoff();
+    }
+
+    public void removeAndRefresh() {
+        iGridList.getPaginationAdapter().removeItem(iGridList.getPaginationAdapter().getCurrentItem());
+        iGridList.getPaginationAdapter().notifyDataSetChanged();
+    }
+
 }

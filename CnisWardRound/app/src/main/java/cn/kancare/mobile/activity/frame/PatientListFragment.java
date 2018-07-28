@@ -85,7 +85,7 @@ public class PatientListFragment extends
 
 		iPatientCondition.setOnConditionChangeListener(new CallBackListener() {
 			public void doCallBack() {
-				refreshList();
+				gridListAdapter.refreshList();
 			}
 		});
 
@@ -95,12 +95,12 @@ public class PatientListFragment extends
 		editTextCondition.setCallBackListener(new CallBackListener() {
 
 			public void doCallBack() {
-				refreshList();
+				gridListAdapter.refreshList();
 			}
 		});
 		switchStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				refreshList();
+				gridListAdapter.refreshList();
 			}
 		});
 
@@ -132,7 +132,7 @@ public class PatientListFragment extends
 				startActivityForResult(i, RequestCode.NEW_PATIENT_INFO);
 				break;
 			case R.id.btnSearch:
-				refreshList();
+				gridListAdapter.refreshList();
 				break;
 			case R.id.btnMore:
 				if(slideLayoutCondition.getSlideState() == SlideLayout.STATE_CLOSE){
@@ -182,11 +182,11 @@ public class PatientListFragment extends
 			if (resultCode == RequestCode.NEW_PATIENT_INFO) {
 				String patientName = data.getExtras().getString("patientName");
 				editTextCondition.setText(patientName);
-				refreshList();
+				gridListAdapter.refreshList();
 			}
 		} else if (requestCode == RequestCode.VIEW_PATIENT_INFO) {
 			if (resultCode == RequestCode.DELETE_PATIENT_INFO) {
-				refreshList(); // 删除患者后，返回到患者列表界面刷新
+				gridListAdapter.refreshList(); // 删除患者后，返回到患者列表界面刷新
 			}
 		}
 	}
@@ -570,7 +570,7 @@ public class PatientListFragment extends
 		} catch (SQLException e) {
 			doException(e);
 		}
-		refreshList();
+		gridListAdapter.refreshList();
 	}
 
 }

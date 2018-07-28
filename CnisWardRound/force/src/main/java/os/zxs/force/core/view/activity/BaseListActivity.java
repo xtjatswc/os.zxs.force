@@ -24,6 +24,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 	protected ListView listView;
 	protected PaginationAdapter<Bean> adapter;
+    protected GridListAdapter<Bean> gridListAdapter;
 
 	// 选择行的时候是否改变颜色
 	public Boolean isSelectedChangeColor() {
@@ -62,6 +63,9 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 	public Activity getTheActivity() {
 		return this;
 	}
+	public AbsListView getAbsListView() {
+		return listView;
+	}
 
 	public void handleException(Exception e) {
 		super.doException(e);
@@ -73,9 +77,9 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 		listView = (ListView) findViewById(getListId());
 		initData();
-		refreshList();
-		GridListAdapter<Bean> gridListAdapter = new GridListAdapter<Bean>(this);
+		gridListAdapter = new GridListAdapter<Bean>(this);
 		listView.setOnScrollListener(gridListAdapter);
+        gridListAdapter.refreshList();
 
 		// 条目点击事件
 		listView.setOnItemClickListener(new ItemClickListener());
@@ -106,24 +110,5 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 	private void initData(){
 		adapter = new PaginationAdapter(this);
 		listView.setAdapter(adapter);
-	}
-
-	protected void refreshList() {
-		Loading.turn(this);
-
-		try {
-			List<Bean> list = getMoreData(getPageSize(), 0);
-			adapter.setItems(list);
-		} catch (Exception e) {
-			doException(e);
-		}
-		adapter.notifyDataSetChanged();
-		listView.setSelection(0);//直接返回顶部，不带滑动效果
-		Loading.turnoff();
-	}
-
-	protected void removeAndRefresh() {
-		adapter.removeItem(adapter.getCurrentItem());
-		adapter.notifyDataSetChanged();
 	}
 }

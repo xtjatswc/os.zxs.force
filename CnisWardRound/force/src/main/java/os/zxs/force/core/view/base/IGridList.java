@@ -1,12 +1,15 @@
 package os.zxs.force.core.view.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 
 import java.util.List;
 
 public interface IGridList<Bean> {
+
     Activity getTheActivity();
 
     void setListItemView(int position, View view, Bean data,
@@ -36,4 +39,5 @@ public interface IGridList<Bean> {
 
     PaginationAdapter getPaginationAdapter();
 
+    AbsListView getAbsListView();
 }

@@ -57,7 +57,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
 					cnislogBo.getDao().deleteAll();
 
-					refreshList();
+					gridListAdapter.refreshList();
 					break;
 				case R.id.ButtonTabLayout:
 

@@ -122,9 +122,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 		gridView.setSelection(0);//直接返回顶部，不带滑动效果
 		Loading.turnoff();
 	}
-
-	protected void removeAndRefresh() {
-		adapter.removeItem(adapter.getCurrentItem());
-		adapter.notifyDataSetChanged();
+	public AbsListView getAbsListView() {
+		return gridView;
 	}
 }

@@ -22,7 +22,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 	protected GridView gridView;
 
 	protected PaginationAdapter<Bean> adapter;
-
+	protected GridListAdapter<Bean> gridListAdapter;
 	public Activity getTheActivity() {
 		return this;
 	}
@@ -61,6 +61,9 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 			}
 		});
 	}
+	public AbsListView getAbsListView() {
+		return gridView;
+	}
 
 	@Override
 	public void onCreate(Bundle paramBundle) {
@@ -68,9 +71,9 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 
 		gridView = (GridView) findViewById(getListId());
 		initData();
-		refreshList();
-        GridListAdapter<Bean> gridListAdapter = new GridListAdapter<Bean>(this);
+        gridListAdapter = new GridListAdapter<Bean>(this);
 		gridView.setOnScrollListener(gridListAdapter);
+		gridListAdapter.refreshList();
 
 		// 条目点击事件
 		gridView.setOnItemClickListener(new ItemClickListener());
@@ -102,25 +105,5 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 	private void initData(){
 		adapter = new PaginationAdapter<Bean>(this);
 		gridView.setAdapter(adapter);
-	}
-
-	protected void refreshList() {
-		Loading.turn(this);
-
-		try {
-			List<Bean> list = getMoreData(getPageSize(), 0);
-			adapter.setItems(list);
-		} catch (Exception e) {
-			doException(e);
-		}
-		adapter.notifyDataSetChanged();
-		gridView.setSelection(0);//直接返回顶部，不带滑动效果
-		Loading.turnoff();
-
-	}
-	
-	protected void removeAndRefresh() {
-		adapter.removeItem(adapter.getCurrentItem());
-		adapter.notifyDataSetChanged();
 	}
 }

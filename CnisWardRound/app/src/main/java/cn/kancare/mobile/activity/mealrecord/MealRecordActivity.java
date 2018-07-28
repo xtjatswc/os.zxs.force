@@ -229,7 +229,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 										.deleteByMealRecord_DBKey(
 												mealRecord
 														.getMealRecord_DBKey());
-								removeAndRefresh();
+								gridListAdapter.removeAndRefresh();
 							} catch (Exception e) {
 								doException(e);
 							}
@@ -254,7 +254,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 			switch (requestCode) {
 			case RequestCode.NEW_MEALRECORD:
 			case RequestCode.EDIT_MEALRECORD:
-				refreshList();
+				gridListAdapter.refreshList();
 				break;
 			default:
 				break;

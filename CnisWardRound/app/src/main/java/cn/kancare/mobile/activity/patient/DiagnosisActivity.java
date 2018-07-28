@@ -36,12 +36,12 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
         editTextKeyword.setCallBackListener(new CallBackListener() {
 
             public void doCallBack() {
-                refreshList();
+                gridListAdapter.refreshList();
             }
         });
         editTextKeyword.setCallBackChangeListener(new CallBackListener() {
             public void doCallBack() {
-                refreshList();
+                gridListAdapter.refreshList();
             }
         });
 

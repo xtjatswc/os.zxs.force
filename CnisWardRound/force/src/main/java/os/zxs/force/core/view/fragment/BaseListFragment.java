@@ -26,6 +26,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 
 	protected ListView listView;
 	protected PaginationAdapter<Bean> adapter;
+	protected GridListAdapter<Bean> gridListAdapter;
 
 	public Activity getTheActivity() {
 		return getActivity();
@@ -63,6 +64,10 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 
 	}
 
+	public AbsListView getAbsListView() {
+		return listView;
+	}
+
 	public void handleException(Exception e) {
 		super.doException(e);
 	}
@@ -79,9 +84,9 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 
 		listView = (ListView) layoutView.findViewById(getListId());
 		initData();
-		refreshList();
-		GridListAdapter<Bean> gridListAdapter = new GridListAdapter<Bean>(this);
+		gridListAdapter = new GridListAdapter<Bean>(this);
 		listView.setOnScrollListener(gridListAdapter);
+		gridListAdapter.refreshList();
 
 		// 条目点击事件
 		listView.setOnItemClickListener(new ItemClickListener());
@@ -115,22 +120,4 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		listView.setAdapter(adapter);
 	}
 
-	protected void refreshList() {
-		Loading.turn(getContext());
-
-		try {
-			List<Bean> list = getMoreData(getPageSize(), 0);
-			adapter.setItems(list);
-		} catch (Exception e) {
-			doException(e);
-		}
-		adapter.notifyDataSetChanged();
-		listView.setSelection(0);//直接返回顶部，不带滑动效果
-		Loading.turnoff();
-	}
-
-	protected void removeAndRefresh() {
-		adapter.removeItem(adapter.getCurrentItem());
-		adapter.notifyDataSetChanged();
-	}
 }

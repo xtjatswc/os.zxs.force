@@ -110,7 +110,7 @@ public class QuestionnaireListActivity extends
 							RadioButton radioButton = (RadioButton) findViewById(checkedId);
 							QuestionProperty = Convert.cash2Int(radioButton
 									.getTag());
-							refreshList();
+							gridListAdapter.refreshList();
 						}
 					});
 
@@ -288,7 +288,7 @@ public class QuestionnaireListActivity extends
 													adapter.getCurrentItem()
 															.getPatientQuestionnaire_DBKey());
 
-									removeAndRefresh();
+									gridListAdapter.removeAndRefresh();
 								} catch (Exception e) {
 									doException(e);
 								}
@@ -392,7 +392,7 @@ public class QuestionnaireListActivity extends
 			switch (requestCode) {
 			case RequestCode.NEW_QUESTIONNAIRE:
 			case RequestCode.EDIT_QUESTIONNAIRE:
-				refreshList();
+				gridListAdapter.refreshList();
 				break;
 			default:
 				break;
@@ -404,7 +404,7 @@ public class QuestionnaireListActivity extends
 	@Override
 	protected void onResume() {
 		super.onResume();
-		refreshList();
+		gridListAdapter.refreshList();
 	}
 
 	@Override

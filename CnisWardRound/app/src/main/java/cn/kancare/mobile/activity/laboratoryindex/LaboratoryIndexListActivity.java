@@ -73,7 +73,7 @@ public class LaboratoryIndexListActivity extends
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		refreshList();
+		gridListAdapter.refreshList();
 	}
 
 	public int getPageSize() {
@@ -218,7 +218,7 @@ public class LaboratoryIndexListActivity extends
 											.deleteById(
 													laboratoryIndex
 															.getLaboratoryIndex_DBKey());
-									removeAndRefresh();
+									gridListAdapter.removeAndRefresh();
 								} catch (Exception e) {
 									doException(e);
 								}

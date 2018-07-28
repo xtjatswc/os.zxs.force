@@ -54,7 +54,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		refreshList();
+		gridListAdapter.refreshList();
 	}
 
 	private class onClickHandler implements android.view.View.OnClickListener {
@@ -234,7 +234,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 												nutrientAdviceDetailBo,
 												nutrientAdviceSummary
 														.getNutrientAdviceSummary_DBKey());
-								removeAndRefresh();
+								gridListAdapter.removeAndRefresh();
 							} catch (Exception e) {
 								doException(e);
 							}
