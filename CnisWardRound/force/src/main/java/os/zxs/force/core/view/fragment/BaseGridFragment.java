@@ -85,7 +85,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 		return layoutView;
 	}
 
-	protected void onListItemClick(Bean data) {
+	public void onListItemClick(Bean data) {
 		adapter.setCurrentItem(data);
 	}
 

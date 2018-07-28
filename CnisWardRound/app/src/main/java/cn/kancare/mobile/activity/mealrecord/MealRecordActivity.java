@@ -81,8 +81,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 
 	}
 
-	@Override
-	protected void onListItemClick(MealRecord data) {
+	public void onListItemClick(MealRecord data) {
 		super.onListItemClick(data);
 
 		Intent i = new Intent(MealRecordActivity.this,

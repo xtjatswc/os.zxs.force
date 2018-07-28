@@ -103,8 +103,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		return R.layout.course_record_list_item;
 	}
 
-	@Override
-	protected void onListItemClick(final CourseRecord data) {
+	public void onListItemClick(final CourseRecord data) {
 		super.onListItemClick(data);
 
 		PopUtil.AlertSimpleDialog(this, R.array.SimpleListMenuArray,

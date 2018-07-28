@@ -153,8 +153,7 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
 
     }
 
-    @Override
-    protected void onListItemClick(Department data) {
+    public void onListItemClick(Department data) {
         super.onListItemClick(data);
     }
 

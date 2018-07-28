@@ -85,7 +85,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		listView.setOnItemClickListener(new ItemClickListener());
 	}
 
-	protected void onListItemClick(Bean data) {
+	public void onListItemClick(Bean data) {
 		adapter.setCurrentItem(data);
 	}
 

@@ -61,8 +61,7 @@ public class BodyAnalysisListActivity extends
 
 	}
 
-	@Override
-	protected void onListItemClick(BodyAnalysisReport data) {
+	public void onListItemClick(BodyAnalysisReport data) {
 		super.onListItemClick(data);
 
 		// 查看

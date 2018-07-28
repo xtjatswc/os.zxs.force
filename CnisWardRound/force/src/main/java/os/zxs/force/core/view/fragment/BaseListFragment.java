@@ -94,7 +94,7 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		return layoutView;
 	}
 
-	protected void onListItemClick(Bean data) {
+	public void onListItemClick(Bean data) {
 		adapter.setCurrentItem(data);
 	}
 

@@ -124,8 +124,7 @@ public class NutrientProductFragment extends
 
 	}
 
-	@Override
-	protected void onListItemClick(ChinaFoodComposition data) {
+	public void onListItemClick(ChinaFoodComposition data) {
 		super.onListItemClick(data);
 		adviceInfoListener.ProductChange(data);
 	}

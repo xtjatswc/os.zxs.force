@@ -190,8 +190,7 @@ public class QuestionnaireListActivity extends
 		return R.layout.questionnaire_list_item;
 	}
 
-	@Override
-	protected void onListItemClick(final PatientQuestionnaire data) {
+	public void onListItemClick(final PatientQuestionnaire data) {
 		super.onListItemClick(data);
 
 		PopUtil.AlertSimpleDialog(this, R.array.QuestionnaireListMenuArray,

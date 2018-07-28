@@ -40,4 +40,6 @@ public interface IGridList<Bean> {
     PaginationAdapter getPaginationAdapter();
 
     AbsListView getAbsListView();
+
+    void onListItemClick(Bean data);
 }

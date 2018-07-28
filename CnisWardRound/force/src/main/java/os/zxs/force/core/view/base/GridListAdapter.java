@@ -1,6 +1,8 @@
 package os.zxs.force.core.view.base;
 
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 
 import java.util.List;
 
@@ -63,4 +65,27 @@ public class GridListAdapter<Bean> implements
         iGridList.getPaginationAdapter().notifyDataSetChanged();
     }
 
+    // 获取点击事件
+    public class ItemClickListener implements AdapterView.OnItemClickListener {
+
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            final Bean data = (Bean) parent.getItemAtPosition(position);
+
+            iGridList.onListItemClick(data);
+            if (iGridList.isSelectedChangeColor()) {
+                iGridList.getPaginationAdapter().notifyDataSetInvalidated();
+            }
+            return;
+        }
+    }
+
+    public void initFinish(){
+        iGridList.getAbsListView().setOnScrollListener(this);
+        refreshList();
+
+        // 条目点击事件
+        iGridList.getAbsListView().setOnItemClickListener(new GridListAdapter.ItemClickListener());
+
+    }
 }

@@ -233,7 +233,7 @@ public class LaboratoryIndexListActivity extends
 		}
 	}
 
-	protected void onListItemClick(LaboratoryIndex data) {
+	public void onListItemClick(LaboratoryIndex data) {
 		super.onListItemClick(data);
 
 		// 查看

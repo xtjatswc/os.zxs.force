@@ -84,8 +84,7 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
-    @Override
-    protected void onListItemClick(Diagnosis data) {
+    public void onListItemClick(Diagnosis data) {
         super.onListItemClick(data);
         Intent intent = new Intent();
         intent.putExtra("ID", data.getID());

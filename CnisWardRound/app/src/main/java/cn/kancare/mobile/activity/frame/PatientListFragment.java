@@ -148,8 +148,7 @@ public class PatientListFragment extends
 		}
 	}
 
-	@Override
-	protected void onListItemClick(final PatientHospitalizeBasicInfo data) {
+	public void onListItemClick(final PatientHospitalizeBasicInfo data) {
 		super.onListItemClick(data);
 
 		Global.currentPatient = data;

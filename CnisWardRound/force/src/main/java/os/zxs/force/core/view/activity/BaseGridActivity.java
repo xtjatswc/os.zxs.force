@@ -72,34 +72,15 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 		gridView = (GridView) findViewById(getListId());
 		initData();
         gridListAdapter = new GridListAdapter<Bean>(this);
-		gridView.setOnScrollListener(gridListAdapter);
-		gridListAdapter.refreshList();
-
-		// 条目点击事件
-		gridView.setOnItemClickListener(new ItemClickListener());
+		gridListAdapter.initFinish();
 	}
 
     public PaginationAdapter getPaginationAdapter() {
         return adapter;
     }
 
-    protected void onListItemClick(Bean data) {
+	public void onListItemClick(Bean data) {
 		adapter.setCurrentItem(data);
-	}
-
-	// 获取点击事件
-	private final class ItemClickListener implements OnItemClickListener {
-
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			final Bean data = (Bean) parent.getItemAtPosition(position);
-
-			onListItemClick(data);
-			if (isSelectedChangeColor()) {
-				adapter.notifyDataSetInvalidated();
-			}
-			return;
-		}
 	}
 
 	private void initData(){
