@@ -130,19 +130,16 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 12;
 	}
 
-	@Override
-	protected List<MealRecord> getMoreData(int pageSize, int offset) throws Exception {
+	public List<MealRecord> getMoreData(int pageSize, int offset) throws Exception {
 		return mealRecordBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 
-	@Override
-	protected int getGridId() {
+	public int getListId() {
 		return R.id.gridView1;
 	}
 
@@ -203,7 +200,7 @@ public class MealRecordActivity extends BaseGridActivity<MealRecord> {
 		}
 	}
 
-	protected void onGridItemSubClick(View item, View widget, int position,
+	public void onListItemSubClick(View item, View widget, int position,
 			int which) throws Exception {
 
 		final ViewHolder holder = (ViewHolder) item.getTag();

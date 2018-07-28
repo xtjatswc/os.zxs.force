@@ -47,17 +47,16 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
-    @Override
-    protected int getPageSize() {
+    public int getPageSize() {
         return 20;
     }
 
-    protected List<Diagnosis> getMoreData(int pageSize, int offset) throws Exception {
+    public List<Diagnosis> getMoreData(int pageSize, int offset) throws Exception {
         String keyword = editTextKeyword.getText().toString();
         return diagnosisBo.getDao().query(pageSize, offset, keyword);
     }
 
-    protected int getListId() {
+    public int getListId() {
         return R.id.lvDiagnosis;
     }
 
@@ -77,7 +76,7 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
 
     }
 
-    protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+    public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
     }
 

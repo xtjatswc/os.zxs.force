@@ -155,8 +155,7 @@ public class QuestionnaireListActivity extends
 		patientQuestionnaireResultBo = new PatientQuestionnaireResultBo(this);
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
@@ -165,8 +164,7 @@ public class QuestionnaireListActivity extends
 	 * 
 	 * @throws Exception
 	 */
-	@Override
-	protected List<PatientQuestionnaire> getMoreData(int pageSize, int offset)
+	public List<PatientQuestionnaire> getMoreData(int pageSize, int offset)
 			throws Exception {
 
 		return patientQuestionnaireBo.getDao().query(pageSize, offset,
@@ -179,8 +177,7 @@ public class QuestionnaireListActivity extends
 		return LogTag.CURD_QUESTIONNAIRE;
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvQuestionnaire;
 	}
 
@@ -381,7 +378,7 @@ public class QuestionnaireListActivity extends
 		}
 	}
 
-	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 

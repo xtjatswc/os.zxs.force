@@ -49,23 +49,19 @@ public class NutrientProductFragment extends
 		return layout;
 	}
 
-    @Override
-    protected int getPageSize() {
+    public int getPageSize() {
         return 2000;
     }
 
-    @Override
-	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset)
+	public List<ChinaFoodComposition> getMoreData(int pageSize, int offset)
 			throws Exception {
 		return chinaFoodCompositionBo.getDao().query(pageSize, offset, SyncConstant.FoodType.NUTRIENT_PRODUCT);
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.ListView_Product;
 	}
 
-	@Override
 	public int getListItemLayoutId() {
 		return R.layout.advice_product_list_item;
 	}
@@ -95,7 +91,6 @@ public class NutrientProductFragment extends
 		TextView TextView_Flag;
 	}
 
-	@Override
 	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.TextView_ProductName = (TextView) view
@@ -145,7 +140,7 @@ public class NutrientProductFragment extends
 		return 0xFF008000;
 	}
 
-	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 

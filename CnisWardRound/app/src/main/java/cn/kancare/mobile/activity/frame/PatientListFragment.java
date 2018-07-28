@@ -192,13 +192,11 @@ public class PatientListFragment extends
 		}
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 8;
 	}
 
-	@Override
-	protected List<PatientHospitalizeBasicInfo> getMoreData(int pageSize, int offset)
+	public List<PatientHospitalizeBasicInfo> getMoreData(int pageSize, int offset)
 			throws Exception {
 
 		String keyword = editTextCondition.getText().toString();
@@ -217,8 +215,7 @@ public class PatientListFragment extends
 
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvPatients;
 	}
 
@@ -227,7 +224,6 @@ public class PatientListFragment extends
 		return R.layout.patient_list;
 	}
 
-	@Override
 	public int getListItemLayoutId() {
 		return R.layout.patient_list_item;
 	}
@@ -254,7 +250,6 @@ public class PatientListFragment extends
 
 	}
 
-	@Override
 	public void setViewHolder(View view) {
 		ViewHolder holder = new ViewHolder();
 		holder.tvPatientName = (TextView) view.findViewById(R.id.patientName);
@@ -453,7 +448,6 @@ public class PatientListFragment extends
 		switchStatus = (Switch)layout.findViewById(R.id.switchStatus);
 	}
 
-	@Override
 	public void onListItemSubClick(View item, View widget, int position,
 			int which) throws Exception{
 

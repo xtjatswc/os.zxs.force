@@ -90,13 +90,11 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return CheckBoxMyStar.isChecked();
     }
 
-    @Override
-    protected int getPageSize() {
+    public int getPageSize() {
         return 1000;
     }
 
-    @Override
-    protected List<Department> getMoreData(int pageSize, int offset) throws Exception {
+    public List<Department> getMoreData(int pageSize, int offset) throws Exception {
         List<Department> lst = departmentBo.getDao().query(pageSize, offset);
         if(offset == 0) {
             Department department = new Department();
@@ -107,12 +105,25 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
         return lst;
     }
 
-    protected int getGridId() {
-        return R.id.GridViewDepartment;
-    }
+    public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+        Department department = adapter.getItem(position);
+        switch (which) {
+            case R.id.ButtonDepartment:
+                Department_DBKey = department.getDepartment_DBKey() + "";
+                TextViewDepartment.setText("当前科室：" + department.getDepartmentName());
+                callBackListener.doCallBack();
+                //存储默认科室
+                try {
+                    settingBo.saveSetting(DefaultDepartmentKey, department.getDepartment_DBKey() + "");
+                } catch (Exception e) {
+                    doException(e);
+                }
 
-    protected void onGridItemSubClick(View item, View widget, int position, int which) throws Exception {
+                //刷新显示
+                adapter.notifyDataSetChanged();
 
+                break;
+        }
     }
 
     public int getListItemLayoutId() {
@@ -122,26 +133,16 @@ public class PatientConditionFragment extends BaseGridFragment<Department> imple
     public void setViewHolder(View view) {
     }
 
+    public int getListId() {
+        return R.id.GridViewDepartment;
+    }
+
     public void setListItemView(int position, View view, final Department data, ViewGroup parent) throws Exception {
 
         Button ButtonDepartment = ViewFindUtils.hold(view, R.id.ButtonDepartment);
         ButtonDepartment.setText(data.getDepartmentName());
-        ButtonDepartment.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Department_DBKey = data.getDepartment_DBKey() + "";
-                TextViewDepartment.setText("当前科室：" + data.getDepartmentName());
-                callBackListener.doCallBack();
-                //存储默认科室
-                try {
-                    settingBo.saveSetting(DefaultDepartmentKey, data.getDepartment_DBKey() + "");
-                } catch (Exception e) {
-                    doException(e);
-                }
+        setOnGridItemSubClick(view, parent, position, ButtonDepartment);
 
-                //刷新显示
-                adapter.notifyDataSetChanged();
-            }
-        });
         if(data.getDepartment_DBKey() == Convert.cash2Int(Department_DBKey)){
             ButtonDepartment.setSelected(true);
         }else{

@@ -69,8 +69,7 @@ public class MealRecordFoodFragment extends
 		mealRecordInfoListener = (MealRecordInfoListener) getActivity();
 	}
 
-	@Override
-	protected int getGridId() {
+	public int getListId() {
 		return R.id.gridView1;
 	}
 
@@ -78,13 +77,11 @@ public class MealRecordFoodFragment extends
 		return R.layout.mealrecord_fragment_food_item;
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 1000;
 	}
 
-	@Override
-	protected List<ChinaFoodComposition> getMoreData(int pageSize, int offset) throws Exception {
+	public List<ChinaFoodComposition> getMoreData(int pageSize, int offset) throws Exception {
 		return chinaFoodCompositionBo.getDao().query(pageSize, offset, FoodType.FOOD);
 	}
 
@@ -139,7 +136,7 @@ public class MealRecordFoodFragment extends
 		holder.ImageViewMinus.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				MealRecordFoodFragment.this.onGridItemSubClick(view, parent,
+				MealRecordFoodFragment.this.onListItemSubClick(view, parent,
 						position, holder.ImageViewMinus.getId());
 			}
 		});
@@ -147,7 +144,7 @@ public class MealRecordFoodFragment extends
 		holder.ImageViewPlus.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				MealRecordFoodFragment.this.onGridItemSubClick(view, parent,
+				MealRecordFoodFragment.this.onListItemSubClick(view, parent,
 						position, holder.ImageViewPlus.getId());
 			}
 		});
@@ -192,8 +189,7 @@ public class MealRecordFoodFragment extends
 		view.setTag(holder);
 	}
 
-	@Override
-	public void onGridItemSubClick(View item, View widget, int position,
+	public void onListItemSubClick(View item, View widget, int position,
 			int which) {
 
 		try {

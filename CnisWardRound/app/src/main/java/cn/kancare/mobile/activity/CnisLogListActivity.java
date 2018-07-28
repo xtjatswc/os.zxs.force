@@ -83,18 +83,15 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
-	@Override
-	protected List<CnisLog> getMoreData(int pageSize, int offset) throws Exception {
+	public List<CnisLog> getMoreData(int pageSize, int offset) throws Exception {
 		return cnislogBo.getDao().query(pageSize, offset);
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvCnisLog;
 	}
 
@@ -136,7 +133,7 @@ public class CnisLogListActivity extends BaseListActivity<CnisLog> {
 		}
 	}
 
-	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 

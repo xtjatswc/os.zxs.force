@@ -81,20 +81,17 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		}
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
-	@Override
-	protected List<NutrientAdviceSummary> getMoreData(int pageSize, int offset)
+	public List<NutrientAdviceSummary> getMoreData(int pageSize, int offset)
 			throws Exception {
 		return nutrientAdviceSummaryBo.getDao().query(pageSize, offset,
 				PatientHospitalize_DBKey);
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvAdvice;
 	}
 
@@ -199,8 +196,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		holder.TextViewRemark.setText(remark);
 	}
 
-	@Override
-	protected void onListItemSubClick(View item, View widget, int position,
+	public void onListItemSubClick(View item, View widget, int position,
 			int which) throws Exception {
 
 		final NutrientAdviceSummary nutrientAdviceSummary = adapter

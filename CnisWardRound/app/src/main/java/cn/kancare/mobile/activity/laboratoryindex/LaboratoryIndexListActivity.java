@@ -76,19 +76,16 @@ public class LaboratoryIndexListActivity extends
 		refreshList();
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
-	@Override
-	protected List<LaboratoryIndex> getMoreData(int pageSize, int offset) throws Exception {
+	public List<LaboratoryIndex> getMoreData(int pageSize, int offset) throws Exception {
 		return laboratoryIndexBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvLaboratoryindex;
 	}
 
@@ -194,7 +191,6 @@ public class LaboratoryIndexListActivity extends
 		return sb.toString();
 	}
 
-	@Override
 	public void onListItemSubClick(View item, View widget, int position,
 			int which) {
 		try {

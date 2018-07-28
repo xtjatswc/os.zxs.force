@@ -24,14 +24,6 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 
 	protected PaginationAdapter<Bean> adapter;
 
-	protected abstract int getPageSize();
-
-	//offset 不是页数，是跳过的记录行数
-	protected abstract List<Bean> getMoreData(int pageSize, int offset) throws Exception;
-
-	protected abstract int getGridId();
-
-
 	public Activity getTheActivity() {
 		return this;
 	}
@@ -55,10 +47,6 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 		return 0x80ffffff;// 透明
 	}
 
-	// 行元素点击事件
-	protected abstract void onGridItemSubClick(View item, View widget, int position,
-											   int which) throws Exception;
-
 	protected void setOnGridItemSubClick(final View item, final View widget, final int position,
 										 final View subView)throws Exception {
 		adapter.setCurrentItem(adapter.getItem(position));
@@ -66,7 +54,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 
 			public void onClick(View v) {
 				try {
-					onGridItemSubClick(item, widget,
+					onListItemSubClick(item, widget,
 							position, subView.getId());
 				} catch (Exception e) {
 					doException(e);
@@ -79,7 +67,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity   implements
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 
-		gridView = (GridView) findViewById(getGridId());
+		gridView = (GridView) findViewById(getListId());
 		initData();
 		refreshList();
 		gridView.setOnScrollListener(this);

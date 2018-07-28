@@ -31,13 +31,6 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		return getActivity();
 	}
 
-	protected abstract int getPageSize();
-
-	//offset 不是页数，是跳过的记录行数
-	protected abstract List<Bean> getMoreData(int pageSize, int offset) throws Exception;
-
-	protected abstract int getListId();
-
 	// 选择行的时候是否改变颜色
 	public Boolean isSelectedChangeColor() {
 		return false;
@@ -53,9 +46,6 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		return 0x80ffffff;// 透明
 	}
 
-	// 行元素点击事件
-	protected abstract void onListItemSubClick(View item, View widget, int position,
-											   int which) throws Exception;
 	protected void setOnListItemSubClick(final View item, final View widget, final int position,
 										 final View subView) throws Exception{
 		adapter.setCurrentItem(adapter.getItem(position));

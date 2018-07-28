@@ -26,20 +26,17 @@ public class BodyAnalysisListActivity extends
 
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
-	@Override
-	protected List<BodyAnalysisReport> getMoreData(int pageSize, int offset)
+	public List<BodyAnalysisReport> getMoreData(int pageSize, int offset)
 			throws Exception {
 		return bodyAnalysisReportBo.getDao().query(pageSize, offset,
 				Global.currentPatient.getPatientHospitalize_DBKey());
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvBodyAnalysis;
 	}
 
@@ -60,7 +57,7 @@ public class BodyAnalysisListActivity extends
 
 	}
 
-	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 

@@ -45,13 +45,11 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 
 	}
 
-	@Override
-	protected int getPageSize() {
+	public int getPageSize() {
 		return 20;
 	}
 
-	@Override
-	protected List<CourseRecord> getMoreData(int pageSize, int offset) throws Exception {
+	public List<CourseRecord> getMoreData(int pageSize, int offset) throws Exception {
 		return courseBo.getDao().query(pageSize, offset, PatientHospitalize_DBKey);
 	}
 
@@ -92,8 +90,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 		return LogTag.CURD_COURSERECORD;
 	}
 
-	@Override
-	protected int getListId() {
+	public int getListId() {
 		return R.id.lvCourseRecord;
 	}
 
@@ -177,7 +174,7 @@ public class CourseRecordListActivity extends BaseListActivity<CourseRecord> {
 
 	}
 
-	protected void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
+	public void onListItemSubClick(View item, View widget, int position, int which) throws Exception {
 
 	}
 
