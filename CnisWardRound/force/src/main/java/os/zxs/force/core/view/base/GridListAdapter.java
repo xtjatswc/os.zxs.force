@@ -12,39 +12,89 @@ import os.zxs.force.core.view.Loading;
 public class GridListAdapter<Bean> implements
         AbsListView.OnScrollListener{
     IGridList<Bean> iGridList;
-    protected int visibleLastIndex = 0; // 最后的可视项索引
+    private int lastVisibleItemPosition = 0;// 标记上次滑动位置，初始化默认为0
+	private int visibleLastIndex = 0; // 最后的可视项索引
+    private boolean scrollFlag = false;// 标记是否滑动
+    private boolean isUP = true;
 
     public GridListAdapter(IGridList iGridList){
         this.iGridList = iGridList;
     }
 
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-        int itemsLastIndex = iGridList.getPaginationAdapter().getCount() - 1; // 数据集最后一项的索引
-        int lastIndex = itemsLastIndex;
-        if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE
-                && visibleLastIndex == lastIndex) {
-            Loading.turn(iGridList.getTheActivity());
-            // 如果是自动加载,可以在这里放置异步加载数据的代码
-            int count = iGridList.getPaginationAdapter().getCount();
-            List<Bean> list = null;
-            try {
-                list = iGridList.getMoreData(iGridList.getPageSize(), count);
-            } catch (Exception e) {
-                iGridList.handleException(e);
-            }
-            if (list != null) {
-                for (Bean model : list) {
-                    iGridList.getPaginationAdapter().addItem(model);
+        //判断状态
+        switch (scrollState) {
+            // 当不滚动时
+            case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:// 是当屏幕停止滚动时
+                scrollFlag = false;
+
+                // 判断滚动到顶部
+                if (isUP && isFirstAllDisplay()) {
+                    refreshList();
                 }
-                iGridList.getPaginationAdapter().notifyDataSetChanged();
-            }
-            Loading.turnoff();
+
+                // 判断滚动到底部 、position是从0开始算起的
+                if (!isUP && visibleLastIndex == (iGridList.getPaginationAdapter()
+                        .getCount() - 1)) {
+
+                    Loading.turn(iGridList.getTheActivity());
+                    // 如果是自动加载,可以在这里放置异步加载数据的代码
+                    int count = iGridList.getPaginationAdapter().getCount();
+                    List<Bean> list = null;
+                    try {
+                        list = iGridList.getMoreData(iGridList.getPageSize(), count);
+                    } catch (Exception e) {
+                        iGridList.handleException(e);
+                    }
+                    if (list != null) {
+                        for (Bean model : list) {
+                            iGridList.getPaginationAdapter().addItem(model);
+                        }
+                        iGridList.getPaginationAdapter().notifyDataSetChanged();
+                    }
+                    Loading.turnoff();
+
+                }
+
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:// 滚动时
+                scrollFlag = true;
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                // 当用户由于之前划动屏幕并抬起手指，屏幕产生惯性滑动时，即滚动时
+                scrollFlag = true;
+                break;
         }
+
     }
 
     public void onScroll(AbsListView view, int firstVisibleItem,
                          int visibleItemCount, int totalItemCount) {
-        visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
+        //当滑动时
+        if (scrollFlag) {
+            if (firstVisibleItem < lastVisibleItemPosition) {
+                // 上滑
+                isUP = true;
+            } else if (firstVisibleItem > lastVisibleItemPosition) {
+                // 下滑
+                isUP = false;
+            } else {
+                return;
+            }
+            lastVisibleItemPosition = firstVisibleItem;//更新位置
+ 			visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
+        }
+
+    }
+
+    private Boolean isFirstAllDisplay(){
+
+        if (iGridList.getAbsListView().getChildCount() > 0 &&
+                iGridList.getAbsListView().getFirstVisiblePosition() == 0 &&
+                iGridList.getAbsListView().getChildAt(0).getTop() >= iGridList.getAbsListView().getPaddingTop()) {
+            return true;
+        }
+        return  false;
     }
 
     public void refreshList() {
