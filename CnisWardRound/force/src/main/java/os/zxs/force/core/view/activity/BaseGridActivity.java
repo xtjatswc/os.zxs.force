@@ -72,4 +72,7 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 		adapter = new PaginationAdapter<Bean>(this);
 		gridView.setAdapter(adapter);
 	}
+
+	public Boolean isShowLoading(){return true;}
+
 }

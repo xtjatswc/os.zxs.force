@@ -115,4 +115,7 @@ public class DiagnosisActivity  extends BaseListActivity<Diagnosis> {
         backFragment = (BackFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_back);
         backFragment.setTitle("ICD-10疾病编码");
     }
+
+    public Boolean isShowLoading(){return false;}
+
 }

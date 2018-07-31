@@ -42,4 +42,6 @@ public interface IGridList<Bean> {
     AbsListView getAbsListView();
 
     void onListItemClick(Bean data);
+
+    Boolean isShowLoading();
 }

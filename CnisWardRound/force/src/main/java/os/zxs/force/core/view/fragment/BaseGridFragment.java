@@ -78,4 +78,7 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 	public AbsListView getAbsListView() {
 		return gridView;
 	}
+
+	public Boolean isShowLoading(){return true;}
+
 }

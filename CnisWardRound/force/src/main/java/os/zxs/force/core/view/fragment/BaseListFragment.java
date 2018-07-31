@@ -82,4 +82,6 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 		listView.setAdapter(adapter);
 	}
 
+	public Boolean isShowLoading(){return true;}
+
 }

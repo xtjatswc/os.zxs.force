@@ -74,4 +74,7 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 		adapter = new PaginationAdapter(this);
 		listView.setAdapter(adapter);
 	}
+
+	public Boolean isShowLoading(){return true;}
+
 }

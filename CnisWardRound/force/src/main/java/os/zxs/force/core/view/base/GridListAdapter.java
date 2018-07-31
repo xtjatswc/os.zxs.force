@@ -37,7 +37,9 @@ public class GridListAdapter<Bean> implements
                 if (!isUP && visibleLastIndex == (iGridList.getPaginationAdapter()
                         .getCount() - 1)) {
 
-                    Loading.turn(iGridList.getTheActivity());
+                    if(iGridList.isShowLoading())
+                        Loading.turn(iGridList.getTheActivity());
+
                     // 如果是自动加载,可以在这里放置异步加载数据的代码
                     int count = iGridList.getPaginationAdapter().getCount();
                     List<Bean> list = null;
@@ -52,7 +54,9 @@ public class GridListAdapter<Bean> implements
                         }
                         iGridList.getPaginationAdapter().notifyDataSetChanged();
                     }
-                    Loading.turnoff();
+
+                    if(iGridList.isShowLoading())
+                        Loading.turnoff();
 
                 }
 
@@ -98,7 +102,9 @@ public class GridListAdapter<Bean> implements
     }
 
     public void refreshList() {
-        Loading.turn(iGridList.getTheActivity());
+
+        if(iGridList.isShowLoading())
+            Loading.turn(iGridList.getTheActivity());
 
         try {
             List<Bean> list = iGridList.getMoreData(iGridList.getPageSize(), 0);
@@ -108,7 +114,9 @@ public class GridListAdapter<Bean> implements
         }
         iGridList.getPaginationAdapter().notifyDataSetChanged();
         iGridList.getAbsListView().setSelection(0);//直接返回顶部，不带滑动效果
-        Loading.turnoff();
+
+        if(iGridList.isShowLoading())
+            Loading.turnoff();
     }
 
     public void removeAndRefresh() {
