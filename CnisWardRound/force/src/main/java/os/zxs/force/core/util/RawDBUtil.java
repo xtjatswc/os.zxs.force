@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -343,6 +344,18 @@ public class RawDBUtil {
 					}
 					if (isOk) {
 						// 如果有数据体现则需要刷新出新的数据
+						PopUtil.AlertDialog(mContext, "提示", "还原成功，重新登录后生效！", "确定",
+								new DialogInterface.OnClickListener() {
+
+									public void onClick(DialogInterface dialog, int whichButton) {
+
+										// finish();//
+										android.os.Process.killProcess(android.os.Process
+												.myPid()); // 获取PID
+										System.exit(0); // 常规java、c#的标准退出法，返回值为0代表正常退出
+									}
+
+								});
 
 					}
 				}

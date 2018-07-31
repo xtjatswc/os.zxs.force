@@ -80,6 +80,12 @@ public class LoginActivity extends BaseActivity {
 				rawDBUtil.rawToFile(R.drawable.cnis_ward_round_init, "初始化",
 						DatabaseHelper.DATABASE_NAME);
 			}
+
+			// 释放刘雪辉的库
+			if (!rawDBUtil.fileExists("雪辉老师", DatabaseHelper.DATABASE_NAME)) {
+				rawDBUtil.rawToFile(R.drawable.cnis_ward_round_lxh, "雪辉老师",
+						DatabaseHelper.DATABASE_NAME);
+			}
 		} catch (Exception e) {
 			doException(e);
 		}
