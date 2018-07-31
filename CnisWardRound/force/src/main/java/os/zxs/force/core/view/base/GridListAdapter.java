@@ -29,7 +29,7 @@ public class GridListAdapter<Bean> implements
                 scrollFlag = false;
 
                 // 判断滚动到顶部
-                if (isUP && isFirstAllDisplay()) {
+                if (isUP && isFirstAllDisplay()  && iGridList.isTopRefresh()) {
                     refreshList();
                 }
 

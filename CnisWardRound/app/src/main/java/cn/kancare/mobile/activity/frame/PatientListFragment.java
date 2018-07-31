@@ -570,4 +570,8 @@ public class PatientListFragment extends
 		gridListAdapter.refreshList();
 	}
 
+	@Override
+	public Boolean isTopRefresh() {
+		return true;
+	}
 }

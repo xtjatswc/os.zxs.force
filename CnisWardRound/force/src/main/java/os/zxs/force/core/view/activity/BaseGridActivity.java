@@ -75,4 +75,6 @@ public abstract class BaseGridActivity<Bean> extends BaseActivity implements IGr
 
 	public Boolean isShowLoading(){return true;}
 
+	public Boolean isTopRefresh(){return false;}
+
 }

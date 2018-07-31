@@ -116,15 +116,9 @@ public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
     public void onUpgrade(SQLiteDatabase database,
                           ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            // if (newVersion == 51) {
-            // TableUtils.dropTable(connectionSource, TestResult.class, true);
-            // TableUtils.createTable(connectionSource, TestResult.class);
-            // return;
-            // }
-
             DbUpgrade.doUpgrade(database, connectionSource, oldVersion, newVersion);
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -45,6 +45,7 @@ public class LoginActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 
 		try {
+			Global.currentActivity = this;
 			Global.version = App.getAppInfo(AppConstant.GET_VERSION);
 
 			// 每次发布前改一下AndroidManifest.xml的版本号，就会自动变成发布模式

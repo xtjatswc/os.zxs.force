@@ -84,4 +84,6 @@ public abstract class BaseListFragment<Bean> extends BaseFragment implements
 
 	public Boolean isShowLoading(){return true;}
 
+	public Boolean isTopRefresh(){return false;}
+
 }

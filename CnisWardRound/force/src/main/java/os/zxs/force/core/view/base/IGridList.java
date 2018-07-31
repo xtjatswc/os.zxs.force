@@ -44,4 +44,6 @@ public interface IGridList<Bean> {
     void onListItemClick(Bean data);
 
     Boolean isShowLoading();
+
+    Boolean isTopRefresh();
 }

@@ -50,6 +50,11 @@ public class MealRecordFoodFragment extends
 	}
 
 	@Override
+	public Boolean isShowLoading() {
+		return false;
+	}
+
+	@Override
 	protected String getLogTag() {
 		return LogTag.CURD_MEALRECORD;
 	}

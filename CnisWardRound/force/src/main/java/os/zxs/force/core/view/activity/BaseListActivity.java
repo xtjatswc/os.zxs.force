@@ -77,4 +77,6 @@ public abstract class BaseListActivity<Bean> extends BaseActivity implements
 
 	public Boolean isShowLoading(){return true;}
 
+    public Boolean isTopRefresh(){return false;}
+
 }

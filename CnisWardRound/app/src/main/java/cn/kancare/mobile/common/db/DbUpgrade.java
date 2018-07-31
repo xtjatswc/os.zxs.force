@@ -21,11 +21,24 @@ import cn.kancare.mobile.bean.laboratoryindex.TestResult;
 import cn.kancare.mobile.bean.mealrecord.MealRecord;
 import cn.kancare.mobile.bean.mealrecord.RelationOfDietaryFood;
 import cn.kancare.mobile.bean.patient.PatientHospitalizeBasicInfo;
+import cn.kancare.mobile.bo.patient.PatientHospitalizeBasicInfoBo;
+import cn.kancare.mobile.common.Global;
 
 public class DbUpgrade {
+	public static SQLiteDatabase db;
+
+	public static void execSQL(String sql){
+		try{
+			db.execSQL(sql);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	public static void doUpgrade(SQLiteDatabase database,
 			ConnectionSource connectionSource, int oldVersion, int newVersion)
-			throws SQLException {
+			throws Exception {
+		db = database;
 
 		if (oldVersion == 47 && oldVersion < newVersion) {
 			TableUtils.createTable(connectionSource, BodyAnalysisReport.class);
@@ -74,18 +87,18 @@ public class DbUpgrade {
 
 		if (oldVersion == 52 && oldVersion < newVersion) {
 			// 添加未见患者字段
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'PatientNoShow' INTEGER");
-			database.execSQL("update courserecord set PatientNoShow = 0");
+			execSQL("ALTER TABLE 'courserecord' ADD  'PatientNoShow' INTEGER");
+			execSQL("update courserecord set PatientNoShow = 0");
 			// 添加是否接受营养治疗字段
-			database.execSQL("ALTER TABLE 'patientquestionnaire' ADD  'AgreeHelp' INTEGER");
-			database.execSQL("update patientquestionnaire set AgreeHelp = 0");
+			execSQL("ALTER TABLE 'patientquestionnaire' ADD  'AgreeHelp' INTEGER");
+			execSQL("update patientquestionnaire set AgreeHelp = 0");
 			oldVersion++;
 		}
 
 		if (oldVersion == 53 && oldVersion < newVersion) {
 			// 添加床号前缀、后缀字段
-			database.execSQL("ALTER TABLE 'PatientHospitalizeBasicInfo' ADD  'BedCodePrefix' VARCHAR");
-			database.execSQL("ALTER TABLE 'PatientHospitalizeBasicInfo' ADD  'BedCodeSuffix' INTEGER");
+			execSQL("ALTER TABLE 'PatientHospitalizeBasicInfo' ADD  'BedCodePrefix' VARCHAR");
+			execSQL("ALTER TABLE 'PatientHospitalizeBasicInfo' ADD  'BedCodeSuffix' INTEGER");
 
 			oldVersion++;
 		}
@@ -93,14 +106,14 @@ public class DbUpgrade {
 		if (oldVersion == 54 && oldVersion < newVersion) {
 
 			// 查房记录
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'Height' DOUBLE");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'Weight' DOUBLE");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'NauseaRemark' VARCHAR");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'DiarrheaRemark' VARCHAR");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'ConstipationRemark' VARCHAR");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'VomitRemark' VARCHAR");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'AbdominalDistensionRemark' VARCHAR");
-			database.execSQL("ALTER TABLE 'courserecord' ADD  'AbdominalPainRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'Height' DOUBLE");
+			execSQL("ALTER TABLE 'courserecord' ADD  'Weight' DOUBLE");
+			execSQL("ALTER TABLE 'courserecord' ADD  'NauseaRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'DiarrheaRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'ConstipationRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'VomitRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'AbdominalDistensionRemark' VARCHAR");
+			execSQL("ALTER TABLE 'courserecord' ADD  'AbdominalPainRemark' VARCHAR");
 
 			oldVersion++;
 		}
@@ -108,8 +121,8 @@ public class DbUpgrade {
 		if (oldVersion == 55 && oldVersion < newVersion) {
 
 			// 检验数据加报告分类字段
-			database.execSQL("ALTER TABLE 'laboratoryindex' ADD  'TestType' VARCHAR");
-			database.execSQL("update department set isactive = 1");
+			execSQL("ALTER TABLE 'laboratoryindex' ADD  'TestType' VARCHAR");
+			execSQL("update department set isactive = 1");
 
 			oldVersion++;
 		}
@@ -127,52 +140,55 @@ public class DbUpgrade {
 		}
 		
 		if (oldVersion == 57 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'RecipeAndProduct_DBKey' INTEGER");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'RecipeAndProduct_DBKey' INTEGER");
 			oldVersion++;
 		}
 
 		if (oldVersion == 58 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MeasureUnitName' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MeasureUnitName' VARCHAR");
 			oldVersion++;
 		}
 		
 		if (oldVersion == 59 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'RecipeAndProductPrice' DOUBLE");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'RecipeAndProductPrice' DOUBLE");
 			oldVersion++;
 		}
 
 		if (oldVersion == 60 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'UnitKey' VARCHAR");
-			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'TotalMoney' DOUBLE");
-			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContent' VARCHAR");
-			database.execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContentUnit' VARCHAR");
+			execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'UnitKey' VARCHAR");
+			execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'TotalMoney' DOUBLE");
+			execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContent' VARCHAR");
+			execSQL("ALTER TABLE 'nutrientadvicedetail' ADD  'NetContentUnit' VARCHAR");
 			oldVersion++;
 		}
 
 		if (oldVersion == 61 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'BaseUnitName' VARCHAR");
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinUnitName' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'BaseUnitName' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinUnitName' VARCHAR");
 			oldVersion++;
 		}
 
 		if (oldVersion == 62 && oldVersion < newVersion) {
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MeasureUnit_DBKey' VARCHAR");
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'BaseUnit_DBKey' VARCHAR");
-			database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinUnit_DBKey' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MeasureUnit_DBKey' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'BaseUnit_DBKey' VARCHAR");
+			execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinUnit_DBKey' VARCHAR");
 			oldVersion++;
 		}
 
         if (oldVersion == 63 && oldVersion < newVersion) {
-            database.execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinNum' DOUBLE");
+            execSQL("ALTER TABLE 'ChinaFoodComposition' ADD  'MinNum' DOUBLE");
             oldVersion++;
         }
 
 		if (oldVersion == 64 && oldVersion < newVersion) {
-			database.execSQL("update patienthospitalizebasicinfo set BedCodeSuffix = BedCode where BedCodeSuffix is null");
+			execSQL("update patienthospitalizebasicinfo set BedCodeSuffix = BedCode where BedCodeSuffix is null");
 			oldVersion++;
 		}
 
 		if (oldVersion == 65 && oldVersion < newVersion) {
+			execSQL("update patienthospitalizebasicinfo set TherapyStatus = 0 where TherapyStatus is null");
+			PatientHospitalizeBasicInfoBo patientBo = new PatientHospitalizeBasicInfoBo(Global.currentActivity);
+			patientBo.getDao().updateOrderBy();
 			TableUtils.createTable(connectionSource, Diagnosis.class);
 			oldVersion++;
 		}

@@ -81,4 +81,6 @@ public abstract class BaseGridFragment<Bean> extends BaseFragment  implements IG
 
 	public Boolean isShowLoading(){return true;}
 
+	public Boolean isTopRefresh(){return false;}
+
 }
