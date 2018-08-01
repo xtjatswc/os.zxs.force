@@ -666,7 +666,11 @@ public class PatientHospitalizeBasicInfo extends BaseBean {
 	}
 
 	public void setBedCodePrefix(String bedCodePrefix) {
-		BedCodePrefix = bedCodePrefix;
+		if(bedCodePrefix.equals(null)){
+			BedCodePrefix = "";
+		}else {
+			BedCodePrefix = bedCodePrefix;
+		}
 	}
 
 	public int getBedCodeSuffix() {

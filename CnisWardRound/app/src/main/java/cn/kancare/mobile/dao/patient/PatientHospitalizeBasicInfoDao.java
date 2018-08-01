@@ -82,7 +82,7 @@ public class PatientHospitalizeBasicInfoDao extends
 		if (Global.PatientListOrderBy
 				.equals(SettingCode.ORDER_BY_INHOSPITALDATE) || !inStatus) {
 
-			qBuilder.orderBy("InHospitalData", false);
+			qBuilder.orderBy("OutHospitalData", false);
 			qBuilder.orderBy("DepartmentName", true)
 					.orderBy("BedCodePrefix", true)
 					.orderBy("BedCodeSuffix", true).orderBy("BedCode", true);

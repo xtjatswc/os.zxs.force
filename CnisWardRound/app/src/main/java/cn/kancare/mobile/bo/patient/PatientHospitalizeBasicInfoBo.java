@@ -21,6 +21,7 @@ import cn.kancare.mobile.core.base.BaseBo;
 import cn.kancare.mobile.core.sync.DBKeyEntity;
 import os.zxs.force.core.util.ColorUtil;
 import os.zxs.force.core.util.Convert;
+import os.zxs.force.core.util.DateHelper;
 import os.zxs.force.core.util.PinyinUtil;
 import os.zxs.force.core.util.PinyinUtil.HanyuPinyinCaseType;
 import os.zxs.force.core.util.PopUtil;
@@ -76,9 +77,11 @@ public class PatientHospitalizeBasicInfoBo extends
 		if(activity.RadioButtonIn.isChecked()){
 			patient.setTherapyStatus("0");
 			patient.setTherapyStatusName("待筛查");
+			patient.setOutHospitalData(null);
 		}else{
 			patient.setTherapyStatus("9");
 			patient.setTherapyStatusName("出院");
+			patient.setOutHospitalData(DateHelper.getInstance().getDataString_2(null));
 		}
 		getDao().update(patient);
 	}
@@ -129,9 +132,11 @@ public class PatientHospitalizeBasicInfoBo extends
 		if(activity.RadioButtonIn.isChecked()){
 			patient.setTherapyStatus("0");
 			patient.setTherapyStatusName("待筛查");
+			patient.setOutHospitalData(null);
 		}else{
 			patient.setTherapyStatus("9");
 			patient.setTherapyStatusName("出院");
+			patient.setOutHospitalData(DateHelper.getInstance().getDataString_2(null));
 		}
 		getDao().create(patient);
 	}

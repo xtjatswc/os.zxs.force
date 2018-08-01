@@ -232,6 +232,7 @@ public class PatientListFragment extends
 		TextView tvBedCode;
 		TextView tvClinicistName;
 		TextView tvInHospitalDate;
+		TextView tvOutHospitalDate;
 		TextView tvAge;
 		ImageView ImageViewSex;
 		TextView tvDiseaseName;
@@ -257,6 +258,8 @@ public class PatientListFragment extends
 				.findViewById(R.id.clinicistName);
 		holder.tvInHospitalDate = (TextView) view
 				.findViewById(R.id.inHospitalDate);
+		holder.tvOutHospitalDate = (TextView) view
+				.findViewById(R.id.tvOutHospitalDate);
 		holder.ImageViewSex = (ImageView) view.findViewById(R.id.ImageViewSex);
 		holder.tvAge = (TextView) view.findViewById(R.id.age);
 		holder.tvDiseaseName = (TextView) view.findViewById(R.id.diseaseName);
@@ -364,8 +367,14 @@ public class PatientListFragment extends
 		// 营养治疗状态
 		if (patientinfo.getTherapyStatusName().equals("出院")) {
 			holder.switchChildStatus.setChecked(false);
+			if(patientinfo.getOutHospitalData() != null && !patientinfo.getOutHospitalData().equals("")){
+				holder.tvOutHospitalDate.setText(patientinfo.getOutHospitalData() + " 出院");
+			}else{
+				holder.tvOutHospitalDate.setText("");
+			}
 		} else {
 			holder.switchChildStatus.setChecked(true);
+			holder.tvOutHospitalDate.setText("");
 		}
 
 		gridListAdapter.setOnListItemSubClick(view, parent,
@@ -549,9 +558,13 @@ public class PatientListFragment extends
 			if(holder.switchChildStatus.isChecked()){
 				patientInfo.setTherapyStatus("0");
 				patientInfo.setTherapyStatusName("待筛查");
+				patientInfo.setOutHospitalData(null);
+				holder.tvOutHospitalDate.setText("");
 			}else{
 				patientInfo.setTherapyStatus("9");
 				patientInfo.setTherapyStatusName("出院");
+				patientInfo.setOutHospitalData(DateHelper.getInstance().getDataString_2(null));
+				holder.tvOutHospitalDate.setText(patientInfo.getOutHospitalData() + " 出院");
 			}
 			patientBo.getDao().update(patientInfo);
 			break;

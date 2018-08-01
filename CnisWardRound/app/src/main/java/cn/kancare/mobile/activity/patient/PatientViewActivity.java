@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,6 +55,7 @@ public class PatientViewActivity extends BaseActivity {
 	TextView textViewBedCode;
 	TextView textViewClinicistName;
 	TextView textViewInHospitalDate;
+	TextView textViewOutHospitalDate;
 	TextView textViewAge;
 	TextView textViewDiseaseName;
 	TextView textViewPatientNo;
@@ -297,6 +299,11 @@ public class PatientViewActivity extends BaseActivity {
 		String d = DateHelper.getInstance().getDataString_2(
 				hospitalInfo.getInHospitalData());
 		textViewInHospitalDate.setText("    " + d + " 入院");
+
+		if(hospitalInfo.getOutHospitalData() != null && !hospitalInfo.getOutHospitalData().equals("")) {
+			textViewOutHospitalDate.setText("    " + hospitalInfo.getOutHospitalData() + " 出院");
+		}
+
 		textViewAge.setText(Convert.RoundString2(hospitalInfo.getAge(), 2)
 				+ " 岁");
 		textViewDiseaseName.setText("疾病（诊断）：" + hospitalInfo.getDiseaseName()
@@ -323,9 +330,14 @@ public class PatientViewActivity extends BaseActivity {
 				if(switchStatus.isChecked()){
 					patientInfo.setTherapyStatus("0");
 					patientInfo.setTherapyStatusName("待筛查");
+					patientInfo.setOutHospitalData(null);
+					textViewOutHospitalDate.setText("");
 				}else{
 					patientInfo.setTherapyStatus("9");
 					patientInfo.setTherapyStatusName("出院");
+					patientInfo.setOutHospitalData(DateHelper.getInstance().getDataString_2(null));
+					textViewOutHospitalDate.setText("    " + patientInfo.getOutHospitalData() + " 出院");
+
 				}
 				try {
 					hospitalInfoBo.getDao().update(patientInfo);
@@ -419,6 +431,7 @@ public class PatientViewActivity extends BaseActivity {
 		textViewBedCode = (TextView) findViewById(R.id.textViewBedCode);
 		textViewClinicistName = (TextView) findViewById(R.id.textViewClinicistName);
 		textViewInHospitalDate = (TextView) findViewById(R.id.textViewInHospitalDate);
+		textViewOutHospitalDate = (TextView) findViewById(R.id.textViewOutHospitalDate);
 		textViewAge = (TextView) findViewById(R.id.textViewAge);
 		textViewDiseaseName = (TextView) findViewById(R.id.textViewDiseaseName);
 		textViewPatientNo = (TextView) findViewById(R.id.textViewPatientNo);

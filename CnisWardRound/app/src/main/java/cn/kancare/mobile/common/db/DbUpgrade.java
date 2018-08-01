@@ -192,5 +192,10 @@ public class DbUpgrade {
 			TableUtils.createTable(connectionSource, Diagnosis.class);
 			oldVersion++;
 		}
+
+		if (oldVersion == 66 && oldVersion < newVersion) {
+			execSQL("update patienthospitalizebasicinfo set BedCodePrefix = '' where BedCodePrefix is null");
+			oldVersion++;
+		}
 	}
 }
