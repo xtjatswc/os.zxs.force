@@ -279,7 +279,11 @@ public class PatientHospitalizeBasicInfo extends BaseBean {
 	}
 
 	public void setOutHospitalData(String OutHospitalData) {
-		this.OutHospitalData = OutHospitalData;
+		if(OutHospitalData == null){
+			this.OutHospitalData = "";
+		}else{
+			this.OutHospitalData = OutHospitalData;
+		}
 	}
 
 	public String getTherapyStartTime() {
