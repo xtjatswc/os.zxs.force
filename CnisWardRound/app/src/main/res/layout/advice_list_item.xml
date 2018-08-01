@@ -12,21 +12,74 @@
         android:orientation="vertical"
         android:layout_weight="1" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/TextViewNutrientAdviceSummary_DBKey"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
-                android:textSize="20dip" />
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/TextViewNutrientAdviceSummary_DBKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:textSize="20dip" />
+
+                <TextView
+                    android:id="@+id/TextViewAdviceDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/ImageButton_Edit"
+                    android:layout_width="55dip"
+                    android:layout_height="55dip"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/edit" />
+
+                <ImageButton
+                    android:id="@+id/ImageButton_Delete"
+                    android:layout_width="55dip"
+                    android:layout_height="55dip"
+                    android:src="@drawable/delete" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/TextViewEnergy"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/TextViewAdviceDate"
-                android:layout_width="wrap_content"
+                android:id="@+id/TextViewProtein"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/TextViewFat"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -34,15 +87,26 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:weightSum="1"
             android:orientation="horizontal" >
+
             <TextView
-                android:id="@+id/TextViewEnergy"
-                android:layout_width="wrap_content"
+                android:id="@+id/TextViewCarbohydrate"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/TextViewProtein"
-                android:layout_width="wrap_content"
+                android:id="@+id/TextViewK"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/TextViewNa"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content" />
 
@@ -61,23 +125,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/ImageButton_Edit"
-            android:layout_width="55dip"
-            android:layout_height="55dip"
-            android:scaleType="centerInside"
-            android:src="@drawable/edit" />
-
-        <ImageButton
-            android:id="@+id/ImageButton_Delete"
-            android:layout_width="55dip"
-            android:layout_height="55dip"
-            android:src="@drawable/delete" />
-    </LinearLayout>
 
 </LinearLayout>

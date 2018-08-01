@@ -131,7 +131,7 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 					+ DateHelper.getInstance().getDataString_3(
 							data.getAdviceEndDate());
 		}
-		holder.TextViewAdviceDate.setText("	" + adviceDateString);
+		holder.TextViewAdviceDate.setText("医嘱日期：" + adviceDateString);
 
 		String remark = "";
 		NutrientAdvice nutrientAdvice;
@@ -189,6 +189,16 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 					+ "Kcal");
 			holder.TextViewProtein.setText("蛋白质:" + Convert.Round(totalChinaFoodComposition.getProtein(), 2)
 					+ "g");
+			holder.TextViewFat.setText("脂肪:" + Convert.Round(totalChinaFoodComposition.getFat(), 2)
+					+ "g");
+			holder.TextViewCarbohydrate.setText("碳水化合物:" + Convert.Round(totalChinaFoodComposition.getCarbohydrate(), 2)
+					+ "g");
+			holder.TextViewK.setText("钾:" + Convert.Round(totalChinaFoodComposition.getK(), 2)
+					+ "mg");
+			holder.TextViewNa.setText("钠:" + Convert.Round(totalChinaFoodComposition.getNa(), 2)
+					+ "mg");
+
+
 		} catch (Exception e) {
 			doException(e);
 		}
@@ -252,6 +262,10 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 		TextView TextViewRemark;
 		TextView TextViewEnergy;
 		TextView TextViewProtein;
+		TextView TextViewFat;
+		TextView TextViewCarbohydrate;
+		TextView TextViewK;
+		TextView TextViewNa;
 		TextView TextViewAdviceDate;
 	}
 
@@ -269,6 +283,14 @@ public class AdviceListActivity extends BaseListActivity<NutrientAdviceSummary> 
 				.findViewById(R.id.TextViewEnergy);
 		holder.TextViewProtein = (TextView) view
 				.findViewById(R.id.TextViewProtein);
+		holder.TextViewFat = (TextView) view
+				.findViewById(R.id.TextViewFat);
+		holder.TextViewCarbohydrate = (TextView) view
+				.findViewById(R.id.TextViewCarbohydrate);
+		holder.TextViewK = (TextView) view
+				.findViewById(R.id.TextViewK);
+		holder.TextViewNa = (TextView) view
+				.findViewById(R.id.TextViewNa);
 		holder.TextViewAdviceDate = (TextView) view
 				.findViewById(R.id.TextViewAdviceDate);
 		view.setTag(holder);
