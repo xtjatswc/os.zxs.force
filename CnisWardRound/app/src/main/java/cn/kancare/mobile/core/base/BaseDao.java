@@ -25,7 +25,7 @@ public abstract class BaseDao<Bean> {
 	//得到主键列名
 	protected abstract String getPrimaryKey();
 
-	protected BaseDao(Context context) throws SQLException {
+	public BaseDao(Context context) throws Exception {
 		this.context = context;
 		helper = DatabaseHelper.getHelper(context);
 

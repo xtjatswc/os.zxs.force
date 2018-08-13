@@ -12,7 +12,7 @@ import com.j256.ormlite.stmt.DeleteBuilder;
 
 public class PatientFavoriteDao extends BaseDao<PatientFavorite> {
 
-	public PatientFavoriteDao(Context context) throws SQLException {
+	public PatientFavoriteDao(Context context) throws Exception {
 		super(context);
 	}
 

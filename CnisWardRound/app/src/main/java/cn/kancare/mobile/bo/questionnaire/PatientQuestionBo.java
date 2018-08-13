@@ -22,7 +22,7 @@ public class PatientQuestionBo extends BaseBo<PatientQuestionDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new PatientQuestionDao(context);
 	}
 

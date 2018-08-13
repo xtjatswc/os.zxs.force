@@ -9,7 +9,7 @@ import cn.kancare.mobile.core.base.BaseDao;
 public class UserDao extends BaseDao<User>{
 
 
-	public UserDao(Context context) throws SQLException {
+	public UserDao(Context context) throws Exception {
 		super(context);
 
 	}

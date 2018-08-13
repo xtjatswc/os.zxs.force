@@ -11,7 +11,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class SearchPageConfigDao extends BaseDao<SearchPageConfig> {
 
-	public SearchPageConfigDao(Context context) throws SQLException {
+	public SearchPageConfigDao(Context context) throws Exception {
 		super(context);
 	}
 

@@ -11,7 +11,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class TestItemDetailDao extends BaseDao<TestItemDetail> {
 
-	public TestItemDetailDao(Context context) throws SQLException {
+	public TestItemDetailDao(Context context) throws Exception {
 		super(context);
 	}
 

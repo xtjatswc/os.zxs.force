@@ -14,7 +14,7 @@ import com.j256.ormlite.stmt.UpdateBuilder;
 public class PatientQuestionnaireResultDao extends
 		BaseDao<PatientQuestionnaireResult> {
 
-	public PatientQuestionnaireResultDao(Context context) throws SQLException {
+	public PatientQuestionnaireResultDao(Context context) throws Exception {
 		super(context);
 	}
 

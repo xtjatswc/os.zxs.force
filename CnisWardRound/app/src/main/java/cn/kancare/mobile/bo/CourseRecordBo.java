@@ -32,7 +32,7 @@ public class CourseRecordBo extends BaseBo<CourseRecordDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new CourseRecordDao(context);
 	}
 

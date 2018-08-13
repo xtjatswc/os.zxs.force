@@ -12,7 +12,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 public class SysCodeDao extends BaseDao<SysCode>{
 
 
-	public SysCodeDao(Context context) throws SQLException {
+	public SysCodeDao(Context context) throws Exception {
 		super(context);
 	}
 

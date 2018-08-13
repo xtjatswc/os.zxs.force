@@ -8,7 +8,7 @@ import cn.kancare.mobile.core.base.BaseDao;
 
 public class SettingDao extends BaseDao<Setting> {
 
-	public SettingDao(Context context) throws SQLException {
+	public SettingDao(Context context) throws Exception {
 		super(context);
 	}
 

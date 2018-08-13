@@ -39,7 +39,7 @@ public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
     public static final String DATABASE_NAME = "cnis-ward-round.db";
 
     static {
-        DATABASE_VERSION = 67;
+        DATABASE_VERSION = 68;
     }
 
     private static DatabaseHelper instance;

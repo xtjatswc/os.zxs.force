@@ -9,6 +9,9 @@ import java.sql.SQLException;
 
 import cn.kancare.mobile.bean.BodyAnalysisReport;
 import cn.kancare.mobile.bean.CourseRecord;
+import cn.kancare.mobile.bean.advice.ChargingAdviceDetail;
+import cn.kancare.mobile.bean.advice.ChargingItems;
+import cn.kancare.mobile.bean.advice.ChargingItemsRelation;
 import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
@@ -196,6 +199,14 @@ public class DbUpgrade {
 		if (oldVersion == 66 && oldVersion < newVersion) {
 			execSQL("update patienthospitalizebasicinfo set BedCodePrefix = '' where BedCodePrefix is null");
 			oldVersion++;
+		}
+
+		if (oldVersion == 67 && oldVersion < newVersion) {
+			TableUtils.createTable(connectionSource, ChargingAdviceDetail.class);
+			TableUtils.createTable(connectionSource, ChargingItems.class);
+			TableUtils.createTable(connectionSource, ChargingItemsRelation.class);
+            execSQL("CREATE UNIQUE INDEX \"main\".\"ChargingItemsRelation_unique\" ON \"ChargingItemsRelation\" (  \"RecipeAndProduct_DBKey\",  \"ChargingItemID\");");
+            oldVersion++;
 		}
 	}
 }

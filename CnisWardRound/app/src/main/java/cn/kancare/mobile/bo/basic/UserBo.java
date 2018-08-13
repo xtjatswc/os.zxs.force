@@ -74,7 +74,7 @@ public class UserBo extends BaseBo<UserDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new UserDao(context);
 	}
 

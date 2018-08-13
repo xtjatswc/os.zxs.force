@@ -1,5 +1,8 @@
 package cn.kancare.mobile.bo.sync;
 
+import cn.kancare.mobile.bo.advice.ChargingAdviceDetailBo;
+import cn.kancare.mobile.bo.advice.ChargingItemsBo;
+import cn.kancare.mobile.bo.advice.ChargingItemsRelationBo;
 import cn.kancare.mobile.bo.basic.ChinaFoodCompositionBo;
 import cn.kancare.mobile.common.Global;
 import cn.kancare.mobile.common.constant.LogTag;
@@ -10,6 +13,9 @@ import cn.kancare.mobile.core.sync.DoSyncListener;
 public class ChinaFoodCompositionSyncHandle extends BaseSyncHandle {
 
 	ChinaFoodCompositionBo chinaFoodCompositionBo;
+	ChargingAdviceDetailBo chargingAdviceDetailBo;
+	ChargingItemsBo chargingItemsBo;
+	ChargingItemsRelationBo chargingItemsRelationBo;
 
 	public ChinaFoodCompositionSyncHandle(CnislogBo log) {
 		super(log);
@@ -25,14 +31,22 @@ public class ChinaFoodCompositionSyncHandle extends BaseSyncHandle {
 	protected void initializeBo() throws Exception {
 		chinaFoodCompositionBo = new ChinaFoodCompositionBo(
 				Global.currentActivity);
+		chargingAdviceDetailBo = new ChargingAdviceDetailBo(Global.currentActivity);
+		chargingItemsBo = new ChargingItemsBo(Global.currentActivity);
+		chargingItemsRelationBo = new ChargingItemsRelationBo(Global.currentActivity);
 	}
 
 	@Override
 	public void doSync(DoSyncListener doSyncListener) throws Exception {
 		String str1 = "";
 		String str2 = "";
-		
-		// 同步chinafoodcomposition
+
+		// 上传
+		str1 = "/" + Global.WEB_API + "/chargingAdviceDetail.ashx?opt=upload";
+		doUpload(str1, chargingAdviceDetailBo, "chargingAdviceDetail", doSyncListener);
+
+		//<-------------------------------
+		// 下载chinafoodcomposition
 		str1 = "/" + Global.WEB_API + "/chinafoodcomposition.ashx?opt=getlistcount";
 		str2 = "/" + Global.WEB_API + "/chinafoodcomposition.ashx?opt=getlist";
 		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chinaFoodCompositionBo,
@@ -43,11 +57,30 @@ public class ChinaFoodCompositionSyncHandle extends BaseSyncHandle {
 			isClearData = false;
 		}
 
-		// 同步RecipeAndProduct
+		// 下载RecipeAndProduct
 		str1 = "/" + Global.WEB_API + "/RecipeAndProduct.ashx?opt=getlistcount";
 		str2 = "/" + Global.WEB_API + "/RecipeAndProduct.ashx?opt=getlist";
 		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chinaFoodCompositionBo,
 				"RecipeAndProduct", doSyncListener);
+		//-------------------------------->
+
+		// 下载ChargingAdviceDetail
+		str1 = "/" + Global.WEB_API + "/ChargingAdviceDetail.ashx?opt=getlistcount";
+		str2 = "/" + Global.WEB_API + "/ChargingAdviceDetail.ashx?opt=getlist";
+		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chargingAdviceDetailBo,
+				"ChargingAdviceDetail", doSyncListener);
+
+		// 下载ChargingItems
+		str1 = "/" + Global.WEB_API + "/ChargingItems.ashx?opt=getlistcount";
+		str2 = "/" + Global.WEB_API + "/ChargingItems.ashx?opt=getlist";
+		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chargingItemsBo,
+				"ChargingItems", doSyncListener);
+
+		// 下载ChargingItemsRelation
+		str1 = "/" + Global.WEB_API + "/ChargingItemsRelation.ashx?opt=getlistcount";
+		str2 = "/" + Global.WEB_API + "/ChargingItemsRelation.ashx?opt=getlist";
+		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chargingItemsRelationBo,
+				"ChargingItemsRelation", doSyncListener);
 
 	}
 }

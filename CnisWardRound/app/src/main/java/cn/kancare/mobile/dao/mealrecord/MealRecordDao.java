@@ -12,7 +12,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class MealRecordDao extends BaseDao<MealRecord> {
 
-	public MealRecordDao(Context context) throws SQLException {
+	public MealRecordDao(Context context) throws Exception {
 		super(context);
 	}
 

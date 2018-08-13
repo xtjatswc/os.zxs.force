@@ -17,7 +17,7 @@ public class OptionDetailBo extends BaseBo<OptionDetailDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new OptionDetailDao(context);
 	}
 

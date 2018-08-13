@@ -11,7 +11,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class CourseRecordDao extends BaseDao<CourseRecord> {
 
-	public CourseRecordDao(Context context) throws SQLException {
+	public CourseRecordDao(Context context) throws Exception {
 		super(context);
 	}
 

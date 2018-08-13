@@ -17,7 +17,7 @@ public class SearchPageConfigBo extends BaseBo<SearchPageConfigDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new SearchPageConfigDao(context);
 	}
 

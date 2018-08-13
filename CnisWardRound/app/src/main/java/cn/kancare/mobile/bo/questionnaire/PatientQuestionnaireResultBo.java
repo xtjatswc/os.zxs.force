@@ -23,7 +23,7 @@ public class PatientQuestionnaireResultBo extends
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new PatientQuestionnaireResultDao(context);
 	}
 

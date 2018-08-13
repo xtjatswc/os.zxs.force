@@ -17,7 +17,7 @@ public class QuestionDetailTypeBo extends BaseBo<QuestionDetailTypeDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new QuestionDetailTypeDao(context);
 	}
 

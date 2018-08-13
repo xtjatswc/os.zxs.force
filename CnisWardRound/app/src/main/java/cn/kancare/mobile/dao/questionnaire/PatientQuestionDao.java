@@ -12,7 +12,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class PatientQuestionDao extends BaseDao<PatientQuestion> {
 
-	public PatientQuestionDao(Context context) throws SQLException {
+	public PatientQuestionDao(Context context) throws Exception {
 		super(context);
 	}
 

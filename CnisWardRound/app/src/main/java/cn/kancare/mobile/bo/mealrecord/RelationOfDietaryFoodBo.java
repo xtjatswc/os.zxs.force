@@ -21,7 +21,7 @@ public class RelationOfDietaryFoodBo extends BaseBo<RelationOfDietaryFoodDao> {
 	}
 
 	@Override
-	protected void setDao() throws SQLException {
+	protected void setDao() throws Exception {
 		dao = new RelationOfDietaryFoodDao(context);
 	}
 
