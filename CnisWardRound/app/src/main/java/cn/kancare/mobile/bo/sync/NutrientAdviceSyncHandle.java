@@ -1,5 +1,6 @@
 package cn.kancare.mobile.bo.sync;
 
+import cn.kancare.mobile.bo.advice.ChargingAdviceDetailBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceDetailBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceSummaryBo;
@@ -13,6 +14,7 @@ public class NutrientAdviceSyncHandle extends BaseSyncHandle {
 	NutrientAdviceBo nutrientAdviceBo;
 	NutrientAdviceDetailBo nutrientAdviceDetailBo;
 	NutrientAdviceSummaryBo nutrientAdviceSummaryBo;
+	ChargingAdviceDetailBo chargingAdviceDetailBo;
 
 	public NutrientAdviceSyncHandle(CnislogBo log) {
 		super(log);
@@ -31,6 +33,8 @@ public class NutrientAdviceSyncHandle extends BaseSyncHandle {
 				Global.currentActivity);
 		nutrientAdviceSummaryBo = new NutrientAdviceSummaryBo(
 				Global.currentActivity);
+		chargingAdviceDetailBo = new ChargingAdviceDetailBo(Global.currentActivity);
+
 	}
 
 	@Override
@@ -71,6 +75,16 @@ public class NutrientAdviceSyncHandle extends BaseSyncHandle {
 		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE,
 				nutrientAdviceSummaryBo, "nutrientadvicesummary",
 				doSyncListener);
+
+		// 上传
+		str1 = "/" + Global.WEB_API + "/chargingAdviceDetail.ashx?opt=upload";
+		doUpload(str1, chargingAdviceDetailBo, "chargingAdviceDetail", doSyncListener);
+
+		// 下载ChargingAdviceDetail
+		str1 = "/" + Global.WEB_API + "/ChargingAdviceDetail.ashx?opt=getlistcount";
+		str2 = "/" + Global.WEB_API + "/ChargingAdviceDetail.ashx?opt=getlist";
+		doDownload(str1, str2, 0, Global.REQUEST_LIMIT_SIZE, chargingAdviceDetailBo,
+				"ChargingAdviceDetail", doSyncListener);
 
 	}
 
