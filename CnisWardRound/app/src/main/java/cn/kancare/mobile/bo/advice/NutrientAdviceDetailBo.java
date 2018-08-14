@@ -68,7 +68,7 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 	public void SaveNutrientAdviceDetail(AdviceInputFragment context,
 			String NutrientAdvice_DBKey) throws Exception {
 		// 判断该医嘱单的当前制剂是否存在
-		NutrientAdviceDetail nutrientAdviceDetail = getDao().queryAdviceDetail(
+		NutrientAdviceDetail nutrientAdviceDetail  = getDao().queryAdviceDetail(
 				NutrientAdvice_DBKey,
 				context.chinaFoodComposition.getRecipeAndProduct_DBKey());
 
@@ -98,6 +98,7 @@ public class NutrientAdviceDetailBo extends BaseBo<NutrientAdviceDetailDao> {
 			setInputAdviceDetail(context, nutrientAdviceDetail);
 			getDao().update(nutrientAdviceDetail);
 		}
+		context.currentNutrientAdviceDetail = nutrientAdviceDetail;
 	}
 
 	private void setInputAdviceDetail(AdviceInputFragment context,

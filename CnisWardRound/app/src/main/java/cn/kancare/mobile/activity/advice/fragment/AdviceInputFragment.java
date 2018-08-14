@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import cn.kancare.mobile.R;
+import cn.kancare.mobile.activity.advice.AdviceChargeRelationActivity;
 import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
@@ -54,6 +56,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	public NutrientAdviceSummary nutrientAdviceSummary;
 	public NutrientAdvice nutrientAdvice;
 	public ChinaFoodComposition chinaFoodComposition;
+	public NutrientAdviceDetail currentNutrientAdviceDetail; //记录最近一次保存的NutrientAdviceDetail
 
 	public FlowRadioGroup FlowRadioGroupENTime;
 	public LinearLayout LinearLayoutDoTime;
@@ -390,8 +393,21 @@ public class AdviceInputFragment extends BaseFragment implements
 
 					nutrientAdviceSummaryBo
 							.saveAdvice(AdviceInputFragment.this);
-					PopUtil.show(AdviceInputFragment.this.getActivity(),
-							"保存成功！");
+
+					if(Global.BUILD_FLAG.equals("CQSY")){
+						//如果是重庆三院版本，则弹出关联收费项界面
+						PopUtil.show(AdviceInputFragment.this.getActivity(),
+								"保存成功，请关联收费项！");
+						Intent i = new Intent(getActivity(), AdviceChargeRelationActivity.class);
+						i.putExtra("NutrientAdviceDetail_DBKEY", AdviceInputFragment.this.currentNutrientAdviceDetail.getNutrientAdviceDetail_DBKEY());
+						i.putExtra("RecipeAndProduct_DBKey", AdviceInputFragment.this.currentNutrientAdviceDetail.getRecipeAndProduct_DBKey());
+
+						getActivity().startActivity(i);
+
+					}else{
+						PopUtil.show(AdviceInputFragment.this.getActivity(),
+								"保存成功！");
+					}
 
 					ButtonDelete.setVisibility(View.VISIBLE);
 					// 刷新状态
