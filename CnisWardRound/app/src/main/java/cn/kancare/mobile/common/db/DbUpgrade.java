@@ -208,5 +208,11 @@ public class DbUpgrade {
             execSQL("CREATE UNIQUE INDEX \"main\".\"ChargingItemsRelation_unique\" ON \"ChargingItemsRelation\" (  \"RecipeAndProduct_DBKey\",  \"ChargingItemID\");");
             oldVersion++;
 		}
+
+//		if (oldVersion == 68 && oldVersion < newVersion) {
+//			execSQL("INSERT INTO \"chinafoodcomposition\"(\"FoodName\", \"ChinaFoodComposition_DBKey\", \"RecipeAndProduct_DBKey\", \"FoodCode\", \"Protein\", \"Fat\", \"Carbohydrate\", \"K\", \"Na\", \"Energy\", \"FoodTableInsideType\", \"WrapperType\", \"BaseUnitName\", \"MeasureUnitName\", \"MinNum\", \"MinUnitName\", \"NutrientProductSpecification\", \"RecipeAndProductPrice\") VALUES ('枣环磷酸腺苷', 1429, 1429, '1429', 2.7, 0, 57, NULL, '51', 238.77, 2, 1, '袋', 'ml', 1.0, '袋', 200.0, 0.0);");
+//			oldVersion++;
+//		}
+
 	}
 }

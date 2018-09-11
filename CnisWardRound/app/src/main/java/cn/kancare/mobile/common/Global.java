@@ -10,11 +10,12 @@ import os.zxs.force.core.constant.AppConstant;
 public class Global extends os.zxs.force.common.Global {
 
 	/*
-	 * 医院个性化 HX 桓兴医院
-	 * 
+	 * 医院个性化
+	 * HX 桓兴医院
+	 * CQSY 重庆三院
 	 * QT 其它医院
 	 */
-	public static String BUILD_FLAG = "HX";
+	public static String BUILD_FLAG = "CQSY";
 
 	// 后台同步接口路径名称
 	public static final String WEB_API = "webapi";

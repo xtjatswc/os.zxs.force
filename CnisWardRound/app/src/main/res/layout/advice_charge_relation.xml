@@ -4,6 +4,203 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <fragment
+        android:id="@+id/fragment_back"
+        android:name="cn.kancare.mobile.activity.BackFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:id="@+id/LinearLayoutAdviceInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="5dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/buttonStyle"
+                android:text="保存" >
+            </Button>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:shrinkColumns="1" >
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_top_corner_no_bottom_line"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="收费项目：" />
+
+                    <os.zxs.force.core.view.FlowRadioGroup
+                        android:id="@+id/FlowRadioGroupChargingItemName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="horizontal" >
+                    </os.zxs.force.core.view.FlowRadioGroup>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="规格：" />
+
+                    <os.zxs.force.core.view.FlowRadioGroup
+                        android:id="@+id/FlowRadioGroupChargingItemSpec"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="horizontal" >
+                    </os.zxs.force.core.view.FlowRadioGroup>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="单价：" />
+
+                    <EditText
+                        android:id="@+id/EditTextChargingItemPrice"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:selectAllOnFocus="true" >
+                    </EditText>
+
+                </TableRow>
+
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="数量：" />
+
+                    <EditText
+                        android:id="@+id/EditTextChargingItemNum"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true" >
+                    </EditText>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_no_corner_without_bottom"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="单位：" />
+
+                    <EditText
+                        android:id="@+id/EditTextChargingItemUnit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:selectAllOnFocus="true" >
+                    </EditText>
+                </TableRow>
+
+                <TableRow
+                    style="@style/tableRowStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:weightSum="1" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="金额：" />
+
+                    <EditText
+                        android:id="@+id/EditTextChargingItemMoney"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:selectAllOnFocus="true" >
+                    </EditText>
+
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnSave2"
+                style="@style/buttonStyle"
+                android:text="保存" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

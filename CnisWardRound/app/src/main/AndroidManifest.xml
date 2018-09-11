@@ -88,7 +88,7 @@
         </activity>
         <activity android:name="cn.yan.slidelayout.MainActivity" >
         </activity>
-        <activity android:name="cn.kancare.mobile.activity.advice.AdviceChargeRelationActivity" >
+        <activity android:name=".activity.advice.AdviceChargeRelationActivity">
         </activity>
     </application>
 
