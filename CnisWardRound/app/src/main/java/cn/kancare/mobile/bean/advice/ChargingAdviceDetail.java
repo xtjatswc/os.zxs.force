@@ -16,7 +16,7 @@ public class ChargingAdviceDetail extends BaseBean {
     private static final long serialVersionUID = -3278786409890674018L;
     // NutrientAdviceDetail_DBKEY
     @DatabaseField(columnName = "NutrientAdviceDetail_DBKEY", id = true)
-    private int NutrientAdviceDetail_DBKEY;
+    private String NutrientAdviceDetail_DBKEY;
 
     // RecipeAndProduct_DBKey
     @DatabaseField(columnName = "RecipeAndProduct_DBKey")
@@ -51,11 +51,11 @@ public class ChargingAdviceDetail extends BaseBean {
     private Double ChargingMoney;
 
 
-    public int getNutrientAdviceDetail_DBKEY() {
+    public String getNutrientAdviceDetail_DBKEY() {
         return NutrientAdviceDetail_DBKEY;
     }
 
-    public void setNutrientAdviceDetail_DBKEY(int NutrientAdviceDetail_DBKEY) {
+    public void setNutrientAdviceDetail_DBKEY(String NutrientAdviceDetail_DBKEY) {
         this.NutrientAdviceDetail_DBKEY = NutrientAdviceDetail_DBKEY;
     }
 

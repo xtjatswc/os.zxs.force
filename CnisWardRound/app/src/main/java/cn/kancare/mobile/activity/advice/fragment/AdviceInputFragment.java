@@ -396,8 +396,8 @@ public class AdviceInputFragment extends BaseFragment implements
 
 					if(Global.BUILD_FLAG.equals("CQSY")){
 						//如果是重庆三院版本，则弹出关联收费项界面
-						PopUtil.show(AdviceInputFragment.this.getActivity(),
-								"保存成功，请关联收费项！");
+//						PopUtil.show(AdviceInputFragment.this.getActivity(),
+//								"保存成功，请关联收费项！");
 						Intent i = new Intent(getActivity(), AdviceChargeRelationActivity.class);
 						i.putExtra("NutrientAdviceDetail_DBKEY", AdviceInputFragment.this.currentNutrientAdviceDetail.getNutrientAdviceDetail_DBKEY());
 						i.putExtra("RecipeAndProduct_DBKey", AdviceInputFragment.this.currentNutrientAdviceDetail.getRecipeAndProduct_DBKey());

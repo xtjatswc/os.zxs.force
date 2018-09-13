@@ -6,11 +6,13 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.List;
 
+import cn.kancare.mobile.activity.advice.AdviceChargeRelationActivity;
 import cn.kancare.mobile.bean.advice.ChargingAdviceDetail;
 import cn.kancare.mobile.core.base.BaseBo;
 import cn.kancare.mobile.core.sync.DBKeyEntity;
 import cn.kancare.mobile.dao.advice.ChargingAdviceDetailDao;
 import os.zxs.force.common.constant.SyncConstant;
+import os.zxs.force.core.util.Convert;
 
 public class ChargingAdviceDetailBo extends BaseBo<ChargingAdviceDetailDao> {
     public ChargingAdviceDetailBo(Activity context) throws Exception {
@@ -52,5 +54,33 @@ public class ChargingAdviceDetailBo extends BaseBo<ChargingAdviceDetailDao> {
                 dao.update(chargingAdviceDetail);
             }
         }
+    }
+
+    public  void saveAdviceRelation(AdviceChargeRelationActivity context) throws  Exception{
+        ChargingAdviceDetail chargingAdviceDetail = dao.queryForId(context.NutrientAdviceDetail_DBKEY);
+        Boolean isCreate = false;
+        if(chargingAdviceDetail == null){
+            isCreate = true;
+            chargingAdviceDetail = new ChargingAdviceDetail();
+        }
+
+        chargingAdviceDetail.setNutrientAdviceDetail_DBKEY(context.NutrientAdviceDetail_DBKEY);
+        chargingAdviceDetail.setRecipeAndProduct_DBKey(context.RecipeAndProduct_DBKey);
+        chargingAdviceDetail.setChargingItemID(context.chargingItem.getChargingItemID());
+        chargingAdviceDetail.setChargingItemName(context.chargingItem.getChargingItemName());
+        chargingAdviceDetail.setChargingItemSpec(context.CurrSpec);
+        chargingAdviceDetail.setChargingItemUnit(context.chargingItem.getChargingItemUnit());
+        chargingAdviceDetail.setChargingNum(Convert.cash2Int(context.EditTextChargingItemNum.getText()));
+        chargingAdviceDetail.setChargingPrice(Convert.cash2Double(context.EditTextChargingItemPrice.getText().toString()));
+        chargingAdviceDetail.setChargingMoney(Convert.cash2Double(context.EditTextChargingItemMoney.getText().toString()));
+
+        if(isCreate){
+            chargingAdviceDetail.setOperateFlag(SyncConstant.OperateFlag.NEED_ADD_TO_SERVER);
+            dao.create(chargingAdviceDetail);
+        }else{
+            chargingAdviceDetail.setOperateFlag(SyncConstant.OperateFlag.NEED_EDIT_TO_SERVER);
+            dao.update(chargingAdviceDetail);
+        }
+
     }
 }

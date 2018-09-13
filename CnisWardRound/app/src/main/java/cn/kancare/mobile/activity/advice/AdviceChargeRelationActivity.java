@@ -21,6 +21,7 @@ import cn.kancare.mobile.bo.advice.ChargingItemsBo;
 import cn.kancare.mobile.bo.advice.ChargingItemsRelationBo;
 import cn.kancare.mobile.common.constant.SysCodeType;
 import os.zxs.force.core.util.Convert;
+import os.zxs.force.core.util.PopUtil;
 import os.zxs.force.core.util.ViewFindUtils;
 import os.zxs.force.core.util.ViewUtil;
 import os.zxs.force.core.view.FlowRadioGroup;
@@ -34,8 +35,11 @@ public class AdviceChargeRelationActivity extends BaseActivity {
     ChargingItemsRelationBo chargingItemsRelationBo;
     ChargingAdviceDetailBo chargingAdviceDetailBo;
 
-    String NutrientAdviceDetail_DBKEY;
-    int RecipeAndProduct_DBKey;
+    public String NutrientAdviceDetail_DBKEY;
+    public int RecipeAndProduct_DBKey;
+    public ChargingItems chargingItem;
+    public String CurrSpec;
+
     BackFragment backFragment;
     public FlowRadioGroup FlowRadioGroupChargingItemName;
     public FlowRadioGroup FlowRadioGroupChargingItemSpec;
@@ -71,11 +75,38 @@ public class AdviceChargeRelationActivity extends BaseActivity {
             doException(e);
         }
 
+        btnSave2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                    if(chargingItem == null){
+                        PopUtil.show(context, "保存失败，请联系管理员维护收费项基础数据！");
+                        return;
+                    }
+
+                    if (!mAwesomeValidation.validate()) {
+                        return;
+                    }
+
+                    chargingAdviceDetailBo.saveAdviceRelation(context);
+                    PopUtil.show(context, "关联成功！");
+                    context.finish();
+                } catch (Exception e) {
+                    doException(e);
+                }
+            }
+        });
+
     }
 
     private void loadAdviceInputForm() throws Exception {
         // 收费项目
         List<ChargingItems> lstChargingItems = chargingItemsRelationBo.queryRelationItems(chargingItemsBo, RecipeAndProduct_DBKey);
+
+        if(lstChargingItems == null || lstChargingItems.size() == 0){
+            PopUtil.show(context, "未查询到该制剂对应的收费项，请联系管理员维护收费项基础数据！");
+            return;
+        }
+
         for (int i = 0; i < lstChargingItems.size(); i++) {
             ChargingItems chargingItem = lstChargingItems.get(i);
             RadioButton radioButton = new RadioButton(context);
@@ -98,7 +129,7 @@ public class AdviceChargeRelationActivity extends BaseActivity {
 
         public void onClick(View v) {
             //加载规格
-            ChargingItems chargingItem = (ChargingItems)v.getTag();
+            chargingItem = (ChargingItems)v.getTag();
             String itemSpec = chargingItem.getChargingItemSpec();
             String[] specArr = itemSpec.split("#");
             FlowRadioGroupChargingItemSpec.removeAllViews();
@@ -127,6 +158,7 @@ public class AdviceChargeRelationActivity extends BaseActivity {
 
     class SpecClickListener implements View.OnClickListener {
         public void onClick(View v) {
+            CurrSpec = ((RadioButton)v).getText().toString();
             double price = Convert.cash2Double(v.getTag().toString());
             EditTextChargingItemPrice.setText(price + "");
             calcMoney();
@@ -174,4 +206,10 @@ public class AdviceChargeRelationActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void setValidation() {
+        super.setValidation();
+        mAwesomeValidation.addValidation(EditTextChargingItemNum, "^.{1,12}$", "数量为必填项！");
+
+    }
 }

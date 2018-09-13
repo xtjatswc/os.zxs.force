@@ -105,12 +105,17 @@
                         android:id="@+id/EditTextChargingItemPrice"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="number"
                         android:enabled="false"
                         android:selectAllOnFocus="true" >
                     </EditText>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="元" />
                 </TableRow>
 
 
@@ -178,12 +183,17 @@
                         android:id="@+id/EditTextChargingItemMoney"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.6"
                         android:inputType="number"
                         android:enabled="false"
                         android:selectAllOnFocus="true" >
                     </EditText>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="元" />
                 </TableRow>
 
             </TableLayout>
