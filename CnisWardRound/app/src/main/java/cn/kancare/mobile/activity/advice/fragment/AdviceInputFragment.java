@@ -28,6 +28,7 @@ import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
 import cn.kancare.mobile.bean.basic.ChinaFoodComposition;
 import cn.kancare.mobile.bean.basic.SysCode;
+import cn.kancare.mobile.bo.advice.ChargingAdviceDetailBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceDetailBo;
 import cn.kancare.mobile.bo.advice.NutrientAdviceSummaryBo;
@@ -37,6 +38,7 @@ import cn.kancare.mobile.common.advice.AdviceListener.AdviceInfoListener;
 import cn.kancare.mobile.common.advice.AdviceListener.AdviceInputListener;
 import cn.kancare.mobile.common.constant.LogTag;
 import cn.kancare.mobile.common.constant.SysCodeType;
+import cn.kancare.mobile.dao.advice.ChargingAdviceDetailDao;
 import os.zxs.force.core.util.Convert;
 import os.zxs.force.core.util.DateHelper;
 import os.zxs.force.core.util.PopUtil;
@@ -51,6 +53,7 @@ public class AdviceInputFragment extends BaseFragment implements
 	public NutrientAdviceSummaryBo nutrientAdviceSummaryBo;
 	public NutrientAdviceBo nutrientAdviceBo;
 	public NutrientAdviceDetailBo nutrientAdviceDetailBo;
+	public ChargingAdviceDetailBo chargingAdviceDetailBo;
 	public SysCodeBo sysCodeBo;
 
 	public NutrientAdviceSummary nutrientAdviceSummary;
@@ -349,6 +352,9 @@ public class AdviceInputFragment extends BaseFragment implements
 							nutrientAdviceDetail
 									.getNutrientAdviceDetail_DBKEY());
 
+					chargingAdviceDetailBo.getDao().deleteById(nutrientAdviceDetail
+                            .getNutrientAdviceDetail_DBKEY());
+
 					ButtonDelete.setVisibility(View.GONE);
 
 					// 刷新状态
@@ -613,6 +619,7 @@ public class AdviceInputFragment extends BaseFragment implements
 		sysCodeBo = new SysCodeBo(getActivity());
 		nutrientAdviceBo = new NutrientAdviceBo(getActivity());
 		nutrientAdviceDetailBo = new NutrientAdviceDetailBo(getActivity());
+        chargingAdviceDetailBo = new ChargingAdviceDetailBo(getActivity());
 	}
 
 	@Override

@@ -10,6 +10,9 @@ import java.sql.SQLException;
 
 import cn.kancare.mobile.bean.BodyAnalysisReport;
 import cn.kancare.mobile.bean.CourseRecord;
+import cn.kancare.mobile.bean.advice.ChargingAdviceDetail;
+import cn.kancare.mobile.bean.advice.ChargingItems;
+import cn.kancare.mobile.bean.advice.ChargingItemsRelation;
 import cn.kancare.mobile.bean.advice.NutrientAdvice;
 import cn.kancare.mobile.bean.advice.NutrientAdviceDetail;
 import cn.kancare.mobile.bean.advice.NutrientAdviceSummary;
@@ -106,6 +109,9 @@ public class DatabaseHelper extends os.zxs.force.common.db.DatabaseHelper {
                     NutrientAdviceSummary.class);
             TableUtils.createTable(connectionSource,
                     Diagnosis.class);
+            TableUtils.createTable(connectionSource, ChargingAdviceDetail.class);
+            TableUtils.createTable(connectionSource, ChargingItems.class);
+            TableUtils.createTable(connectionSource, ChargingItemsRelation.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
